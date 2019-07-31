@@ -1,0 +1,39 @@
+<mat-card class="form-card">
+    <mat-card-title>
+      <div class="header">
+        <div class="title">
+          Equipo
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-subtitle>{{isEditing ? '' : 'Nuevo equipo'}}</mat-card-subtitle>
+    <mat-card-content>
+      <form [formGroup]="teamForm">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Ingrese el nombre del equipo" [formControl]="name">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Confederación" [formControl]="confederation">
+            <mat-option *ngFor="let confederation of confederations" [value]="confederation.id">
+              {{confederation.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput type="number" min="1" max="82" placeholder="Ingrese el ranking actual" [formControl]="actualrank">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput type="number" step="0.25" placeholder="Ingrese los puntos" [formControl]="totalpoints">
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="actions">
+        <button mat-flat-button (click)="goToList()">Volver</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">{{isEditing ? 'Editar' : 'Guardar'}}</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>

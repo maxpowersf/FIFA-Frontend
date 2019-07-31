@@ -1,0 +1,134 @@
+<mat-card class="form-card">
+        <mat-card-title>
+          <div class="header">
+            <div class="title">
+              Partidos
+            </div>
+          </div>
+        </mat-card-title>
+        <mat-card-subtitle>Nuevo partido</mat-card-subtitle>
+        <mat-card-content>
+          <form [formGroup]="matchForm">
+            <!-- Match Type Column -->
+            <mat-form-field class="full-width">
+                <mat-select placeholder="Tipo de Partido" (selectionChange)="changeMatchType($event.value)" [formControl]="matchtype">
+                    <mat-option *ngFor="let matchtype of matchtypes" [value]="matchtype.id">
+                        {{matchtype.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Team 1 Column -->
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Equipo" (selectionChange)="changeTeam1($event.value)" [formControl]="team1">
+                        <mat-option *ngFor="let team of teams" [value]="team.id">
+                            {{team.name}}
+                        </mat-option>
+                    </mat-select>
+                    <!-- <input matInput type="text" placeholder="Equipo" aria-label="Equipo" [matAutocomplete]="auto" formControlName="team1">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let team of filteredTeams | async" [value]="team.name">
+                            <img class="example-option-img" aria-hidden [src]="team.flag" height="25">
+                            <span> {{team.name}} </span>
+                        </mat-option>
+                    </mat-autocomplete> -->
+                </mat-form-field>
+              </div>
+              <div class="col-md-1">
+                <mat-form-field class="result">
+                    <input matInput type="number" min="0" max="3" [formControl]="result1">
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <mat-form-field class="result">
+                    <input matInput placeholder="Ranking" [value]="selectedTeam1?.actualRank" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <mat-form-field class="result">
+                    <input matInput placeholder="Region" [value]="selectedTeam1?.confederationWeight" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <mat-form-field class="result">
+                    <input matInput placeholder="Points" [value]="selectedTeam1?.totalPoints" disabled>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Team 2 Column -->
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Equipo" (selectionChange)="changeTeam2($event.value)" [formControl]="team2">
+                        <mat-option *ngFor="let team of teams" [value]="team.id">
+                            {{team.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-1">
+                <mat-form-field class="result">
+                    <input matInput type="number" min="0" max="3" [formControl]="result2">
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <mat-form-field class="result">
+                    <input matInput placeholder="Ranking" [value]="selectedTeam2?.actualRank" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <mat-form-field class="result">
+                    <input matInput placeholder="Region" [value]="selectedTeam2?.confederationWeight" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <mat-form-field class="result">
+                    <input matInput placeholder="Points" [value]="selectedTeam2?.totalPoints" disabled>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="table-responsive col-md-12">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <th>Equipo</th>
+                            <th>Opposition</th>
+                            <th>Status</th>
+                            <th>Regional</th>
+                            <th>Points</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{selectedTeam1 ? selectedTeam1.name : 'Equipo'}}</td>
+                                <td>{{oposition1 | number:'1.2-2'}}</td>
+                                <td>{{matchtypeWeight | number:'1.2-2'}}</td>
+                                <td>{{trRegional | number:'1.2-2'}}</td>
+                                <td>{{points1 | number:'1.0-0'}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{selectedTeam2 ? selectedTeam2.name : 'Equipo'}}</td>
+                                <td>{{oposition2 | number:'1.2-2'}}</td>
+                                <td>{{matchtypeWeight | number:'1.2-2'}}</td>
+                                <td>{{trRegional | number:'1.2-2'}}</td>
+                                <td>{{points2 | number:'1.0-0'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="actions">
+            <button mat-flat-button (click)="goToList()">Volver</button>
+            <div>
+              <button mat-flat-button color="accent" (click)="calculate()">Calcular</button>
+              <button mat-raised-button color="primary" (click)="onSubmit()">Guardar</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
