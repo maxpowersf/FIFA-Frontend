@@ -22,10 +22,18 @@ import { MatRippleModule } from '@angular/material/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MccColorPickerModule } from 'material-community-components';
 import { BlockTemplateComponent } from './templates/block-template/block-template.component';
+import { FormLayoutComponent } from './components/form-layout/form-layout.component';
+import { ListLayoutComponent } from './components/list-layout/list-layout.component';
+import { TableComponent } from './components/table/table.component';
+import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
 
 @NgModule({
   declarations: [
-    BlockTemplateComponent
+    BlockTemplateComponent,
+    FormLayoutComponent,
+    ListLayoutComponent,
+    TableComponent,
+    TranslateHeaderPipe
   ],
   imports: [
     CommonModule,
@@ -72,10 +80,13 @@ import { BlockTemplateComponent } from './templates/block-template/block-templat
     MatPaginatorModule,
     MatAutocompleteModule,
     MccColorPickerModule,
-    BlockUIModule
+    BlockUIModule,
+    FormLayoutComponent,
+    ListLayoutComponent,
+    TableComponent
   ],
   entryComponents: [
-    BlockTemplateComponent
+    BlockTemplateComponent,
   ]
 })
 export class SharedModule { }

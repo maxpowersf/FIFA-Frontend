@@ -1,26 +1,10 @@
-<mat-card class="form-card">
-    <mat-card-title>
-      <div class="header">
-        <div class="title">
-          Tipo de Partido
-        </div>
-      </div>
-    </mat-card-title>
-    <mat-card-subtitle>{{isEditing ? '' : 'Nuevo tipo de partido'}}</mat-card-subtitle>
-    <mat-card-content>
-      <form [formGroup]="matchtypeForm">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Ingrese el tipo de partido" [formControl]="name">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Ingrese el valor" [formControl]="weight">
-        </mat-form-field>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <div class="actions">
-        <button mat-flat-button (click)="goToList()">Volver</button>
-        <button mat-raised-button color="primary" (click)="onSubmit()">{{isEditing ? 'Editar' : 'Guardar'}}</button>
-      </div>
-    </mat-card-actions>
-  </mat-card>
+<form-layout [info]="formInfo" (submitEvent)="onSubmit()">
+  <form [formGroup]="matchtypeForm">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Ingrese el tipo de partido" [formControl]="name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Ingrese el coeficiente" [formControl]="weight">
+    </mat-form-field>
+  </form>
+</form-layout>

@@ -1,0 +1,7 @@
+<form-layout [info]="formInfo" (submitEvent)="onSubmit()">
+    <form [formGroup]="tournamenttypeForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Ingrese el tipo de torneo" [formControl]="name">
+      </mat-form-field>
+    </form>
+  </form-layout>

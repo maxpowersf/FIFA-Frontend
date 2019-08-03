@@ -20,7 +20,7 @@ export class ConfederationService {
   ) { }
 
   public getAll(): Observable<Confederation[]> {
-    return this.httpClient.get<Confederation[]>(this.confederationUrl + '/getall');
+    return this.httpClient.get<Confederation[]>(this.confederationUrl);
   }
 
   public getAllByConfederation(id: number): Observable<Team[]> {
@@ -28,18 +28,18 @@ export class ConfederationService {
   }
 
   public getOne(id: number): Observable<Confederation> {
-    return this.httpClient.get<Confederation>(this.confederationUrl + '/get/' + id);
+    return this.httpClient.get<Confederation>(this.confederationUrl + '/' + id);
   }
 
   public add(confederation: Confederation) {
-    return this.httpClient.post(this.confederationUrl + '/add', confederation, httpOptions);
+    return this.httpClient.post(this.confederationUrl, confederation, httpOptions);
   }
 
   public update(confederation: Confederation) {
-    return this.httpClient.put(this.confederationUrl + '/update', confederation, httpOptions);
+    return this.httpClient.put(this.confederationUrl, confederation, httpOptions);
   }
 
   public delete(id: number) {
-    return this.httpClient.delete(this.confederationUrl + '/delete/' + id);
+    return this.httpClient.delete(this.confederationUrl + '/' + id);
   }
 }

@@ -17,6 +17,14 @@ const routes: Routes = [
   {
     path: 'rankings',
     loadChildren: './rankings/rankings.module#RankingsModule'
+  },
+  {
+    path: 'tournamenttypes',
+    loadChildren: './tournamenttype/tournamenttype.module#TournamenttypeModule'
+  },
+  {
+    path: 'tournaments',
+    loadChildren: './tournaments/tournaments.module#TournamentsModule'
   }
 ];
 

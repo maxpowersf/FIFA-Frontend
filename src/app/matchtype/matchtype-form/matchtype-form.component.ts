@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatchtypeService } from '../matchtype.service';
 import { MatchType } from '../matchtype.model';
+import { FormLayout } from 'src/app/shared/models/form-layout.model';
 
 @Component({
   selector: 'app-matchtype-form',
@@ -10,10 +11,10 @@ import { MatchType } from '../matchtype.model';
   styleUrls: ['./matchtype-form.component.css']
 })
 export class MatchtypeFormComponent implements OnInit {
-
-  isEditing: boolean = false;
   matchtypeForm: FormGroup;
+  formInfo: FormLayout;
 
+  isEditing: boolean;
   matchtype: MatchType = new MatchType();
 
   get name() { return this.matchtypeForm.get('name'); }
@@ -32,33 +33,45 @@ export class MatchtypeFormComponent implements OnInit {
     this.isEditing = this.route.snapshot.url.toString().includes('edit');
 
     if (this.isEditing) {
+      this.formInfo = {
+        submitText: 'Actualizar',
+        title: 'Tipo de Partido',
+        subtitle: 'Editar tipo de partido',
+        isEditing: true
+      }
       this.matchtype = this.route.snapshot.data.matchtype;
       this.name.patchValue(this.matchtype.name);
       this.weight.patchValue(this.matchtype.weight);
+
+    }
+    else {
+      this.formInfo = {
+        submitText: 'Guardar',
+        title: 'Tipo de Partido',
+        subtitle: 'Crear nuevo tipo de partido',
+        isEditing: false
+      }
     }
   }
 
-  goToList = () => this.isEditing
-    ? this.router.navigate(['../../'], { relativeTo: this.route })
-    : this.router.navigate(['../'], { relativeTo: this.route })
+  modelCreate = () => this.fb.group({
+    name: ['', Validators.required],
+    weight: ['0.0', Validators.required]
+  })
 
-    modelCreate = () => this.fb.group({
-      name: ['', Validators.required],
-      weight: ['0.0', Validators.required]
-    })
-  
   onSubmit = () => {
-    debugger;
-    if (!this.matchtypeForm.valid) { return; }
+    if (!this.matchtypeForm.valid) return;
     const matchtypeModified = new MatchType();
     matchtypeModified.id = this.matchtype.id;
     matchtypeModified.weight = this.weight.value;
     matchtypeModified.name = this.name.value;
 
     this.isEditing
-    ? this.matchtypeService.update(matchtypeModified)
-      .subscribe(this.goToList)
-    : this.matchtypeService.add(matchtypeModified)
-      .subscribe(this.goToList);
+      ? this.matchtypeService.update(matchtypeModified)
+        .subscribe(this.goToList)
+      : this.matchtypeService.add(matchtypeModified)
+        .subscribe(this.goToList);
   }
+
+  goToList = () => this.router.navigate(['tournamenttypes']);
 }

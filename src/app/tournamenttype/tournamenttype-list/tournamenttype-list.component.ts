@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { TournamentType } from '../tournamenttype.model';
+import { TournamenttypeService } from '../tournamenttype.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatchType } from '../matchtype.model';
-import { MatchtypeService } from '../matchtype.service';
 import { TableLayout } from 'src/app/shared/models/table-layout.model';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-matchtype-list',
-  templateUrl: './matchtype-list.component.html',
-  styleUrls: ['./matchtype-list.component.css']
+  selector: 'app-tournamenttype-list',
+  templateUrl: './tournamenttype-list.component.html',
+  styleUrls: ['./tournamenttype-list.component.css']
 })
-export class MatchtypeListComponent implements OnInit {
+export class TournamenttypeListComponent implements OnInit {
 
-  headerRows = ['id', 'name', 'weight'];
+  headerRows = ['id', 'name'];
 
-  data: MatchType[];
+  data: TournamentType[];
   tableData: TableLayout;
-
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private matchtypeService: MatchtypeService
+    private tournamenttypeService: TournamenttypeService
   ) {
-    this.data = this.route.snapshot.data.matchtypes;
+    this.data = this.route.snapshot.data.tournamenttypes;
   }
 
   ngOnInit() {
     this.tableData = {
-      title: 'Tipos de Partido',
+      title: 'Tipos de Torneo',
       canEdit: true,
       canRemove: true,
       data: this.data,
@@ -37,7 +37,7 @@ export class MatchtypeListComponent implements OnInit {
   }
 
   onDelete = (id: number) => {
-    this.matchtypeService.delete(id)
+    this.tournamenttypeService.delete(id)
       .pipe(switchMap(this.updateDataTable))
       .subscribe(res => {
         console.log(res);
@@ -46,5 +46,5 @@ export class MatchtypeListComponent implements OnInit {
       });
   }
 
-  updateDataTable = () => this.matchtypeService.getAll();
+  updateDataTable = () => this.tournamenttypeService.getAll();
 }

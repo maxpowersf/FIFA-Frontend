@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatchType } from '../matchtype.model';
-import { MatchtypeService } from '../matchtype.service';
+import { Tournament } from '../tournament.model';
 import { TableLayout } from 'src/app/shared/models/table-layout.model';
+import { TournamentService } from '../tournament.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-matchtype-list',
-  templateUrl: './matchtype-list.component.html',
-  styleUrls: ['./matchtype-list.component.css']
+  selector: 'app-tournament-list',
+  templateUrl: './tournaments-list.component.html',
+  styleUrls: ['./tournaments-list.component.css']
 })
-export class MatchtypeListComponent implements OnInit {
+export class TournamentsListComponent implements OnInit {
 
-  headerRows = ['id', 'name', 'weight'];
+  headerRows = ['id', 'year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName'];
 
-  data: MatchType[];
+  data: Tournament[];
   tableData: TableLayout;
-
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private matchtypeService: MatchtypeService
+    private tournamentService: TournamentService
   ) {
-    this.data = this.route.snapshot.data.matchtypes;
+    this.data = this.route.snapshot.data.tournaments;
   }
 
   ngOnInit() {
     this.tableData = {
-      title: 'Tipos de Partido',
+      title: 'Torneos',
       canEdit: true,
       canRemove: true,
       data: this.data,
@@ -37,7 +37,7 @@ export class MatchtypeListComponent implements OnInit {
   }
 
   onDelete = (id: number) => {
-    this.matchtypeService.delete(id)
+    this.tournamentService.delete(id)
       .pipe(switchMap(this.updateDataTable))
       .subscribe(res => {
         console.log(res);
@@ -46,5 +46,5 @@ export class MatchtypeListComponent implements OnInit {
       });
   }
 
-  updateDataTable = () => this.matchtypeService.getAll();
+  updateDataTable = () => this.tournamentService.getAll();
 }

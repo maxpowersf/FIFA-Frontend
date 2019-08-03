@@ -21,10 +21,12 @@
                     <!-- Position Column -->
                     <ng-container matColumnDef="id">
                       <th mat-header-cell *matHeaderCellDef> No. </th>
-                      <td mat-cell *matCellDef="let element">
-                        <p matTooltip="Ver ranking" [matTooltipPosition]="'above'" (click)="navigateToDetail(element.id)">
+                      <td mat-cell *matCellDef="let element"
+                          matTooltip="Ver ranking"
+                          [matTooltipPosition]="'above'"
+                          (click)="navigateToDetail(element.id)"
+                          class="clickable">
                           {{element.id}} 
-                        </p>
                       </td>
                     </ng-container>
                   
