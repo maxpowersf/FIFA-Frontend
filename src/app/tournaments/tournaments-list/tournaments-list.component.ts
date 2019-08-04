@@ -30,6 +30,7 @@ export class TournamentsListComponent implements OnInit {
       title: 'Torneos',
       canEdit: true,
       canRemove: true,
+      canUpload: true,
       data: this.data,
       functionRemove: this.onDelete,
       headerRows: this.headerRows

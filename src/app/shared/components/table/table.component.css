@@ -1,6 +1,6 @@
 .mat-column-acciones {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .mat-header-cell.mat-column-acciones{

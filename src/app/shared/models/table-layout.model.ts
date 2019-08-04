@@ -5,6 +5,7 @@ export interface TableLayout {
     canEdit: boolean;
     canRemove: boolean;
     functionRemove: Function;
+    canUpload?: boolean;
     canLock?: boolean;
     propertyToCheck?: string;
     functionLock?: Function;

@@ -5,11 +5,14 @@
           Ranking
         </div>
         <div class="actions">
+          <button mat-fab aria-label="Add new registry" matTooltip="Agragar partido" (click)="addAction()">
+            <mat-icon>add</mat-icon>
+          </button>
           <button mat-fab aria-label="update list" matTooltip="Actualizar rankings" (click)="updateRankings()">
             <mat-icon>reorder</mat-icon>
           </button>
-          <button mat-fab aria-label="Add new registry" matTooltip="Agragar partido" (click)="addAction()">
-            <mat-icon>add</mat-icon>
+          <button mat-fab aria-label="end period" matTooltip="Finalizar periodo" (click)="updateRankings()">
+            <mat-icon>done_all</mat-icon>
           </button>
         </div>
       </div>
