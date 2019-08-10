@@ -19,22 +19,30 @@ export class TeamService {
   ) { }
 
   public getAll(): Observable<Team[]> {
-    return this.httpClient.get<Team[]>(this.teamUrl);
+    return this.httpClient.get<Team[]>(this.teamUrl + '/getall');
+  }
+
+  public getAllByConfederation(id: number): Observable<Team[]> {
+    return this.httpClient.get<Team[]>(this.teamUrl + '/getallbyconfederation/' + id);
+  }
+
+  public getFirstTeams(quantity: number): Observable<Team[]> {
+    return this.httpClient.get<Team[]>(this.teamUrl + '/getFirstTeams/' + quantity);
   }
 
   public getOne(id: number): Observable<Team> {
-    return this.httpClient.get<Team>(this.teamUrl + '/' + id);
+    return this.httpClient.get<Team>(this.teamUrl + '/get/' + id);
   }
 
   public add(team: Team) {
-    return this.httpClient.post(this.teamUrl, team, httpOptions);
+    return this.httpClient.post(this.teamUrl + '/add', team, httpOptions);
   }
 
   public update(team: Team) {
-    return this.httpClient.put(this.teamUrl, team, httpOptions);
+    return this.httpClient.put(this.teamUrl + '/update', team, httpOptions);
   }
 
   public delete(id: number) {
-    return this.httpClient.delete(this.teamUrl + '/' + id);
+    return this.httpClient.delete(this.teamUrl + '/delete/' + id);
   }
 }

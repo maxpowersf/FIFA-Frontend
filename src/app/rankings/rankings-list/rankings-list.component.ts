@@ -55,6 +55,15 @@ export class RankingsListComponent implements OnInit {
     this.rankingService.update().subscribe(this.getAllRankings);
   }
 
+  finishPeriod = () => {
+    this.blockUI.start("4");
+    this.rankingService.finishPeriod().subscribe(() => {
+      setTimeout(() => {
+        this.getAllRankings();
+      }, 1000);
+    });
+  }
+
   getAllRankings = () => {
     this.teamService.getAll().subscribe((res) => {
       this.teams = res;

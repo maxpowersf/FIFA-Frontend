@@ -3,6 +3,7 @@ import { Ranking } from '../rankings/ranking.model';
 export class Team {
     id: number;
     name: string;
+    flag: string;
     confederationID: number;
     confederationName: string;
     confederationColor: string;

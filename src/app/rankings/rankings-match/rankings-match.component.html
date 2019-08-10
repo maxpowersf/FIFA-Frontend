@@ -24,16 +24,9 @@
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Equipo" (selectionChange)="changeTeam1($event.value)" [formControl]="team1">
                         <mat-option *ngFor="let team of teams" [value]="team.id">
-                            {{team.name}}
+                            <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
                         </mat-option>
                     </mat-select>
-                    <!-- <input matInput type="text" placeholder="Equipo" aria-label="Equipo" [matAutocomplete]="auto" formControlName="team1">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let team of filteredTeams | async" [value]="team.name">
-                            <img class="example-option-img" aria-hidden [src]="team.flag" height="25">
-                            <span> {{team.name}} </span>
-                        </mat-option>
-                    </mat-autocomplete> -->
                 </mat-form-field>
               </div>
               <div class="col-md-1">
@@ -64,7 +57,7 @@
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Equipo" (selectionChange)="changeTeam2($event.value)" [formControl]="team2">
                         <mat-option *ngFor="let team of teams" [value]="team.id">
-                            {{team.name}}
+                            <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

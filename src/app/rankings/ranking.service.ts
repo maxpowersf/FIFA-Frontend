@@ -18,10 +18,14 @@ export class RankingService {
   ) { }
 
   public add(match: Match) {
-    return this.httpClient.post(this.rankingUrl, match, httpOptions);
+    return this.httpClient.post(this.rankingUrl + '/add', match, httpOptions);
   }
 
   public update() {
-    return this.httpClient.get(this.rankingUrl, httpOptions);
+    return this.httpClient.get(this.rankingUrl + '/update', httpOptions);
+  }
+
+  public finishPeriod() {
+    return this.httpClient.get(this.rankingUrl + '/finishPeriod', httpOptions);
   }
 }

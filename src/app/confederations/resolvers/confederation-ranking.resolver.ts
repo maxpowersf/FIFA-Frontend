@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ConfederationService } from '../confederation.service';
+import { TeamService } from 'src/app/teams/team.service';
 
 @Injectable({providedIn: 'root'})
 export class ConfederationRankingResolver implements Resolve<Observable<any>> {
     constructor(
-        private confederationService: ConfederationService
+        private teamService: TeamService
     ) { }
 
     resolve(route: ActivatedRouteSnapshot) {
         const id = route.paramMap.get('id');
-        return this.confederationService.getAllByConfederation(parseInt(id, 10));
+        return this.teamService.getAllByConfederation(parseInt(id, 10));
     }
 }

@@ -19,7 +19,10 @@ export class TeamsFormComponent implements OnInit {
 
   confederations: Confederation[];
 
+  teamFlag: string = "eu";
+
   get name() { return this.teamForm.get('name'); }
+  get flag() { return this.teamForm.get('flag'); }
   get confederation() { return this.teamForm.get('confederation'); }
   get actualrank() { return this.teamForm.get('actualrank'); }
   get totalpoints() { return this.teamForm.get('totalpoints'); }
@@ -41,28 +44,36 @@ export class TeamsFormComponent implements OnInit {
     if (this.isEditing) {
       this.team = this.route.snapshot.data.team;
       this.name.patchValue(this.team.name);
+      this.flag.patchValue(this.team.flag);
+      this.teamFlag = this.team.flag;
       this.confederation.patchValue(this.team.confederationID);
       this.actualrank.patchValue(this.team.actualRank);
       this.totalpoints.patchValue(this.team.totalPoints);
     }
   }
 
+  fillFlag = (event) => {
+    this.teamFlag = event.target.value;
+  }
+
   goToList = () => this.isEditing
     ? this.router.navigate(['../../'], { relativeTo: this.route })
     : this.router.navigate(['../'], { relativeTo: this.route })
 
-    modelCreate = () => this.fb.group({
-      name: ['', Validators.required],
-      confederation: ['', Validators.required],
-      actualrank: [''],
-      totalpoints: ['']
-    })
-  
+  modelCreate = () => this.fb.group({
+    name: ['', Validators.required],
+    flag: [''],
+    confederation: ['', Validators.required],
+    actualrank: [''],
+    totalpoints: ['']
+  })
+
   onSubmit = () => {
     if (!this.teamForm.valid) { return; }
     const teamModified = new Team();
     teamModified.id = this.team.id;
     teamModified.name = this.name.value;
+    teamModified.flag = this.flag.value;
     teamModified.confederationID = this.confederation.value;
     teamModified.actualRank = this.actualrank.value;
     teamModified.totalPoints = this.totalpoints.value;
@@ -70,9 +81,9 @@ export class TeamsFormComponent implements OnInit {
     teamModified.highestRank = this.actualrank.value;
 
     this.isEditing
-    ? this.teamService.update(teamModified)
-      .subscribe(this.goToList)
-    : this.teamService.add(teamModified)
-      .subscribe(this.goToList);
+      ? this.teamService.update(teamModified)
+        .subscribe(this.goToList)
+      : this.teamService.add(teamModified)
+        .subscribe(this.goToList);
   }
 }

@@ -15,9 +15,10 @@ import { RouterModule } from '@angular/router';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { BlockTemplateComponent } from './templates/block-template/block-template.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-  declarations: [NavComponent, BlockTemplateComponent],
+  declarations: [NavComponent, BlockTemplateComponent, HomeComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -35,7 +36,8 @@ import { BlockTemplateComponent } from './templates/block-template/block-templat
     MatProgressBarModule
   ],
   exports: [
-    NavComponent
+    NavComponent,
+    HomeComponent
   ]
 })
 export class CoreModule { }

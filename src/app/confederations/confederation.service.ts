@@ -20,26 +20,22 @@ export class ConfederationService {
   ) { }
 
   public getAll(): Observable<Confederation[]> {
-    return this.httpClient.get<Confederation[]>(this.confederationUrl);
-  }
-
-  public getAllByConfederation(id: number): Observable<Team[]> {
-    return this.httpClient.get<Team[]>(this.confederationUrl + '/getallbyconfederation/' + id);
+    return this.httpClient.get<Confederation[]>(this.confederationUrl + '/getall/');
   }
 
   public getOne(id: number): Observable<Confederation> {
-    return this.httpClient.get<Confederation>(this.confederationUrl + '/' + id);
+    return this.httpClient.get<Confederation>(this.confederationUrl + '/get/' + id);
   }
 
   public add(confederation: Confederation) {
-    return this.httpClient.post(this.confederationUrl, confederation, httpOptions);
+    return this.httpClient.post(this.confederationUrl + '/add/', confederation, httpOptions);
   }
 
   public update(confederation: Confederation) {
-    return this.httpClient.put(this.confederationUrl, confederation, httpOptions);
+    return this.httpClient.put(this.confederationUrl + '/update/', confederation, httpOptions);
   }
 
   public delete(id: number) {
-    return this.httpClient.delete(this.confederationUrl + '/' + id);
+    return this.httpClient.delete(this.confederationUrl + '/delete/' + id);
   }
 }

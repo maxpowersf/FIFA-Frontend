@@ -12,7 +12,7 @@ const MESSAGE_LOADING = 'Cargando...';
 const MESSAGE_SAVING = 'Guardando...';
 const MESSAGE_RETRIEVING = 'Recuperando información...';
 const MESSAGE_UPDATING = 'Actualizando ranking...';
-const MESSAGE_CREATING = 'Creando nuevo año...';
+const MESSAGE_CREATING = 'Creando nuevo periodo...';
 
 @Component({
   selector: 'app-block-template',

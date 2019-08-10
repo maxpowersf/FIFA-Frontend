@@ -10,7 +10,7 @@
         <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <button *ngIf="tableData.canUpload" color="primary" (click)="navigateToEdit(row.id)" mat-icon-button
+                <button *ngIf="tableData.canUpload" color="primary" (click)="navigateToUpload(row.id)" mat-icon-button
                     aria-label="reorder">
                     <mat-icon>reorder</mat-icon>
                 </button>

@@ -47,7 +47,9 @@ export class TableComponent {
     this.tableData.functionRemove(id);
   }
 
-  navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route })
+  navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+
+  navigateToUpload = (id) => this.router.navigate(['positions'], { relativeTo: this.route });
 }
 
 
