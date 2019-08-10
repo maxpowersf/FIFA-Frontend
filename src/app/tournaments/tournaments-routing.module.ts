@@ -6,6 +6,7 @@ import { TournamentsResolver } from './tournaments.resolver';
 import { TournamentResolver } from './tournament.resolver';
 import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
 import { TournamenttypesResolver } from '../tournamenttype/tournamenttypes.resolver';
+import { TournamentsPositionComponent } from './tournaments-position/tournaments-position.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       confederations: ConfederationsResolver,
       tournament: TournamentResolver
     }
+  },
+  {
+    path: 'positions',
+    component: TournamentsPositionComponent
   }
 ];
 

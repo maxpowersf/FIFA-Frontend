@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class TournamentsListComponent implements OnInit {
 
-  headerRows = ['id', 'year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName'];
+  headerRows = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName'];
 
   data: Tournament[];
   tableData: TableLayout;

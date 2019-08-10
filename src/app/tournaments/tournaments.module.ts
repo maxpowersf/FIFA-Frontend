@@ -6,9 +6,10 @@ import { TournamentsListComponent } from './tournaments-list/tournaments-list.co
 import { TournamentsFormComponent } from './tournaments-form/tournaments-form.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TournamentsPositionComponent } from './tournaments-position/tournaments-position.component';
 
 @NgModule({
-  declarations: [TournamentsListComponent, TournamentsFormComponent],
+  declarations: [TournamentsListComponent, TournamentsFormComponent, TournamentsPositionComponent],
   imports: [
     CommonModule,
     TournamentsRoutingModule,
