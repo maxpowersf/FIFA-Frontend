@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tournament } from './tournament.model';
+import { Tournament } from '../models/tournament.model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';

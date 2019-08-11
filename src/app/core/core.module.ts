@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { BlockTemplateComponent } from './templates/block-template/block-template.component';
 import { HomeComponent } from './components/home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [NavComponent, BlockTemplateComponent, HomeComponent],
@@ -33,7 +34,8 @@ import { HomeComponent } from './components/home/home.component';
     MatButtonModule,
     MatListModule,
     MatGridListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    SharedModule
   ],
   exports: [
     NavComponent,

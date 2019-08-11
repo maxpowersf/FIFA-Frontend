@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Tournament } from '../tournament.model';
-import { TableLayout } from 'src/app/shared/models/table-layout.model';
-import { TournamentService } from '../tournament.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Tournament } from '../models/tournament.model';
+import { TournamentService } from '../services/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-tournament-list',
@@ -12,40 +11,36 @@ import { switchMap } from 'rxjs/operators';
 })
 export class TournamentsListComponent implements OnInit {
 
-  headerRows = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName'];
+  displayedColumns: string[] = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName', 'actions'];
+  dataSource;
 
-  data: Tournament[];
-  tableData: TableLayout;
+  tournaments: Tournament[];
+
+  @ViewChild(MatPaginator, null) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private tournamentService: TournamentService
-  ) {
-    this.data = this.route.snapshot.data.tournaments;
-  }
+  ) { }
 
   ngOnInit() {
-    this.tableData = {
-      title: 'Torneos',
-      canEdit: true,
-      canRemove: true,
-      canUpload: true,
-      data: this.data,
-      functionRemove: this.onDelete,
-      headerRows: this.headerRows
-    }
+    this.tournaments = this.route.snapshot.data.tournaments;
+    this.dataSource = new MatTableDataSource(this.tournaments);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  onDelete = (id: number) => {
-    this.tournamentService.delete(id)
-      .pipe(switchMap(this.updateDataTable))
-      .subscribe(res => {
-        console.log(res);
-        this.tableData.data = res;
-        this.tableData = { ...this.tableData }
-      });
-  }
+  addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
+
+  navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+
+  navigateToUpload = (id) => this.router.navigate([id, 'positions'], { relativeTo: this.route });
+
+  navigateToDetail = (id) => this.router.navigate([id, 'position'], { relativeTo: this.route });
+
+  onDelete = (id) => this.tournamentService.delete(id).subscribe(this.updateDataTable);
 
   updateDataTable = () => this.tournamentService.getAll();
 }

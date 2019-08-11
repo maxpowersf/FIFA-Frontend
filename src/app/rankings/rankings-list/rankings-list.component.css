@@ -18,3 +18,8 @@ table {
 .mat-fab{
     margin: 0 10px;
 }
+th.left,
+td.left{
+    text-align: left;
+    padding-left: 20px;
+}

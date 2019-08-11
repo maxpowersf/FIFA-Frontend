@@ -14,12 +14,12 @@
                     aria-label="reorder">
                     <mat-icon>reorder</mat-icon>
                 </button>
-                <button *ngIf="tableData.canEdit" color="primary" (click)="navigateToEdit(row.id)" mat-icon-button
-                    aria-label="edit">
+                <button *ngIf="tableData.canEdit" color="primary" matTooltip="Editar" (click)="navigateToEdit(row.id)"
+                    mat-icon-button aria-label="edit">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button *ngIf="tableData.canRemove" (click)="openDialog(row.id)" color="warn" mat-icon-button
-                    aria-label="remove">
+                <button *ngIf="tableData.canRemove" (click)="openDialog(row.id)" color="warn" matTooltip="Borrar"
+                    mat-icon-button aria-label="remove">
                     <mat-icon>delete</mat-icon>
                 </button>
             </mat-cell>

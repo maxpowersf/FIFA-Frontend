@@ -3,8 +3,6 @@ import { Team } from 'src/app/teams/team.model';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RankingService } from 'src/app/rankings/ranking.service';
-import { TeamService } from 'src/app/teams/team.service';
 
 @Component({
   selector: 'app-confederation-ranking',
@@ -29,8 +27,6 @@ export class ConfederationRankingComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private rankingService: RankingService,
-    private teamService: TeamService
   ) { }
 
   ngOnInit() {

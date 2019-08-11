@@ -25,6 +25,7 @@ export class ConfederationListComponent implements OnInit {
   }
 
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
+  
   navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
   navigateToDetail = (id) => this.router.navigate([id, 'view'], { relativeTo: this.route });

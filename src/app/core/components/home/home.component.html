@@ -18,8 +18,10 @@
                                             <span class="flag-icon flag-icon-{{team.flag}}"></span>
                                             {{team.name}}
                                         </div>
-                                        <div class="col-lg-3">
-                                            {{team.confederation.name}}
+                                        <div class="col-lg-3 text-center">
+                                            <mat-chip [style.backgroundColor]='team.confederation.color'>
+                                                {{team.confederation.name}}
+                                            </mat-chip>
                                         </div>
                                         <div class="col-lg-3">
                                             {{team.totalPoints | number:'1.2-2'}}

@@ -10,9 +10,6 @@ table {
 .mat-cell{
     text-align: center;
 }
-:host ::ng-deep .mat-sort-header-container {
-    justify-content: center;
-}
 .mat-chip{
     border-radius: 20px;
     padding: 5px 15px;
