@@ -4,13 +4,13 @@ import { NgModule, Injectable } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './http-interceptors';
 import { GestureConfig } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import 'hammerjs';
-import { SharedModule } from './shared/shared.module';
 
 declare var Hammer: any;
 @Injectable()
@@ -30,7 +30,6 @@ export class HammerConfig extends GestureConfig {
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-    MatSnackBarModule,
     SharedModule
   ],
   entryComponents: [
@@ -41,6 +40,7 @@ export class HammerConfig extends GestureConfig {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: HammerConfig
     },
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
