@@ -18,7 +18,7 @@ export class RankingService {
   ) { }
 
   public add(match: Match) {
-    return this.httpClient.post(this.rankingUrl + '/add', match, httpOptions);
+    return this.httpClient.post(this.rankingUrl + '/addMatch', match, httpOptions);
   }
 
   public update() {

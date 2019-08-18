@@ -52,15 +52,15 @@ export class RankingsListComponent implements OnInit {
 
   updateRankings = () => {
     this.blockUI.start("3");
-    this.rankingService.update().subscribe(this.getAllRankings);
+    this.rankingService.update().subscribe(() => {
+      this.getAllRankings();
+    });
   }
 
   finishPeriod = () => {
     this.blockUI.start("4");
     this.rankingService.finishPeriod().subscribe(() => {
-      setTimeout(() => {
-        this.getAllRankings();
-      }, 1000);
+      this.getAllRankings();
     });
   }
 
