@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Position } from '../models/position.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Tournament } from '../models/tournament.model';
 
 @Component({
   selector: 'app-tournaments-detail',
@@ -9,11 +10,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TournamentsDetailComponent implements OnInit {
 
+  tournament: Tournament;
   positions: Position[];
 
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
-
-  tournamentName: string = "Posiciones";
 
   constructor(
     private router: Router,
@@ -21,11 +21,8 @@ export class TournamentsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.positions = this.route.snapshot.data.positions;
-
-    if(this.positions.length > 0){
-      this.tournamentName = this.route.snapshot.data.positions[0].tournament.name;
-    }
+    this.tournament = this.route.snapshot.data.tournament;
+    this.positions = this.tournament.positions;
   }
 
   goToList = () => this.router.navigate(['../../'], { relativeTo: this.route })
