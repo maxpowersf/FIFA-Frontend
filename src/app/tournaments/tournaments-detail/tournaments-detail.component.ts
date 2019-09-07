@@ -13,7 +13,7 @@ export class TournamentsDetailComponent implements OnInit {
   tournament: Tournament;
   positions: Position[];
 
-  displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
+  displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
 
   constructor(
     private router: Router,
