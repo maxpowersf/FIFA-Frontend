@@ -10,5 +10,7 @@ export class Position {
     loses: number;
     goalsFavor: number;
     goalsAgainst: number;
+    round: string;
+    group: string;
     qualified: boolean;
 }

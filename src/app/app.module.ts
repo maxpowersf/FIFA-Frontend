@@ -1,5 +1,6 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +40,10 @@ export class HammerConfig extends GestureConfig {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: HammerConfig
+    },
+    {
+      provide : LocationStrategy, 
+      useClass: HashLocationStrategy
     },
     httpInterceptorProviders
   ],

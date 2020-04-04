@@ -55,7 +55,7 @@ export class TableComponent {
 
 export class GenericDataSource extends DataSource<any> {
 
-  constructor(private paginator: MatPaginator, private sort: MatSort, private data: any[]) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, public data: any[]) {
     super();
   }
 

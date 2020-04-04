@@ -22,7 +22,7 @@
             <div class="row">
               <div class="col-md-4">
                 <mat-form-field class="full-width">
-                    <mat-select placeholder="Equipo" (selectionChange)="changeTeam1($event.value)" [formControl]="team1">
+                    <mat-select #teamField placeholder="Equipo" (selectionChange)="changeTeam1($event.value)" [formControl]="team1">
                         <mat-option *ngFor="let team of teams" [value]="team.id">
                             <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
                         </mat-option>

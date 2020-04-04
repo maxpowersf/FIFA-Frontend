@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatchType } from 'src/app/matchtype/matchtype.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/team.model';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
 import { Match } from '../match.model';
 import { RankingService } from '../ranking.service';
@@ -33,6 +31,8 @@ export class RankingsMatchComponent implements OnInit {
   oposition2: number = 0;
   points1: number = 0;
   points2: number = 0;
+
+  @ViewChild('teamField', {read: ElementRef, static: false}) team1Field: ElementRef;
 
   get matchtype() { return this.matchForm.get('matchtype'); }
   get team1() { return this.matchForm.get('team1'); }
@@ -155,6 +155,9 @@ export class RankingsMatchComponent implements OnInit {
     newMatch.team2Points = Number(this.points2.toFixed(0));
 
     this.rankingService.add(newMatch)
-      .subscribe(this.resetMatch);
+      .subscribe(() => {
+        this.resetMatch();
+        this.team1Field.nativeElement.focus();
+      });
   }
 }
