@@ -30,6 +30,10 @@ export class TeamService {
     return this.httpClient.get<Team[]>(this.teamUrl + '/getFirstTeams/' + quantity);
   }
 
+  public getTeamsWithTitles(confederationID: number, tournamenttypeID: number): Observable<Team[]> {
+    return this.httpClient.get<Team[]>(this.teamUrl + '/getTeamsWithTitles/' + confederationID + '/' + tournamenttypeID);
+  }
+
   public getOne(id: number): Observable<Team> {
     return this.httpClient.get<Team>(this.teamUrl + '/get/' + id);
   }

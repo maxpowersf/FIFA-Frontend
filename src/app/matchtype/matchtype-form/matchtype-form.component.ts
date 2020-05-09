@@ -73,5 +73,5 @@ export class MatchtypeFormComponent implements OnInit {
         .subscribe(this.goToList);
   }
 
-  goToList = () => this.router.navigate(['tournamenttypes']);
+  goToList = () => this.router.navigate(['matchtypes']);
 }

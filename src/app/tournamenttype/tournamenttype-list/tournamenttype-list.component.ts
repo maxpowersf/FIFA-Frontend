@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TournamentType } from '../tournamenttype.model';
 import { TournamenttypeService } from '../tournamenttype.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TableLayout } from 'src/app/shared/models/table-layout.model';
 import { switchMap } from 'rxjs/operators';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-tournamenttype-list',
@@ -12,10 +13,13 @@ import { switchMap } from 'rxjs/operators';
 })
 export class TournamenttypeListComponent implements OnInit {
 
-  headerRows = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'formatName', 'confederationName', 'noTeams', 'actions'];
+  dataSource;
 
   data: TournamentType[];
-  tableData: TableLayout;
+
+  @ViewChild(MatPaginator, null) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   
   constructor(
     private route: ActivatedRoute,
@@ -26,25 +30,20 @@ export class TournamenttypeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tableData = {
-      title: 'Tipos de Torneo',
-      canEdit: true,
-      canRemove: true,
-      data: this.data,
-      functionRemove: this.onDelete,
-      headerRows: this.headerRows
-    }
+    this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  onDelete = (id: number) => {
-    this.tournamenttypeService.delete(id)
-      .pipe(switchMap(this.updateDataTable))
-      .subscribe(res => {
-        console.log(res);
-        this.tableData.data = res;
-        this.tableData = { ...this.tableData }
-      });
-  }
+  addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
+
+  navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+
+  navigateToUpload = (id) => this.router.navigate([id, 'champions'], { relativeTo: this.route });
+
+  navigateToDetail = (id) => this.router.navigate([id, 'history'], { relativeTo: this.route });
+
+  onDelete = (id) => this.tournamenttypeService.delete(id).subscribe(this.updateDataTable);
 
   updateDataTable = () => this.tournamenttypeService.getAll();
 }

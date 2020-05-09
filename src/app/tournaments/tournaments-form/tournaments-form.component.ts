@@ -57,7 +57,6 @@ export class TournamentsFormComponent implements OnInit {
       this.year.patchValue(this.tournament.year);
       this.host.patchValue(this.tournament.host);
       this.noOfTeams.patchValue(this.tournament.noOfTeams);
-      debugger;
       this.tournamentType.patchValue(this.tournament.tournamentTypeID);
       this.confederation.patchValue(this.tournament.confederationID);
     }

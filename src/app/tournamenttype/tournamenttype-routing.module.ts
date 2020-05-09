@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TournamenttypeListComponent } from './tournamenttype-list/tournamenttype-list.component';
 import { TournamenttypeFormComponent } from './tournamenttype-form/tournamenttype-form.component';
-import { TournamenttypesResolver } from './tournamenttypes.resolver';
-import { TournamenttypeResolver } from './tournamenttype.resolver';
+import { TournamenttypesResolver } from './resolvers/tournamenttypes.resolver';
+import { TournamenttypeResolver } from './resolvers/tournamenttype.resolver';
+import { TournamenttypeDetailResolver } from './resolvers/tournamenttype-detail.resolver';
+import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
+import { TournamenttypeDetailComponent } from './tournamenttype-detail/tournamenttype-detail.component';
 
 const routes: Routes = [
   {
@@ -15,13 +18,24 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    component: TournamenttypeFormComponent
+    component: TournamenttypeFormComponent,
+    resolve: {
+      confederations: ConfederationsResolver
+    }
   },
   {
     path: ':id/edit',
     component: TournamenttypeFormComponent,
     resolve: {
-      tournamenttype: TournamenttypeResolver
+      tournamenttype: TournamenttypeResolver,
+      confederations: ConfederationsResolver
+    }
+  },
+  {
+    path: ':id/history',
+    component: TournamenttypeDetailComponent,
+    resolve: {
+      tournamenttype: TournamenttypeDetailResolver
     }
   }
 ];

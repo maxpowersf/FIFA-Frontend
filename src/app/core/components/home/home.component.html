@@ -37,6 +37,41 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
+            <div class="col-lg-6 col-md-8 col-sm-8">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>World Cup Titles</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-grid-list cols="3" rowHeight="45px">
+                            <mat-grid-tile *ngFor="let team of teams; let i = index" [colspan]="3" [rowspan]="1">
+                                <mat-card class="mat-card-min">
+                                    <div class="row">
+                                        <div class="col-lg-1">
+                                            {{i + 1}}
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <span class="flag-icon flag-icon-{{team.flag}}"></span>
+                                            {{team.name}}
+                                        </div>
+                                        <div class="col-lg-3 text-center">
+                                            <mat-chip [style.backgroundColor]='team.confederation.color'>
+                                                {{team.confederation.name}}
+                                            </mat-chip>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            {{team.worldCupTitles}}
+                                        </div>
+                                    </div>
+                                </mat-card>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button routerLink="/tournamenttypes" class="btn-link">Ver mas...</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
         </div>
     </div>
 </div>
