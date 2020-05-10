@@ -2,11 +2,11 @@
         <mat-card-title>
           <div class="header">
             <div class="title">
-              Partidos
+              Matches
             </div>
           </div>
         </mat-card-title>
-        <mat-card-subtitle>Nuevo partido</mat-card-subtitle>
+        <mat-card-subtitle>New match</mat-card-subtitle>
         <mat-card-content>
           <form [formGroup]="matchForm">
             <!-- Match Type Column -->
@@ -88,7 +88,7 @@
                 <div class="table-responsive col-md-12">
                     <table class="table">
                         <thead class="text-primary">
-                            <th>Equipo</th>
+                            <th>Team</th>
                             <th>Opposition</th>
                             <th>Status</th>
                             <th>Regional</th>
@@ -96,14 +96,14 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{selectedTeam1 ? selectedTeam1.name : 'Equipo'}}</td>
+                                <td>{{selectedTeam1 ? selectedTeam1.name : 'Team'}}</td>
                                 <td>{{oposition1 | number:'1.2-2'}}</td>
                                 <td>{{matchtypeWeight | number:'1.2-2'}}</td>
                                 <td>{{trRegional | number:'1.2-2'}}</td>
                                 <td>{{points1 | number:'1.0-0'}}</td>
                             </tr>
                             <tr>
-                                <td>{{selectedTeam2 ? selectedTeam2.name : 'Equipo'}}</td>
+                                <td>{{selectedTeam2 ? selectedTeam2.name : 'Team'}}</td>
                                 <td>{{oposition2 | number:'1.2-2'}}</td>
                                 <td>{{matchtypeWeight | number:'1.2-2'}}</td>
                                 <td>{{trRegional | number:'1.2-2'}}</td>
@@ -117,10 +117,10 @@
         </mat-card-content>
         <mat-card-actions>
           <div class="actions">
-            <button mat-flat-button (click)="goToList()">Volver</button>
+            <button mat-flat-button (click)="goToList()">Back</button>
             <div>
-              <button mat-flat-button color="accent" (click)="calculate()">Calcular</button>
-              <button mat-raised-button color="primary" (click)="onSubmit()">Guardar</button>
+              <button mat-flat-button color="accent" (click)="calculate()">Calculate</button>
+              <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
             </div>
           </div>
         </mat-card-actions>

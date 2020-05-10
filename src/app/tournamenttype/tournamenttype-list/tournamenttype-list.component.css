@@ -6,3 +6,7 @@ table {
     align-items: center;
     justify-content: space-between;
 }
+.clickable:hover{
+    background-color: rgba(0, 0, 0, .05);
+    cursor: pointer;
+}

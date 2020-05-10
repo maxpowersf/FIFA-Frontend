@@ -27,7 +27,7 @@ export class MatchtypeListComponent implements OnInit {
 
   ngOnInit() {
     this.tableData = {
-      title: 'Tipos de Partido',
+      title: 'Match Types',
       canEdit: true,
       canRemove: true,
       data: this.data,

@@ -47,9 +47,9 @@ export class TournamentsFormComponent implements OnInit {
 
     if (this.isEditing) {
       this.formInfo = {
-        submitText: 'Actualizar',
-        title: 'Torneo',
-        subtitle: 'Editar torneo',
+        submitText: 'Update',
+        title: 'Tournament',
+        subtitle: 'Edit tournament',
         isEditing: true
       }
       this.tournament = this.route.snapshot.data.tournament;
@@ -57,15 +57,14 @@ export class TournamentsFormComponent implements OnInit {
       this.year.patchValue(this.tournament.year);
       this.host.patchValue(this.tournament.host);
       this.noOfTeams.patchValue(this.tournament.noOfTeams);
-      debugger;
       this.tournamentType.patchValue(this.tournament.tournamentTypeID);
       this.confederation.patchValue(this.tournament.confederationID);
     }
     else {
       this.formInfo = {
-        submitText: 'Guardar',
-        title: 'Torneo',
-        subtitle: 'Crear nuevo torneo',
+        submitText: 'Save',
+        title: 'Tournament',
+        subtitle: 'Create tournament',
         isEditing: false
       }
     }

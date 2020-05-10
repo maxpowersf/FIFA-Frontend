@@ -8,17 +8,17 @@
         </ng-container>
 
         <ng-container matColumnDef="acciones">
-            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
             <mat-cell *matCellDef="let row">
                 <button *ngIf="tableData.canUpload" color="primary" (click)="navigateToUpload(row.id)" mat-icon-button
                     aria-label="reorder">
                     <mat-icon>reorder</mat-icon>
                 </button>
-                <button *ngIf="tableData.canEdit" color="primary" matTooltip="Editar" (click)="navigateToEdit(row.id)"
+                <button *ngIf="tableData.canEdit" color="primary" matTooltip="Edit" (click)="navigateToEdit(row.id)"
                     mat-icon-button aria-label="edit">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button *ngIf="tableData.canRemove" (click)="openDialog(row.id)" color="warn" matTooltip="Borrar"
+                <button *ngIf="tableData.canRemove" (click)="openDialog(row.id)" color="warn" matTooltip="Delete"
                     mat-icon-button aria-label="remove">
                     <mat-icon>delete</mat-icon>
                 </button>

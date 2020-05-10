@@ -5,7 +5,7 @@ import { TournamentsFormComponent } from './tournaments-form/tournaments-form.co
 import { TournamentsResolver } from './resolvers/tournaments.resolver';
 import { TournamentResolver } from './resolvers/tournament.resolver';
 import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
-import { TournamenttypesResolver } from '../tournamenttype/tournamenttypes.resolver';
+import { TournamenttypesResolver } from '../tournamenttype/resolvers/tournamenttypes.resolver';
 import { TournamentsPositionComponent } from './tournaments-position/tournaments-position.component';
 import { TournamentsDetailComponent } from './tournaments-detail/tournaments-detail.component';
 import { PositionsResolver } from './resolvers/positions.resolver';

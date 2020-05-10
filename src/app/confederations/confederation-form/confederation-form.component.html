@@ -2,11 +2,11 @@
     <mat-card-title>
       <div class="header">
         <div class="title">
-          Confederación
+          Confederation
         </div>
       </div>
     </mat-card-title>
-    <mat-card-subtitle>{{isEditing ? '' : 'Nueva confederación'}}</mat-card-subtitle>
+    <mat-card-subtitle>{{isEditing ? '' : 'New confederation'}}</mat-card-subtitle>
     <mat-card-content>
       <form [formGroup]="confederationForm">
         <mat-form-field class="full-width">
@@ -18,7 +18,7 @@
               <input matInput mccColorPickerOrigin #trigger="mccColorPickerOrigin" placeholder="Color" autocomplete="off" formControlName="color">
             </mat-form-field>
             <mcc-color-picker mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger" [hideHexForms]="true"
-              [hideUsedColors]="true" [btnCancel]="'Cancelar'" [btnConfirm]="'Confirmar'" [selectedColor]="'#ffffff'" >
+              [hideUsedColors]="true" [btnCancel]="'Cancel'" [btnConfirm]="'Confirm'" [selectedColor]="'#ffffff'" >
             </mcc-color-picker>
           </div>
         </div>
@@ -29,8 +29,8 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="actions">
-        <button mat-flat-button (click)="goToList()">Volver</button>
-        <button mat-raised-button color="primary" (click)="onSubmit()">{{isEditing ? 'Editar' : 'Guardar'}}</button>
+        <button mat-flat-button (click)="goToList()">Back</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">{{isEditing ? 'Update' : 'Save'}}</button>
       </div>
     </mat-card-actions>
   </mat-card>

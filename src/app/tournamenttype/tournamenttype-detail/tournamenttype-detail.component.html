@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-title>
+        <div class="header">
+            <div class="title">
+                {{tournamentType?.name}}
+            </div>
+            <div class="actions">
+                <button mat-fab aria-label="back to list" matTooltip="Back" (click)="goToList()">
+                    <mat-icon>keyboard_backspace</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card-title>
+    <mat-card-subtitle>List of champions</mat-card-subtitle>
+    <mat-card-content>
+        <table mat-table [dataSource]="teams" matSort class="mat-elevation-z8">
+            <!--- Note that these columns can be defined in any order.
+                              The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="noPosition">
+                <th mat-header-cell *matHeaderCellDef class="cell-number"> Pos </th>
+                <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef class="left"> Team </th>
+                <td mat-cell *matCellDef="let element" class="left"> 
+                    <span class="flag-icon flag-icon-{{element.flag}}"></span> {{element.name}} 
+                </td>
+            </ng-container>
+
+            <!-- Confederation Column -->
+            <ng-container matColumnDef="confederationName">
+                <th mat-header-cell *matHeaderCellDef> Confederation </th>
+                <td mat-cell *matCellDef="let element" [attr.alt]="element.confederation.name">
+                    <mat-chip [style.backgroundColor]='element.confederation.color'>
+                        {{element.confederation.name}}
+                    </mat-chip>
+                </td>
+            </ng-container>
+
+            <!-- Confederation Column -->
+            <ng-container matColumnDef="titles">
+                <th mat-header-cell *matHeaderCellDef> Titles </th>
+                <td mat-cell *matCellDef="let element"> {{element.titles}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </mat-card-content>
+</mat-card>

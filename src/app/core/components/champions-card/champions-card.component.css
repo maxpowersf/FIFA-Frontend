@@ -1,0 +1,9 @@
+.mat-card-min{
+    width: 100%;
+    padding: 10px;
+}
+.mat-chip{
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: aliceblue;
+}

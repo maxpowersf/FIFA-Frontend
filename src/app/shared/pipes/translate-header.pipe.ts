@@ -7,11 +7,11 @@ export class TranslateHeaderPipe implements PipeTransform {
 
   transform(value: string, args?: any): any {
     switch (value) {
-      case 'name': return 'nombre';
-      case 'year': return 'año';
-      case 'noOfTeams': return 'nº equipos';
-      case 'tournamentTypeName': return 'tipo de torneo';
-      case 'confederationName': return 'confederación';
+      case 'name': return 'name';
+      case 'year': return 'year';
+      case 'noOfTeams': return 'nº teams';
+      case 'tournamentTypeName': return 'tournament type';
+      case 'confederationName': return 'confederation';
       default: return value;
     }
   }

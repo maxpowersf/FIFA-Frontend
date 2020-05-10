@@ -16,4 +16,9 @@ export class Team {
     ranking1: Ranking;
     ranking2: Ranking;
     ranking3: Ranking;
+    titles: number;
+    worldCupTitles: number;
+    confederationCupTitles: number;
+    confederationTournamentTitles: number;
+    worldCupQualifications: number;
 }

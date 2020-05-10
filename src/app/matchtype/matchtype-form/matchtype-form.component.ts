@@ -34,9 +34,9 @@ export class MatchtypeFormComponent implements OnInit {
 
     if (this.isEditing) {
       this.formInfo = {
-        submitText: 'Actualizar',
-        title: 'Tipo de Partido',
-        subtitle: 'Editar tipo de partido',
+        submitText: 'Update',
+        title: 'Match Type',
+        subtitle: 'Edit match type',
         isEditing: true
       }
       this.matchtype = this.route.snapshot.data.matchtype;
@@ -46,9 +46,9 @@ export class MatchtypeFormComponent implements OnInit {
     }
     else {
       this.formInfo = {
-        submitText: 'Guardar',
-        title: 'Tipo de Partido',
-        subtitle: 'Crear nuevo tipo de partido',
+        submitText: 'Save',
+        title: 'Match Type',
+        subtitle: 'Create match type',
         isEditing: false
       }
     }
@@ -73,5 +73,5 @@ export class MatchtypeFormComponent implements OnInit {
         .subscribe(this.goToList);
   }
 
-  goToList = () => this.router.navigate(['tournamenttypes']);
+  goToList = () => this.router.navigate(['matchtypes']);
 }
