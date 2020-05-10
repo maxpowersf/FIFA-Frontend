@@ -2,16 +2,16 @@
     <mat-card-title>
         <div class="header">
             <div class="title">
-                Torneos
+                Tournaments
             </div>
             <div class="actions">
-                <button mat-fab aria-label="Add new registry" matTooltip="Agregar" (click)="addAction()">
+                <button mat-fab aria-label="Add new registry" matTooltip="Add" (click)="addAction()">
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
         </div>
     </mat-card-title>
-    <mat-card-subtitle>Todos los torneos</mat-card-subtitle>
+    <mat-card-subtitle>List of tournaments</mat-card-subtitle>
     <mat-card-content>
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
             <!--- Note that these columns can be defined in any order.
@@ -19,8 +19,8 @@
 
             <!-- Position Column -->
             <ng-container matColumnDef="year">
-                <th mat-header-cell *matHeaderCellDef> Año </th>
-                <td mat-cell *matCellDef="let element" matTooltip="Ver posiciones" [matTooltipPosition]="'above'"
+                <th mat-header-cell *matHeaderCellDef> Year </th>
+                <td mat-cell *matCellDef="let element" matTooltip="Standings" [matTooltipPosition]="'above'"
                     (click)="navigateToDetail(element.id)" class="clickable">
                     {{element.year}}
                 </td>
@@ -34,34 +34,34 @@
 
             <!-- Color Column -->
             <ng-container matColumnDef="tournamentTypeName">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Torneo </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tournament Type </th>
                 <td mat-cell *matCellDef="let element"> {{element.tournamentTypeName}} </td>
             </ng-container>
 
             <!-- Weight Column -->
             <ng-container matColumnDef="noOfTeams">
-                <th mat-header-cell *matHeaderCellDef> Nº Equipos </th>
+                <th mat-header-cell *matHeaderCellDef> Nº Teams </th>
                 <td mat-cell *matCellDef="let element"> {{element.noOfTeams}} </td>
             </ng-container>
 
             <!-- Color Column -->
             <ng-container matColumnDef="confederationName">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Confederación </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Confederation </th>
                 <td mat-cell *matCellDef="let element"> {{element.confederationName}} </td>
             </ng-container>
 
             <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let row">
-                    <button color="primary" (click)="navigateToUpload(row.id)" matTooltip="Cargar posiciones"
+                    <button color="primary" (click)="navigateToUpload(row.id)" matTooltip="Load standings"
                         mat-icon-button aria-label="reorder">
                         <mat-icon>reorder</mat-icon>
                     </button>
-                    <button color="primary" (click)="navigateToEdit(row.id)" matTooltip="Editar" mat-icon-button
+                    <button color="primary" (click)="navigateToEdit(row.id)" matTooltip="Edit" mat-icon-button
                         aria-label="edit">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button (click)="onDelete(row.id)" color="warn" matTooltip="Borrar" mat-icon-button
+                    <button (click)="onDelete(row.id)" color="warn" matTooltip="Delete" mat-icon-button
                         aria-label="remove">
                         <mat-icon>delete</mat-icon>
                     </button>

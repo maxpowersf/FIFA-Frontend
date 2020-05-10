@@ -17,9 +17,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { BlockTemplateComponent } from './templates/block-template/block-template.component';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { RankingCardComponent } from './components/ranking-card/ranking-card.component';
+import { ChampionsCardComponent } from './components/champions-card/champions-card.component';
 
 @NgModule({
-  declarations: [NavComponent, BlockTemplateComponent, HomeComponent],
+  declarations: [NavComponent, BlockTemplateComponent, HomeComponent, RankingCardComponent, ChampionsCardComponent],
   imports: [
     CommonModule,
     BrowserModule,

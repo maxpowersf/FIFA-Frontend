@@ -27,11 +27,11 @@ export class TournamenttypeDetailComponent implements OnInit {
     this.tournamentType = this.route.snapshot.data.tournamenttype;
     this.tournamentTypeFormat = this.tournamentType.format;
 
-    this.getTeams(this.tournamentType.confederationID);
+    this.getTeams();
   }
 
-  getTeams(confederationId) {
-    this.teamService.getTeamsWithTitles(confederationId, this.tournamentType.id)
+  getTeams() {
+    this.teamService.getTeamsWithTitles(this.tournamentType.id)
     .subscribe((res) => {
       this.teams = res.map(c => this.mapFromApi(c));
     });
@@ -40,6 +40,9 @@ export class TournamenttypeDetailComponent implements OnInit {
   mapFromApi(element: any){
     var titles = 0;
     switch(this.tournamentTypeFormat){
+      case 1:
+        titles = element.worldCupQualifications;
+        break;
       case 2:
         titles = element.confederationTournamentTitles;
         break;

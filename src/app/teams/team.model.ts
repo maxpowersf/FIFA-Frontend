@@ -20,4 +20,5 @@ export class Team {
     worldCupTitles: number;
     confederationCupTitles: number;
     confederationTournamentTitles: number;
+    worldCupQualifications: number;
 }

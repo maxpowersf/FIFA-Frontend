@@ -44,9 +44,9 @@ export class TournamenttypeFormComponent implements OnInit {
 
     if (this.isEditing) {
       this.formInfo = {
-        submitText: 'Actualizar',
-        title: 'Tipo de Torneo',
-        subtitle: 'Editar tipo de torneo',
+        submitText: 'Update',
+        title: 'Tournament Type',
+        subtitle: 'Edit tournament type',
         isEditing: true
       }
 
@@ -58,9 +58,9 @@ export class TournamenttypeFormComponent implements OnInit {
     }
     else {
       this.formInfo = {
-        submitText: 'Guardar',
-        title: 'Tipo de Torneo',
-        subtitle: 'Crear nuevo tipo de torneo',
+        submitText: 'Save',
+        title: 'Tournament Type',
+        subtitle: 'Create tournament type',
         isEditing: false
       }
     }

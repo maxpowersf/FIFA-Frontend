@@ -39,8 +39,6 @@ export class TournamenttypeListComponent implements OnInit {
 
   navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
-  navigateToUpload = (id) => this.router.navigate([id, 'champions'], { relativeTo: this.route });
-
   navigateToDetail = (id) => this.router.navigate([id, 'history'], { relativeTo: this.route });
 
   onDelete = (id) => this.tournamenttypeService.delete(id).subscribe(this.updateDataTable);
