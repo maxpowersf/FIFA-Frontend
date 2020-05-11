@@ -15,7 +15,8 @@ import {
   MatChipsModule,
   MatAutocompleteModule,
   MatSnackBarModule,
-  MatGridListModule
+  MatGridListModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -56,6 +57,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatCheckboxModule,
     MatSnackBarModule,
     BlockUIModule.forRoot({
       template: BlockTemplateComponent
@@ -82,6 +84,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     MatSortModule,
     MatPaginatorModule,
     MatAutocompleteModule,
+    MatCheckboxModule,
     MccColorPickerModule,
     BlockUIModule,
     FormLayoutComponent,

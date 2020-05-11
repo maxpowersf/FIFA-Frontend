@@ -67,7 +67,7 @@ export class RankingsMatchComponent implements OnInit {
     team2: ['', Validators.required],
     result1: [0, Validators.required],
     result2: [0, Validators.required]
-  })
+  });
 
   changeMatchType = (val) => {
     let matchtype = this.matchtypes.find(x => x.id == val);
@@ -135,7 +135,7 @@ export class RankingsMatchComponent implements OnInit {
     this.result2.patchValue(0);
   }
 
-  goToList = () => this.router.navigate(['../'], { relativeTo: this.route })
+  goToList = () => this.router.navigate(['../'], { relativeTo: this.route });
 
   onSubmit = () => {
     if (!this.matchForm.valid || !this.isCalculated) { 
