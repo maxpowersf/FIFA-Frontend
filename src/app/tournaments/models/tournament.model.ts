@@ -1,4 +1,5 @@
 import { Position } from './position.model';
+import { TournamentType } from 'src/app/tournamenttype/tournamenttype.model';
 
 export class Tournament {
     id: number;
@@ -7,6 +8,7 @@ export class Tournament {
     host: string;
     noOfTeams: number;
     tournamentTypeID: number;
+    tournamentType: TournamentType;
     confederationID: number;
     positions: Position[];
 }

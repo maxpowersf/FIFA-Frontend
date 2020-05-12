@@ -44,7 +44,10 @@ const routes: Routes = [
   },
   {
     path: ':id/positions',
-    component: TournamentsPositionComponent
+    component: TournamentsPositionComponent,
+    resolve: {
+      tournament: TournamentResolver
+    }
   }
 ];
 

@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Position } from '../models/position.model';
+import { PositionsArray } from '../models/positionsArray.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
@@ -30,8 +31,8 @@ export class PositionService {
     return this.httpClient.get<Position>(this.positionUrl + '/get/' + id);
   }
 
-  public add(position: Position) {
-    return this.httpClient.post(this.positionUrl + '/add', position, httpOptions);
+  public add(positions: PositionsArray) {
+    return this.httpClient.post(this.positionUrl + '/add', positions, httpOptions);
   }
 
   public update(position: Position) {
