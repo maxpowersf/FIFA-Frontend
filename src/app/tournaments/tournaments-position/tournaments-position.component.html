@@ -16,9 +16,10 @@
             <div class="col-lg-1">GA</div>
             <div class="col-lg-3" *ngIf="isQualification">
                 <div class="row">
-                    <div class="col-lg-4">Group</div>
-                    <div class="col-lg-4">Round</div>
-                    <div class="col-lg-4">Qualified</div>
+                    <div class="col-lg-3">Pos</div>
+                    <div class="col-lg-3">Group</div>
+                    <div class="col-lg-3">Round</div>
+                    <div class="col-lg-3">Qualified</div>
                 </div>
             </div>
         </div>
@@ -63,17 +64,22 @@
                         </div>
                         <div class="col-lg-3" *ngIf="isQualification">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <mat-form-field class="result">
+                                        <input matInput formControlName="pos">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3">
+                                    <mat-form-field class="result group">
                                         <input matInput formControlName="group">
                                     </mat-form-field>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <mat-form-field class="result">
-                                        <input matInput type="number" min="0" formControlName="round">
+                                        <input matInput type="text" formControlName="round">
                                     </mat-form-field>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <mat-checkbox formControlName="qualified"></mat-checkbox>
                                 </div>
                             </div>

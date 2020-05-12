@@ -19,6 +19,10 @@
     display: initial;
 }
 
+.group input {
+    text-transform: uppercase;
+}
+
 .row-header {
     margin-right: 15px;
 }
