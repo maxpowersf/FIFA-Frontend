@@ -97,8 +97,8 @@ export class TournamentsPositionComponent implements OnInit {
       positions.position.push(this.processTeamPositions(element, index));
     });
 
-    /*this.positionService.add(positions)
-      .subscribe(this.goToList);*/
+    this.positionService.add(positions)
+      .subscribe(this.goToList);
   }
 
   processTeamPositions = (teamPosition: AbstractControl, index: number) => {
