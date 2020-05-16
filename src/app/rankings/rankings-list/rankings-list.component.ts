@@ -66,8 +66,9 @@ export class RankingsListComponent implements OnInit {
 
   getAllRankings = () => {
     this.teamService.getAll().subscribe((res) => {
+      res.sort(this.sortByPointsDesc);
       this.teams = res;
-      this.teams.sort(this.sortByPointsDesc);
+      this.dataSource.data = this.teams;
       this.blockUI.stop();
     });
   }
