@@ -68,7 +68,7 @@ export class TournamentsPositionComponent implements OnInit {
   }
 
   teamModelCreate = () => this.fb.group({
-    teamp: ['', Validators.required],
+    teamp: [''],
     wins: [0, Validators.required],
     draws: [0, Validators.required],
     loses: [0, Validators.required],
@@ -94,7 +94,9 @@ export class TournamentsPositionComponent implements OnInit {
     const positions: PositionsArray = new PositionsArray();
     const teamsPositions = this.positionsForm.get('teamsPositions') as FormArray;
     teamsPositions.controls.forEach((element, index) => {
-      positions.position.push(this.processTeamPositions(element, index));
+      if(element.get('teamp').value != "") {
+        positions.position.push(this.processTeamPositions(element, index));
+      }
     });
 
     this.positionService.add(positions)
