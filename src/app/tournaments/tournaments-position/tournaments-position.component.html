@@ -25,7 +25,7 @@
         </div>
         <form [formGroup]="positionsForm">
             <div formArrayName="teamsPositions">
-                <div *ngFor="let elem of positionsForm.controls.teamsPositions.controls; let i = index">
+                <div *ngFor="let elem of positionsForm.get('teamsPositions')['controls']; let i = index">
                     <div class="row" [formGroupName]="i">
                         <div class="col-lg-3">
                             <span class="row-header">{{i+1}}º</span>
