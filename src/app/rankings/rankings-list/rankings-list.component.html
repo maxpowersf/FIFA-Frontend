@@ -72,6 +72,14 @@
         <td mat-cell *matCellDef="let element"> {{element.totalPoints | number:'1.2'}} </td>
       </ng-container>
 
+      <!-- Points Column -->
+      <ng-container matColumnDef="rankingChange">
+        <th mat-header-cell *matHeaderCellDef> Change </th>
+        <td mat-cell *matCellDef="let element"><i class="fa" [ngClass]="{'fa-arrow-up text-success': element.rankingChange > 0,
+                                                        'fa-arrow-down text-danger': element.rankingChange < 0}">
+                                              </i> {{element.rankingChange}} </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

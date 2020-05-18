@@ -15,7 +15,7 @@ export class RankingsListComponent implements OnInit {
 
   teams: Team[];
 
-  displayedColumns: string[] = ['pos', 'name', 'confederation', 'year1', 'year2', 'year3', 'totalpoints'];
+  displayedColumns: string[] = ['pos', 'name', 'confederation', 'year1', 'year2', 'year3', 'totalpoints', 'rankingChange'];
   dataSource;
 
   year1: number;
