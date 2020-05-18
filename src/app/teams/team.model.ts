@@ -11,6 +11,7 @@ export class Team {
     actualRank: number;
     lowestRank: number;
     highestRank: number;
+    rankingChange: number;
     totalPoints: number;
     rankings: Ranking[];
     ranking1: Ranking;

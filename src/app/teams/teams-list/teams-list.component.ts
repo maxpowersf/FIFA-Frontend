@@ -13,7 +13,7 @@ export class TeamsListComponent implements OnInit {
 
   teams: Team[];
 
-  displayedColumns: string[] = ['id', 'name', 'confederationName', 'totalPoints', 'actualRank', 'highestRank', 'lowestRank', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'confederationName', 'totalPoints', 'actualRank', 'rankingChange', 'highestRank', 'lowestRank', 'actions'];
   dataSource;
 
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
