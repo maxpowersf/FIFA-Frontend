@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from 'src/app/teams/team.service';
+import { TeamService } from 'src/app/teams/services/team.service';
 
 @Component({
   selector: 'app-champions-card',

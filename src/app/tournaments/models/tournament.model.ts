@@ -1,5 +1,5 @@
 import { Position } from './position.model';
-import { TournamentType } from 'src/app/tournamenttype/tournamenttype.model';
+import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.model';
 
 export class Tournament {
     id: number;

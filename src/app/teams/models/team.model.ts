@@ -1,4 +1,4 @@
-import { Ranking } from '../rankings/ranking.model';
+import { Ranking } from '../../rankings/models/ranking.model';
 
 export class Team {
     id: number;

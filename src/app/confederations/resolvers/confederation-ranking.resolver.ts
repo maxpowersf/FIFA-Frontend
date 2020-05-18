@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TeamService } from 'src/app/teams/team.service';
+import { TeamService } from 'src/app/teams/services/team.service';
 
 @Injectable({providedIn: 'root'})
 export class ConfederationRankingResolver implements Resolve<Observable<any>> {

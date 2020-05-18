@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatchType } from '../matchtype.model';
-import { MatchtypeService } from '../matchtype.service';
+import { MatchType } from '../models/matchtype.model';
+import { MatchtypeService } from '../services/matchtype.service';
 import { TableLayout } from 'src/app/shared/models/table-layout.model';
 import { switchMap } from 'rxjs/operators';
 

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RankingsListComponent } from './rankings-list/rankings-list.component';
-import { TeamsResolver } from '../teams/teams.resolver';
+import { TeamsResolver } from '../teams/resolvers/teams.resolver';
 import { RankingsMatchComponent } from './rankings-match/rankings-match.component';
-import { MatchtypesResolver } from '../matchtype/matchtypes.resolver';
+import { MatchtypesResolver } from '../matchtype/resolvers/matchtypes.resolver';
 
 const routes: Routes = [
   {

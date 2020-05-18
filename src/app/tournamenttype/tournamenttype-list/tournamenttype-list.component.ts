@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TournamentType } from '../tournamenttype.model';
-import { TournamenttypeService } from '../tournamenttype.service';
+import { TournamentType } from '../models/tournamenttype.model';
+import { TournamenttypeService } from '../services/tournamenttype.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TableLayout } from 'src/app/shared/models/table-layout.model';
-import { switchMap } from 'rxjs/operators';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({

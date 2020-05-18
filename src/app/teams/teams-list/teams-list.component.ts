@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Team } from '../team.model';
-import { TeamService } from '../team.service';
+import { Team } from '../models/team.model';
+import { TeamService } from '../services/team.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 

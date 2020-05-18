@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Team } from 'src/app/teams/team.model';
+import { Team } from 'src/app/teams/models/team.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TournamentType } from '../tournamenttype.model';
-import { TeamService } from 'src/app/teams/team.service';
+import { TournamentType } from '../models/tournamenttype.model';
+import { TeamService } from 'src/app/teams/services/team.service';
 
 @Component({
   selector: 'app-tournamenttype-detail',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfederationService } from '../confederation.service';
-import { Confederation } from '../confederation.model';
+import { ConfederationService } from '../services/confederation.service';
+import { Confederation } from '../models/confederation.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 

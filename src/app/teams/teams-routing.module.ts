@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeamsListComponent } from './teams-list/teams-list.component';
 import { TeamsFormComponent } from './teams-form/teams-form.component';
-import { TeamsResolver } from './teams.resolver';
-import { TeamResolver } from './team.resolver';
+import { TeamsResolver } from './resolvers/teams.resolver';
+import { TeamResolver } from './resolvers/team.resolver';
 import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
 
 const routes: Routes = [

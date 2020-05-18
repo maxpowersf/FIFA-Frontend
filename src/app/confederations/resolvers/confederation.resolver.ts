@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ConfederationService } from '../confederation.service';
+import { ConfederationService } from '../services/confederation.service';
 
 @Injectable({providedIn: 'root'})
 export class ConfederationResolver implements Resolve<Observable<any>> {

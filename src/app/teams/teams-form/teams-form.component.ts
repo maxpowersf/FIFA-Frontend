@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Team } from '../team.model';
-import { TeamService } from '../team.service';
+import { Team } from '../models/team.model';
+import { TeamService } from '../services/team.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Confederation } from 'src/app/confederations/confederation.model';
+import { Confederation } from 'src/app/confederations/models/confederation.model';
 
 @Component({
   selector: 'app-teams-form',

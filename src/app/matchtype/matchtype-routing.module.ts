@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MatchtypeListComponent } from './matchtype-list/matchtype-list.component';
 import { MatchtypeFormComponent } from './matchtype-form/matchtype-form.component';
-import { MatchtypesResolver } from './matchtypes.resolver';
-import { MatchtypeResolver } from './matchtype.resolver';
+import { MatchtypesResolver } from './resolvers/matchtypes.resolver';
+import { MatchtypeResolver } from './resolvers/matchtype.resolver';
 
 const routes: Routes = [
   {

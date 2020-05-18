@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import { TeamService } from 'src/app/teams/team.service';
+import { TeamService } from 'src/app/teams/services/team.service';
 
 @Component({
   selector: 'app-ranking-card',

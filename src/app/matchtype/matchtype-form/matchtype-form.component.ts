@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatchtypeService } from '../matchtype.service';
-import { MatchType } from '../matchtype.model';
+import { MatchtypeService } from '../services/matchtype.service';
+import { MatchType } from '../models/matchtype.model';
 import { FormLayout } from 'src/app/shared/models/form-layout.model';
 
 @Component({
