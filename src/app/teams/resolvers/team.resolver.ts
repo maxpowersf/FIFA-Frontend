@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MatchtypeService } from './matchtype.service';
+import { TeamService } from '../services/team.service';
 
 @Injectable({providedIn: 'root'})
-export class MatchtypeResolver implements Resolve<Observable<any>> {
+export class TeamResolver implements Resolve<Observable<any>> {
     constructor(
-        private matchtypeService: MatchtypeService
+        private teamService: TeamService
     ) { }
 
     resolve(route: ActivatedRouteSnapshot) {
         const id = route.paramMap.get('id');
-        return this.matchtypeService.getOne(parseInt(id, 10));
+        return this.teamService.getOne(parseInt(id, 10));
     }
 }

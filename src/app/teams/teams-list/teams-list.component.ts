@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Team } from '../team.model';
-import { TeamService } from '../team.service';
+import { Team } from '../models/team.model';
+import { TeamService } from '../services/team.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
@@ -35,6 +35,8 @@ export class TeamsListComponent implements OnInit {
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
   
   navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+
+  navigateToSquad = (id) => this.router.navigate([id, 'squad'], { relativeTo: this.route });
 
   onDelete = (id) => this.teamService.delete(id).subscribe(this.getAllTeams);
 

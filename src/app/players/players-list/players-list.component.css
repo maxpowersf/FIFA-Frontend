@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mat-icon-button{
+    margin-top: 5px;
+}
+.mat-header-cell,
+.mat-cell{
+    text-align: center;
+}
+.cell-number{
+    width: 50px;
+}
+th.left,
+td.left{
+    text-align: left;
+    padding-left: 20px;
+}
+.clickable:hover{
+    background-color: rgba(0, 0, 0, .05);
+    cursor: pointer;
+}

@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatchType } from 'src/app/matchtype/matchtype.model';
+import { MatchType } from 'src/app/matchtype/models/matchtype.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Team } from 'src/app/teams/team.model';
+import { Team } from 'src/app/teams/models/team.model';
 import { MatSnackBar } from '@angular/material';
-import { Match } from '../match.model';
-import { RankingService } from '../ranking.service';
+import { Match } from '../models/match.model';
+import { RankingService } from '../services/ranking.service';
 
 @Component({
   selector: 'app-rankings-match',

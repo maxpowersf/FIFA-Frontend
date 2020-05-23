@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Team } from 'src/app/teams/team.model';
+import { Team } from 'src/app/teams/models/team.model';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RankingService } from '../ranking.service';
-import { TeamService } from 'src/app/teams/team.service';
+import { RankingService } from '../services/ranking.service';
+import { TeamService } from 'src/app/teams/services/team.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({

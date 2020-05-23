@@ -6,9 +6,10 @@ import { TeamsFormComponent } from './teams-form/teams-form.component';
 import { TeamsListComponent } from './teams-list/teams-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeamsSquadComponent } from './teams-squad/teams-squad.component';
 
 @NgModule({
-  declarations: [TeamsFormComponent, TeamsListComponent],
+  declarations: [TeamsFormComponent, TeamsListComponent, TeamsSquadComponent],
   imports: [
     CommonModule,
     TeamsRoutingModule,

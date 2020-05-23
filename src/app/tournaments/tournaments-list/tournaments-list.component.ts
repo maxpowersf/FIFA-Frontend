@@ -3,6 +3,7 @@ import { Tournament } from '../models/tournament.model';
 import { TournamentService } from '../services/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tournament-list',
@@ -40,7 +41,14 @@ export class TournamentsListComponent implements OnInit {
 
   navigateToDetail = (id) => this.router.navigate([id, 'position'], { relativeTo: this.route });
 
-  onDelete = (id) => this.tournamentService.delete(id).subscribe(this.updateDataTable);
+  onDelete = (id: number) => {
+    this.tournamentService.delete(id)
+      .pipe(switchMap(this.updateDataTable))
+      .subscribe(res => {
+        this.tournaments = res;
+        this.dataSource.data = this.tournaments;
+      });
+  }
 
   updateDataTable = () => this.tournamentService.getAll();
 }

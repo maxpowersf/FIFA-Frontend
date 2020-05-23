@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { FormLayout } from 'src/app/shared/models/form-layout.model';
-import { TournamentType } from '../tournamenttype.model';
+import { TournamentType } from '../models/tournamenttype.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TournamenttypeService } from '../tournamenttype.service';
-import { Confederation } from 'src/app/confederations/confederation.model';
+import { TournamenttypeService } from '../services/tournamenttype.service';
+import { Confederation } from 'src/app/confederations/models/confederation.model';
 import { TournamentFormatMapping } from 'src/app/shared/models/tournamentformat';
 
 @Component({

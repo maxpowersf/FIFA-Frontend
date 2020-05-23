@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TournamenttypeService } from '../tournamenttype.service';
+import { TournamenttypeService } from '../services/tournamenttype.service';
 
 @Injectable({providedIn: 'root'})
 export class TournamenttypeResolver implements Resolve<Observable<any>> {

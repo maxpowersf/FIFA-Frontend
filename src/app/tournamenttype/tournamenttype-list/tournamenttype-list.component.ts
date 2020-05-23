@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TournamentType } from '../tournamenttype.model';
-import { TournamenttypeService } from '../tournamenttype.service';
+import { TournamentType } from '../models/tournamenttype.model';
+import { TournamenttypeService } from '../services/tournamenttype.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TableLayout } from 'src/app/shared/models/table-layout.model';
-import { switchMap } from 'rxjs/operators';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tournamenttype-list',
@@ -41,7 +40,14 @@ export class TournamenttypeListComponent implements OnInit {
 
   navigateToDetail = (id) => this.router.navigate([id, 'history'], { relativeTo: this.route });
 
-  onDelete = (id) => this.tournamenttypeService.delete(id).subscribe(this.updateDataTable);
+  onDelete = (id: number) => {
+    this.tournamenttypeService.delete(id)
+      .pipe(switchMap(this.updateDataTable))
+      .subscribe(res => {
+        this.data = res;
+        this.dataSource.data = this.data;
+      });
+  }
 
   updateDataTable = () => this.tournamenttypeService.getAll();
 }

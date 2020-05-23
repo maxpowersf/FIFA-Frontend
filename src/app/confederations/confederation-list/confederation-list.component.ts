@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Confederation } from '../confederation.model';
+import { Confederation } from '../models/confederation.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ConfederationService } from '../confederation.service';
+import { ConfederationService } from '../services/confederation.service';
 
 @Component({
   selector: 'app-confederation-list',

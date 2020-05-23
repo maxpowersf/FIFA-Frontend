@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Team } from 'src/app/teams/team.model';
+import { Team } from 'src/app/teams/models/team.model';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';

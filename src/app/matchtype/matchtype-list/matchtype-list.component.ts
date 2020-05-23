@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatchType } from '../matchtype.model';
-import { MatchtypeService } from '../matchtype.service';
+import { MatchType } from '../models/matchtype.model';
+import { MatchtypeService } from '../services/matchtype.service';
 import { TableLayout } from 'src/app/shared/models/table-layout.model';
 import { switchMap } from 'rxjs/operators';
 
@@ -40,9 +40,8 @@ export class MatchtypeListComponent implements OnInit {
     this.matchtypeService.delete(id)
       .pipe(switchMap(this.updateDataTable))
       .subscribe(res => {
-        console.log(res);
-        this.tableData.data = res;
-        this.tableData = { ...this.tableData }
+        this.data = res;
+        this.tableData.data = this.data;
       });
   }
 
