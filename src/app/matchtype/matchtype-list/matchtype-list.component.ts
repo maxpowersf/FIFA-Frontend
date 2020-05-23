@@ -40,9 +40,8 @@ export class MatchtypeListComponent implements OnInit {
     this.matchtypeService.delete(id)
       .pipe(switchMap(this.updateDataTable))
       .subscribe(res => {
-        console.log(res);
-        this.tableData.data = res;
-        this.tableData = { ...this.tableData }
+        this.data = res;
+        this.tableData.data = this.data;
       });
   }
 

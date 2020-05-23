@@ -4,6 +4,7 @@ import { PlayersResolver } from './resolvers/players.resolver';
 import { PlayerResolver } from './resolvers/player.resolver';
 import { PlayersListComponent } from './players-list/players-list.component';
 import { PlayersFormComponent } from './players-form/players-form.component';
+import { TeamsResolver } from '../teams/resolvers/teams.resolver';
 
 const routes: Routes = [
   {
@@ -13,13 +14,17 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    component: PlayersFormComponent
+    component: PlayersFormComponent,
+    resolve: {
+      teams: TeamsResolver
+    }
   },
   {
     path: ':id/edit',
     component: PlayersFormComponent,
     resolve: {
-      player: PlayerResolver
+      player: PlayerResolver,
+      teams: TeamsResolver
     }
   }
 ];

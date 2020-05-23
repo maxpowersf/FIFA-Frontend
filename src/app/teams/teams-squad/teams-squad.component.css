@@ -1,13 +1,11 @@
 table {
     width: 100%;
+    margin-bottom: 20px;
 }
 .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.mat-icon-button{
-    margin-top: 5px;
 }
 .mat-header-cell,
 .mat-cell{
@@ -20,8 +18,4 @@ th.left,
 td.left{
     text-align: left;
     padding-left: 20px;
-}
-.clickable:hover{
-    background-color: rgba(0, 0, 0, .05);
-    cursor: pointer;
 }

@@ -19,22 +19,26 @@ export class PlayerService {
   ) { }
 
   public getAll(): Observable<Player[]> {
-    return this.httpClient.get<Player[]>(this.playerUrl);
+    return this.httpClient.get<Player[]>(this.playerUrl + '/getall');
+  }
+
+  public getAllByTeam(teamId: number): Observable<Player[]> {
+    return this.httpClient.get<Player[]>(this.playerUrl + '/getbyteam/' + teamId);
   }
 
   public getOne(id: number): Observable<Player> {
-    return this.httpClient.get<Player>(this.playerUrl + '/' + id);
+    return this.httpClient.get<Player>(this.playerUrl + '/get/' + id);
   }
 
   public add(player: Player) {
-    return this.httpClient.post(this.playerUrl, player, httpOptions);
+    return this.httpClient.post(this.playerUrl + '/add', player, httpOptions);
   }
 
   public update(player: Player) {
-    return this.httpClient.put(this.playerUrl, player, httpOptions);
+    return this.httpClient.put(this.playerUrl + '/update', player, httpOptions);
   }
 
   public delete(id: number) {
-    return this.httpClient.delete(this.playerUrl + '/' + id);
+    return this.httpClient.delete(this.playerUrl + '/delete/' + id);
   }
 }

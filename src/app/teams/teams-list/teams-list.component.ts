@@ -36,6 +36,8 @@ export class TeamsListComponent implements OnInit {
   
   navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
+  navigateToSquad = (id) => this.router.navigate([id, 'squad'], { relativeTo: this.route });
+
   onDelete = (id) => this.teamService.delete(id).subscribe(this.getAllTeams);
 
   getAllTeams = () => this.teamService.getAll().subscribe((res) => this.teams = res);
