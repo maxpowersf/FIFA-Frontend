@@ -19,22 +19,26 @@ export class TournamentService {
   ) { }
 
   public getAll(): Observable<Tournament[]> {
-    return this.httpClient.get<Tournament[]>(this.tournamentUrl);
+    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getall');
+  }
+
+  public getAllByTeam(teamId: number): Observable<Tournament[]> {
+    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbyteam/' + teamId);
   }
 
   public getOne(id: number): Observable<Tournament> {
-    return this.httpClient.get<Tournament>(this.tournamentUrl + '/' + id);
+    return this.httpClient.get<Tournament>(this.tournamentUrl + '/get/' + id);
   }
 
   public add(tournament: Tournament) {
-    return this.httpClient.post(this.tournamentUrl, tournament, httpOptions);
+    return this.httpClient.post(this.tournamentUrl + '/add', tournament, httpOptions);
   }
 
   public update(tournament: Tournament) {
-    return this.httpClient.put(this.tournamentUrl, tournament, httpOptions);
+    return this.httpClient.put(this.tournamentUrl + '/update', tournament, httpOptions);
   }
 
   public delete(id: number) {
-    return this.httpClient.delete(this.tournamentUrl + '/' + id);
+    return this.httpClient.delete(this.tournamentUrl + '/delete/' + id);
   }
 }

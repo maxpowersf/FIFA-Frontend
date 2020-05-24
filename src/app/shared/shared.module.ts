@@ -16,7 +16,8 @@ import {
   MatAutocompleteModule,
   MatSnackBarModule,
   MatGridListModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatTabsModule
 } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -42,6 +43,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     FormsModule,
     ReactiveFormsModule,
     MatGridListModule,
+    MatTabsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -71,6 +73,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
+    MatTabsModule,
     MatSnackBarModule,
     MatButtonModule,
     MatTooltipModule,

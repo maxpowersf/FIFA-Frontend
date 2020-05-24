@@ -33,6 +33,8 @@ export class TeamsListComponent implements OnInit {
   }
 
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
+
+  navigateToDetail = (id) => this.router.navigate([id, 'dashboard'], { relativeTo: this.route });
   
   navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
