@@ -23,9 +23,12 @@ export class TournamentsFormComponent implements OnInit {
   tournamenttypes: TournamentType[];
   confederations: Confederation[];
 
+  flag: string = "eu";
+
   get name() { return this.tournamentForm.get('name') };
   get year() { return this.tournamentForm.get('year') };
   get host() { return this.tournamentForm.get('host') };
+  get hostFlag() { return this.tournamentForm.get('hostFlag'); }
   get noOfTeams() { return this.tournamentForm.get('noOfTeams') };
   get tournamentType() { return this.tournamentForm.get('tournamentType') };
   get confederation() { return this.tournamentForm.get('confederation') };
@@ -56,6 +59,8 @@ export class TournamentsFormComponent implements OnInit {
       this.name.patchValue(this.tournament.name);
       this.year.patchValue(this.tournament.year);
       this.host.patchValue(this.tournament.host);
+      this.hostFlag.patchValue(this.tournament.hostFlag);
+      this.flag = this.tournament.hostFlag;
       this.noOfTeams.patchValue(this.tournament.noOfTeams);
       this.tournamentType.patchValue(this.tournament.tournamentTypeID);
       this.confederation.patchValue(this.tournament.confederationID);
@@ -74,10 +79,15 @@ export class TournamentsFormComponent implements OnInit {
     name: ['', Validators.required],
     year: ['', Validators.required],
     host: ['', Validators.required],
+    hostFlag: ['', Validators.required],
     noOfTeams: ['', Validators.required],
     tournamentType: ['', Validators.required],
     confederation: ['']
   });
+
+  fillFlag = (event) => {
+    this.flag = event.target.value;
+  }
 
   onSubmit = () => {
     if (!this.tournamentForm.valid) return;
@@ -86,6 +96,7 @@ export class TournamentsFormComponent implements OnInit {
     tournamentModified.name = this.name.value;
     tournamentModified.year = this.year.value;
     tournamentModified.host = this.host.value;
+    tournamentModified.hostFlag = this.hostFlag.value;
     tournamentModified.noOfTeams = this.noOfTeams.value;
     tournamentModified.tournamentTypeID = this.tournamentType.value;
     tournamentModified.confederationID = this.confederation.value;

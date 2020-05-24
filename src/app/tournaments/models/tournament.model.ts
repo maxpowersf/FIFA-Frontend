@@ -6,9 +6,11 @@ export class Tournament {
     name: string;
     year: number;
     host: string;
+    hostFlag: string;
     noOfTeams: number;
     tournamentTypeID: number;
     tournamentType: TournamentType;
     confederationID: number;
     positions: Position[];
+    qualifications: Position[];
 }

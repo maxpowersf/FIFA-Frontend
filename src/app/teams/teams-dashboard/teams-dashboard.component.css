@@ -26,11 +26,36 @@ table {
 .cell-number{
     width: 50px;
 }
+.worldcup-header {
+    margin: 0;
+    text-align: center;
+}
+.worldcup-header .first-row {
+    padding: 10px;
+    width: 70%;
+}
 th.left,
 td.left{
     text-align: left;
     padding-left: 20px;
 }
-.qualified{
-    background-color: #BBF3BB;
+th:nth-child(10),
+td:nth-child(10) {
+    border-left: #eaecf0 solid 10px;
+}
+.host {
+    border: red solid 2px;
+}
+.champion {
+    background-color: gold;
+    font-weight: bold;
+}
+.runnerup {
+    background-color: silver;
+}
+.third {
+    background-color: #cc9966;
+}
+.fourth {
+    background-color: #9acdff;
 }
