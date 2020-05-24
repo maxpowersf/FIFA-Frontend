@@ -22,10 +22,18 @@
         </mat-card>
         <mat-card class="mat-card-small">
             <mat-card-subtitle>
+                World Cup Participations
+            </mat-card-subtitle>
+            <mat-card-content>
+                {{team.worldCupQualifications}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="mat-card-small">
+            <mat-card-subtitle>
                 Confederations Cup Titles
             </mat-card-subtitle>
             <mat-card-content>
-                {{team.confederationCupTitles}}
+                {{team.confederationsCupTitles}}
             </mat-card-content>
         </mat-card>
         <mat-card class="mat-card-small" *ngIf="hasConfederationTournament">
@@ -34,14 +42,6 @@
             </mat-card-subtitle>
             <mat-card-content>
                 {{team.confederationTournamentTitles}}
-            </mat-card-content>
-        </mat-card>
-        <mat-card class="mat-card-small">
-            <mat-card-subtitle>
-                World Cup Participations
-            </mat-card-subtitle>
-            <mat-card-content>
-                {{team.worldCupQualifications}}
             </mat-card-content>
         </mat-card>
     </mat-card-subtitle>
