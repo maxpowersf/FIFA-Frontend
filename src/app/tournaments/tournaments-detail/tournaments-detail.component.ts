@@ -21,28 +21,32 @@ export class TournamentsDetailComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-  ) { }
-
-  ngOnInit() {
+    private route: ActivatedRoute
+  ) {
     this.tournament = this.route.snapshot.data.tournament;
     this.positions = this.tournament.positions;
+   }
 
+  ngOnInit() {
     if(this.tournament.tournamentType.format == TournamentFormat.Qualification){
-      var firstGroup = this.tournament.positions[0].group;
-      this.positionGroups.groups.push(new Groups(firstGroup));
-      var arrIndex = 0;
-
-      this.tournament.positions.forEach(element => {
-        if(element.group != firstGroup) {
-          firstGroup = element.group;
-          this.positionGroups.groups.push(new Groups(firstGroup));
-          arrIndex++;
-        }
-
-        this.positionGroups.groups[arrIndex].positions.push(element);
-      });
+      this.processPositions();
     }
+  }
+
+  processPositions = () => {
+    var firstGroup = this.tournament.positions[0].group;
+    this.positionGroups.groups.push(new Groups(firstGroup));
+    var arrIndex = 0;
+
+    this.tournament.positions.forEach(element => {
+      if(element.group != firstGroup) {
+        firstGroup = element.group;
+        this.positionGroups.groups.push(new Groups(firstGroup));
+        arrIndex++;
+      }
+
+      this.positionGroups.groups[arrIndex].positions.push(element);
+    });
   }
 
   goToList = () => this.router.navigate(['../../'], { relativeTo: this.route })

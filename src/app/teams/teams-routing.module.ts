@@ -7,6 +7,8 @@ import { TeamResolver } from './resolvers/team.resolver';
 import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
 import { TeamsSquadComponent } from './teams-squad/teams-squad.component';
 import { TeamSquadResolver } from './resolvers/teamsquad.resolver';
+import { TeamsDashboardComponent } from './teams-dashboard/teams-dashboard.component';
+import { TournamentsByTeamResolver } from '../tournaments/resolvers/tournamentsbyteam.resolver';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
     component: TeamsSquadComponent,
     resolve: {
       players: TeamSquadResolver
+    }
+  },
+  {
+    path: ':id/dashboard',
+    component: TeamsDashboardComponent,
+    resolve: {
+      team: TeamResolver,
+      tournaments: TournamentsByTeamResolver
     }
   }
 ];
