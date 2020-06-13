@@ -8,7 +8,7 @@ import { TeamService } from 'src/app/teams/services/team.service';
 })
 export class ChampionsCardComponent implements OnInit {
 
-  quantity: number = 8;
+  quantity: number = 10;
   teams: any[];
 
   constructor(

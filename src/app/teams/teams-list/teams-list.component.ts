@@ -11,10 +11,10 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 })
 export class TeamsListComponent implements OnInit {
 
-  teams: Team[];
-
   displayedColumns: string[] = ['id', 'name', 'confederationName', 'totalPoints', 'actualRank', 'rankingChange', 'highestRank', 'lowestRank', 'actions'];
   dataSource;
+
+  teams: Team[];
 
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -23,10 +23,11 @@ export class TeamsListComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private teamService: TeamService
-  ) { }
+  ) {
+    this.teams = this.route.snapshot.data.teams;
+   }
 
   ngOnInit() {
-    this.teams = this.route.snapshot.data.teams;
     this.dataSource = new MatTableDataSource(this.teams);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

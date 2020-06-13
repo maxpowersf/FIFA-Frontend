@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TeamsSquadComponent implements OnInit {
 
-  displayedColumns: string[] = ['dorsal', 'name', 'positionName', 'confederationsGoals', 'worldCupGoals', 'confederationsGoldenBoots', 'worldCupGoldenBoots'];
+  displayedColumns: string[] = ['dorsal', 'name', 'positionName', 'totalGoals', 'worldCupGoals', 'confederationsGoals', 'confederationTournamentGoals', 'qualificationGoals'];
   dataSource;
 
   players: Player[];

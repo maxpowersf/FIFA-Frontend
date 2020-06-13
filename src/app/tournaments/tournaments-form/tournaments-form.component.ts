@@ -79,7 +79,7 @@ export class TournamentsFormComponent implements OnInit {
     name: ['', Validators.required],
     year: ['', Validators.required],
     host: ['', Validators.required],
-    hostFlag: ['', Validators.required],
+    hostFlag: [''],
     noOfTeams: ['', Validators.required],
     tournamentType: ['', Validators.required],
     confederation: ['']
