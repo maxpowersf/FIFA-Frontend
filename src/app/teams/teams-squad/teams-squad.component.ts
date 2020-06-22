@@ -15,7 +15,6 @@ export class TeamsSquadComponent implements OnInit {
 
   players: Player[];
 
-  @ViewChild(MatPaginator, null) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(
@@ -27,7 +26,6 @@ export class TeamsSquadComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.players);
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
