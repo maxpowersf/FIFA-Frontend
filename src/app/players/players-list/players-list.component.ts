@@ -34,6 +34,11 @@ export class PlayersListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  applyFilter = (event: Event) => {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
 
   navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
