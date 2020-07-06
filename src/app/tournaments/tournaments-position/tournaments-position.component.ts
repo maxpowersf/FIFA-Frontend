@@ -77,7 +77,8 @@ export class TournamentsPositionComponent implements OnInit {
     pos: [0],
     group: [''],
     round: [''],
-    qualified: [0]
+    qualified: [0],
+    host: [0]
   });
 
   onSubmit = () => {
@@ -123,6 +124,9 @@ export class TournamentsPositionComponent implements OnInit {
     }
 
     position.result = this.getTeamResult(position);
+
+    if(teamPosition.get('host').value)
+      position.result = "Host";
 
     return position;
   }

@@ -33,3 +33,7 @@
     justify-content: space-between;
     padding-bottom: 20px;
 }
+
+.mat-card-content div[class^="col"] {
+    padding-right: 0;
+}
