@@ -309,7 +309,64 @@
                 </table>
             </mat-tab>
             <mat-tab label="Goalscorers">
+                <table mat-table [dataSource]="goalscorers" class="mat-elevation-z8">
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="dorsal">
+                        <th mat-header-cell *matHeaderCellDef> Dorsal </th>
+                        <td mat-cell *matCellDef="let element"> {{element.dorsal}} </td>
+                    </ng-container>
 
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="fullName">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                    </ng-container>
+
+                    <!-- Color Column -->
+                    <ng-container matColumnDef="positionName">
+                        <th mat-header-cell *matHeaderCellDef> Position </th>
+                        <td mat-cell *matCellDef="let element" [attr.alt]="element.positionName">
+                            <mat-chip [ngClass]="element.positionName">
+                                {{element.positionName}}
+                            </mat-chip>
+                        </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="totalGoals">
+                        <th mat-header-cell *matHeaderCellDef> Total </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.worldCupGoals + element.confederationsGoals + element.confederationTournamentGoals + element.qualificationGoals}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="worldCupGoals">
+                        <th mat-header-cell *matHeaderCellDef> World Cup </th>
+                        <td mat-cell *matCellDef="let element"> {{element.worldCupGoals}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="confederationsGoals">
+                        <th mat-header-cell *matHeaderCellDef> Confederations </th>
+                        <td mat-cell *matCellDef="let element"> {{element.confederationsGoals}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="confederationTournamentGoals">
+                        <th mat-header-cell *matHeaderCellDef> Conf. Tournament </th>
+                        <td mat-cell *matCellDef="let element"> {{element.confederationTournamentGoals}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="qualificationGoals">
+                        <th mat-header-cell *matHeaderCellDef> Qualification </th>
+                        <td mat-cell *matCellDef="let element"> {{element.qualificationGoals}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsGoalscorers"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsGoalscorers;"></tr>
+                </table>
             </mat-tab>
         </mat-tab-group>
     </mat-card-content>

@@ -45,7 +45,8 @@ const routes: Routes = [
     component: TeamsDashboardComponent,
     resolve: {
       team: TeamResolver,
-      tournaments: TournamentsByTeamResolver
+      tournaments: TournamentsByTeamResolver,
+      players: TeamSquadResolver
     }
   }
 ];
