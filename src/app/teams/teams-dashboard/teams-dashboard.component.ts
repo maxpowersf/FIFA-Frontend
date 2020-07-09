@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from '../models/team.model';
 import { Tournament } from 'src/app/tournaments/models/tournament.model';
-import { debug } from 'util';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
+import { Player } from 'src/app/players/models/player.model';
 
 @Component({
   selector: 'app-teams-dashboard',
@@ -14,6 +14,8 @@ export class TeamsDashboardComponent implements OnInit {
 
   displayedColumnsWC: string[] = ['tournament', 'result', 'noPosition', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst', 'gamesPlayedQ', 'winsQ', 'drawsQ', 'losesQ', 'goalsFavorQ', 'goalsAgainstQ'];
   displayedColumns: string[] = ['tournament', 'result', 'noPosition', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
+  displayedColumnsGoalscorers: string[] = ['dorsal', 'fullName', 'positionName', 'totalGoals', 'worldCupGoals', 'confederationsGoals', 'confederationTournamentGoals', 'qualificationGoals'];
+
 
   team: Team;
   tournaments: Tournament[];
@@ -21,6 +23,7 @@ export class TeamsDashboardComponent implements OnInit {
   worldCups: Tournament[] = [];
   confederationsCups: Tournament[] = [];
   confederationTournaments: Tournament[] = [];
+  goalscorers: Player[] = [];
 
   hasConfederationTournament: boolean = false;
   confederationTournamentName: string;
@@ -31,6 +34,10 @@ export class TeamsDashboardComponent implements OnInit {
   ) {
     this.team = this.route.snapshot.data.team;
     this.tournaments = this.route.snapshot.data.tournaments;
+    this.goalscorers = this.route.snapshot.data.players;
+
+    let sum = el => el.worldCupGoals + el.confederationsGoals + el.confederationTournamentGoals + el.qualificationGoals
+    this.goalscorers.sort((a,b) => (sum(b)) - (sum(a)));
 
     const confTournaments: Tournament[] = this.tournaments
       .filter(a => a.tournamentType.format == TournamentFormat.ConfederationTournament);
