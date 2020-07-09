@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { PlayerService } from '../services/player.service';
+import { GoalscorerService } from '../services/goalscorer.service';
 
 @Injectable({providedIn: 'root'})
-export class PlayerResolver implements Resolve<Observable<any>> {
+export class GoalscorerResolver implements Resolve<Observable<any>> {
     constructor(
-        private playerService: PlayerService
+        private goalscorerService: GoalscorerService
     ) { }
 
     resolve(route: ActivatedRouteSnapshot) {
         const id = route.paramMap.get('id');
-        return this.playerService.getOne(parseInt(id, 10));
+        return this.goalscorerService.getByTournament(parseInt(id, 10));
     }
 }
