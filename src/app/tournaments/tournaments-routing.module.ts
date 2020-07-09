@@ -8,7 +8,7 @@ import { ConfederationsResolver } from '../confederations/resolvers/confederatio
 import { TournamenttypesResolver } from '../tournamenttype/resolvers/tournamenttypes.resolver';
 import { TournamentsPositionComponent } from './tournaments-position/tournaments-position.component';
 import { TournamentsDetailComponent } from './tournaments-detail/tournaments-detail.component';
-import { PositionsResolver } from './resolvers/positions.resolver';
+import { GoalscorerResolver } from '../players/resolvers/goalscorer.resolver';
 
 const routes: Routes = [
   {
@@ -39,7 +39,8 @@ const routes: Routes = [
     path: ':id/position',
     component: TournamentsDetailComponent,
     resolve: {
-      tournament: TournamentResolver
+      tournament: TournamentResolver,
+      goalscorers: GoalscorerResolver
     }
   },
   {

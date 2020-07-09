@@ -5,6 +5,7 @@ import { Tournament } from '../models/tournament.model';
 import { PositionsGroups } from '../models/positionsGroups.model';
 import { Groups } from '../models/groups.model';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
+import { Player } from 'src/app/players/models/player.model';
 
 @Component({
   selector: 'app-tournaments-detail',
@@ -16,8 +17,10 @@ export class TournamentsDetailComponent implements OnInit {
   tournament: Tournament;
   positions: Position[];
   positionGroups: PositionsGroups = new PositionsGroups();
+  goalscorers: Player[];
 
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
+  displayedColumnsGoalscorers: string[] = ['dorsal', 'fullName', 'positionName', 'team', 'goals'];
 
   constructor(
     private router: Router,
@@ -25,6 +28,7 @@ export class TournamentsDetailComponent implements OnInit {
   ) {
     this.tournament = this.route.snapshot.data.tournament;
     this.positions = this.tournament.positions;
+    this.goalscorers = this.route.snapshot.data.goalscorers;
    }
 
   ngOnInit() {
