@@ -47,7 +47,12 @@ export class TournamentsPositionComponent implements OnInit {
     else{
       this.teamService.getAll()
         .subscribe((res) => {
-          this.teams = res;
+          if(this.tournament.host == "America") {
+            this.teams = res.filter(s => s.confederationID == 3 || s.confederationID == 4);
+          }
+          else {
+            this.teams = res;
+          }
         });
     }
   }
