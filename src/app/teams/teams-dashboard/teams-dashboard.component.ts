@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from '../models/team.model';
 import { Tournament } from 'src/app/tournaments/models/tournament.model';
@@ -15,7 +15,6 @@ export class TeamsDashboardComponent implements OnInit {
   displayedColumnsWC: string[] = ['tournament', 'result', 'noPosition', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst', 'gamesPlayedQ', 'winsQ', 'drawsQ', 'losesQ', 'goalsFavorQ', 'goalsAgainstQ'];
   displayedColumns: string[] = ['tournament', 'result', 'noPosition', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
   displayedColumnsGoalscorers: string[] = ['dorsal', 'fullName', 'positionName', 'totalGoals', 'worldCupGoals', 'confederationsGoals', 'confederationTournamentGoals', 'qualificationGoals'];
-
 
   team: Team;
   tournaments: Tournament[];
