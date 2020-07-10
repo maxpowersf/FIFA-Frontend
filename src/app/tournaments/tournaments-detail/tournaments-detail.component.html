@@ -180,9 +180,9 @@
                 <table mat-table [dataSource]="goalscorers" class="mat-elevation-z8">
 
                     <!-- Position Column -->
-                    <ng-container matColumnDef="dorsal">
-                        <th mat-header-cell *matHeaderCellDef> Dorsal </th>
-                        <td mat-cell *matCellDef="let element"> {{element.player?.dorsal}} </td>
+                    <ng-container matColumnDef="noPosition">
+                        <th mat-header-cell *matHeaderCellDef> Pos </th>
+                        <td mat-cell *matCellDef="let element; let i = index"> {{(i+1)}} </td>
                     </ng-container>
 
                     <!-- Name Column -->

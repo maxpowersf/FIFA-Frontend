@@ -20,7 +20,7 @@ export class TournamentsDetailComponent implements OnInit {
   goalscorers: Player[];
 
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
-  displayedColumnsGoalscorers: string[] = ['dorsal', 'fullName', 'positionName', 'team', 'goals'];
+  displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
 
   constructor(
     private router: Router,
