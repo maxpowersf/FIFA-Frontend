@@ -26,6 +26,10 @@ export class PlayerService {
     return this.httpClient.get<Player[]>(this.playerUrl + '/getbyteam/' + teamId);
   }
 
+  public getPlayersWithGoals(tournamentTypeId: number): Observable<Player[]> {
+    return this.httpClient.get<Player[]>(this.playerUrl + '/getplayerswithgoals/' + tournamentTypeId);
+  }
+
   public getOne(id: number): Observable<Player> {
     return this.httpClient.get<Player>(this.playerUrl + '/get/' + id);
   }
