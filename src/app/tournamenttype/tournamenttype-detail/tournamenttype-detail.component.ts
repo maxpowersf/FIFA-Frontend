@@ -6,6 +6,7 @@ import { TeamService } from 'src/app/teams/services/team.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Player } from 'src/app/players/models/player.model';
 import { PlayerService } from 'src/app/players/services/player.service';
+import { Tournament } from 'src/app/tournaments/models/tournament.model';
 
 @Component({
   selector: 'app-tournamenttype-detail',
@@ -15,8 +16,11 @@ import { PlayerService } from 'src/app/players/services/player.service';
 export class TournamenttypeDetailComponent implements OnInit {
 
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'titles'];
+  displayedColumnsHistory: string[] = ['tournament', 'champion', 'runnerUp', 'third', 'fourth'];
   displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
+  
   dataSource;
+  dataSourceHistory;
   dataSourceGoalscorers;
 
   @ViewChild('paginator', null) paginator: MatPaginator;
@@ -25,6 +29,7 @@ export class TournamenttypeDetailComponent implements OnInit {
   tournamentType: TournamentType;
   tournamentTypeFormat: number;
   teams: Team[];
+  tournaments: Tournament[];
   goalscorers: Player[];
 
   constructor(
@@ -35,11 +40,14 @@ export class TournamenttypeDetailComponent implements OnInit {
   ) {
     this.tournamentType = this.route.snapshot.data.tournamenttype;
     this.tournamentTypeFormat = this.tournamentType.format;
+    this.tournaments = this.route.snapshot.data.tournaments;
   }
 
   ngOnInit() {
     this.getTeams();
     this.getGoalscorers();
+
+    this.dataSourceHistory = new MatTableDataSource(this.tournaments);
   }
 
   getTeams() {

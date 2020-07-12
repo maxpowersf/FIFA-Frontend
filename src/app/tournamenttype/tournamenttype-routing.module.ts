@@ -7,6 +7,7 @@ import { TournamenttypeResolver } from './resolvers/tournamenttype.resolver';
 import { TournamenttypeDetailResolver } from './resolvers/tournamenttype-detail.resolver';
 import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
 import { TournamenttypeDetailComponent } from './tournamenttype-detail/tournamenttype-detail.component';
+import { TournamentsByTournamentTypeResolver } from '../tournaments/resolvers/tournamentsbytournamenttype.resolver';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
     path: ':id/history',
     component: TournamenttypeDetailComponent,
     resolve: {
-      tournamenttype: TournamenttypeDetailResolver
+      tournamenttype: TournamenttypeDetailResolver,
+      tournaments: TournamentsByTournamentTypeResolver
     }
   }
 ];

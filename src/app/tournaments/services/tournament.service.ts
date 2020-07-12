@@ -26,6 +26,10 @@ export class TournamentService {
     return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbyteam/' + teamId);
   }
 
+  public getAllByTournamentType(tournamentTypeId: number): Observable<Tournament[]> {
+    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbytournamenttype/' + tournamentTypeId);
+  }
+
   public getOne(id: number): Observable<Tournament> {
     return this.httpClient.get<Tournament>(this.tournamentUrl + '/get/' + id);
   }
