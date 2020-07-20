@@ -23,3 +23,7 @@ td.left{
     text-align: left;
     padding-left: 20px;
 }
+.clickable:hover{
+    background-color: rgba(0, 0, 0, .05);
+    cursor: pointer;
+}

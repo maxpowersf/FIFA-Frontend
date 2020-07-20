@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class PlayersListComponent implements OnInit {
 
-  displayedColumns: string[] = ['dorsal', 'name', 'positionName', 'team', 'totalGoals', 'worldCupGoals', 'confederationsGoals', 'confederationTournamentGoals', 'qualificationGoals', 'actions'];
+  displayedColumns: string[] = ['dorsal', 'name', 'fullname', 'positionName', 'team', 'totalGoals', 'worldCupGoals', 'confederationsGoals', 'confederationTournamentGoals', 'qualificationGoals', 'actions'];
   dataSource;
 
   players: Player[];

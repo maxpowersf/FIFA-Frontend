@@ -74,4 +74,6 @@ export class RankingsListComponent implements OnInit {
   }
 
   sortByPointsDesc = (f1: any, f2: any) => f2.totalPoints - f1.totalPoints;
+
+  navigateToDetail = (id) => this.router.navigate([id, 'dashboard'], { relativeTo: this.route });
 }

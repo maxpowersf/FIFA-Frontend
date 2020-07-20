@@ -4,6 +4,10 @@ import { RankingsListComponent } from './rankings-list/rankings-list.component';
 import { TeamsResolver } from '../teams/resolvers/teams.resolver';
 import { RankingsMatchComponent } from './rankings-match/rankings-match.component';
 import { MatchtypesResolver } from '../matchtype/resolvers/matchtypes.resolver';
+import { TeamsDashboardComponent } from '../teams/teams-dashboard/teams-dashboard.component';
+import { TeamResolver } from '../teams/resolvers/team.resolver';
+import { TournamentsByTeamResolver } from '../tournaments/resolvers/tournamentsbyteam.resolver';
+import { TeamSquadResolver } from '../teams/resolvers/teamsquad.resolver';
 
 const routes: Routes = [
   {
@@ -21,6 +25,15 @@ const routes: Routes = [
       teams : TeamsResolver
     }
   },
+  {
+    path: ':id/dashboard',
+    component: TeamsDashboardComponent,
+    resolve: {
+      team: TeamResolver,
+      tournaments: TournamentsByTeamResolver,
+      players: TeamSquadResolver
+    }
+  }
 ];
 
 @NgModule({
