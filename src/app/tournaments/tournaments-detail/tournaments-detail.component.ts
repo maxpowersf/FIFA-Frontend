@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Position } from '../models/position.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Tournament } from '../models/tournament.model';
@@ -6,6 +6,7 @@ import { PositionsGroups } from '../models/positionsGroups.model';
 import { Groups } from '../models/groups.model';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
 import { Player } from 'src/app/players/models/player.model';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-tournaments-detail',
@@ -14,13 +15,17 @@ import { Player } from 'src/app/players/models/player.model';
 })
 export class TournamentsDetailComponent implements OnInit {
 
+  displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
+  displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
+
+  dataSourceGoalscorers;
+
+  @ViewChild('paginatorGoalscorers', null) paginatorGoalscorers: MatPaginator;
+
   tournament: Tournament;
   positions: Position[];
   positionGroups: PositionsGroups = new PositionsGroups();
   goalscorers: Player[];
-
-  displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
-  displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
 
   constructor(
     private router: Router,
@@ -29,12 +34,15 @@ export class TournamentsDetailComponent implements OnInit {
     this.tournament = this.route.snapshot.data.tournament;
     this.positions = this.tournament.positions;
     this.goalscorers = this.route.snapshot.data.goalscorers;
-   }
+  }
 
   ngOnInit() {
-    if(this.tournament.tournamentType.format == TournamentFormat.Qualification){
+    if (this.tournament.tournamentType.format == TournamentFormat.Qualification) {
       this.processPositions();
     }
+
+    this.dataSourceGoalscorers = new MatTableDataSource(this.goalscorers);
+    this.dataSourceGoalscorers.paginator = this.paginatorGoalscorers;
   }
 
   processPositions = () => {
@@ -43,7 +51,7 @@ export class TournamentsDetailComponent implements OnInit {
     var arrIndex = 0;
 
     this.tournament.positions.forEach(element => {
-      if(element.group != firstGroup) {
+      if (element.group != firstGroup) {
         firstGroup = element.group;
         this.positionGroups.groups.push(new Groups(firstGroup));
         arrIndex++;

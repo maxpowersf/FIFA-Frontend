@@ -63,8 +63,8 @@
                     <ng-container matColumnDef="tournament">
                         <th mat-header-cell *matHeaderCellDef class="left"> Tournament </th>
                         <td mat-cell *matCellDef="let element" class="left">
-                            <span class="flag-icon flag-icon-{{element.hostFlag}}"></span> 
-                            {{element.host}} {{element.year}} 
+                            <span class="flag-icon flag-icon-{{element.hostFlag}}"></span>
+                            {{element.host}} {{element.year}}
                         </td>
                     </ng-container>
 
@@ -72,7 +72,8 @@
                     <ng-container matColumnDef="champion">
                         <th mat-header-cell *matHeaderCellDef class="left"> Champion </th>
                         <td mat-cell *matCellDef="let element" class="left">
-                            <span class="flag-icon flag-icon-{{element.positions[0].team?.flag}}"></span> {{element.positions[0].team?.name}}
+                            <span class="flag-icon flag-icon-{{element.positions[0].team?.flag}}"></span>
+                            {{element.positions[0].team?.name}}
                         </td>
                     </ng-container>
 
@@ -80,7 +81,8 @@
                     <ng-container matColumnDef="runnerUp">
                         <th mat-header-cell *matHeaderCellDef class="left"> Runner Up </th>
                         <td mat-cell *matCellDef="let element" class="left">
-                            <span class="flag-icon flag-icon-{{element.positions[1].team?.flag}}"></span> {{element.positions[1].team?.name}}
+                            <span class="flag-icon flag-icon-{{element.positions[1].team?.flag}}"></span>
+                            {{element.positions[1].team?.name}}
                         </td>
                     </ng-container>
 
@@ -88,7 +90,8 @@
                     <ng-container matColumnDef="third">
                         <th mat-header-cell *matHeaderCellDef class="left"> Third </th>
                         <td mat-cell *matCellDef="let element" class="left">
-                            <span class="flag-icon flag-icon-{{element.positions[2].team?.flag}}"></span> {{element.positions[2].team?.name}}
+                            <span class="flag-icon flag-icon-{{element.positions[2].team?.flag}}"></span>
+                            {{element.positions[2].team?.name}}
                         </td>
                     </ng-container>
 
@@ -96,7 +99,8 @@
                     <ng-container matColumnDef="fourth">
                         <th mat-header-cell *matHeaderCellDef class="left"> Fourth </th>
                         <td mat-cell *matCellDef="let element" class="left">
-                            <span class="flag-icon flag-icon-{{element.positions[3].team?.flag}}"></span> {{element.positions[3].team?.name}}
+                            <span class="flag-icon flag-icon-{{element.positions[3].team?.flag}}"></span>
+                            {{element.positions[3].team?.name}}
                         </td>
                     </ng-container>
 
@@ -110,7 +114,8 @@
                     <!-- Position Column -->
                     <ng-container matColumnDef="noPosition">
                         <th mat-header-cell *matHeaderCellDef> Pos </th>
-                        <td mat-cell *matCellDef="let element; let i = index"> {{(i+1) + (paginatorGoalscorers.pageIndex * paginatorGoalscorers.pageSize)}} </td>
+                        <td mat-cell *matCellDef="let element; let i = index">
+                            {{(i+1) + (paginatorGoalscorers.pageIndex * paginatorGoalscorers.pageSize)}} </td>
                     </ng-container>
 
                     <!-- Name Column -->
