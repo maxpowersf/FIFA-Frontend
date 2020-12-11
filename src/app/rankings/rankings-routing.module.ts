@@ -8,6 +8,8 @@ import { TeamsDashboardComponent } from '../teams/teams-dashboard/teams-dashboar
 import { TeamResolver } from '../teams/resolvers/team.resolver';
 import { TournamentsByTeamResolver } from '../tournaments/resolvers/tournamentsbyteam.resolver';
 import { TeamSquadResolver } from '../teams/resolvers/teamsquad.resolver';
+import { TournamenttypesResolver } from '../tournamenttype/resolvers/tournamenttypes.resolver';
+import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
 
 const routes: Routes = [
   {
@@ -22,6 +24,8 @@ const routes: Routes = [
     component: RankingsMatchComponent,
     resolve: {
       matchtypes : MatchtypesResolver,
+      tournamenttypes: TournamenttypesResolver,
+      confederations: ConfederationsResolver,
       teams : TeamsResolver
     }
   },

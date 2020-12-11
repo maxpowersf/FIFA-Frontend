@@ -12,10 +12,18 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  
+
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [mode]="'over'" [opened]="(isHandset$ | async)">
     <div color="primary" class="profile-section"></div>
     <mat-nav-list>
+      <h2 matSubheader>Statistics</h2>
+      <a mat-list-item [routerLink]="['rankings']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">table_chart</mat-icon> Ranking
+      </a>
+      <a mat-list-item [routerLink]="['tournaments']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">event</mat-icon> Tournaments
+      </a>
+
       <h2 matSubheader>Management</h2>
       <a mat-list-item [routerLink]="['matchtypes']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">build</mat-icon> Match Types
@@ -31,14 +39,6 @@
       </a>
       <a mat-list-item [routerLink]="['players']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">person</mat-icon> Players
-      </a>
-
-      <h2 matSubheader>Statistics</h2>
-      <a mat-list-item [routerLink]="['rankings']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">table_chart</mat-icon> Ranking
-      </a>
-      <a mat-list-item [routerLink]="['tournaments']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">event</mat-icon> Tournaments
       </a>
     </mat-nav-list>
   </mat-sidenav>

@@ -27,7 +27,11 @@ export class TournamentService {
   }
 
   public getAllByTournamentType(tournamentTypeId: number): Observable<Tournament[]> {
-    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbytournamenttype/' + tournamentTypeId);
+    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbytournamenttypewithpositions/' + tournamentTypeId);
+  }
+
+  public getAllByTournamentTypeAndConfederation(tournamentTypeId: number, confederationId: number): Observable<Tournament[]> {
+    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbytournamenttypeandconfederation/' + tournamentTypeId + '/' + confederationId);
   }
 
   public getOne(id: number): Observable<Tournament> {
