@@ -3,13 +3,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
 import { MatSnackBar } from '@angular/material';
-import { Match } from '../models/match.model';
+import { Match } from '../../matches/models/match.model';
 import { RankingService } from '../services/ranking.service';
 import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.model';
 import { Tournament } from 'src/app/tournaments/models/tournament.model';
 import { TournamentService } from 'src/app/tournaments/services/tournament.service';
 import { Confederation } from 'src/app/confederations/models/confederation.model';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
+import { MatchRoundMapping } from 'src/app/shared/models/matchround';
 
 @Component({
   selector: 'app-rankings-match',
@@ -24,6 +25,7 @@ export class RankingsMatchComponent implements OnInit {
   confederations: Confederation[];
   tournaments: Tournament[] = [];
   teams: Team[];
+  matchrounds;
 
   match: Match;
 
@@ -31,10 +33,13 @@ export class RankingsMatchComponent implements OnInit {
   selectedTeam1: Team;
   selectedTeam2: Team;
 
-  @ViewChild('teamField', { read: ElementRef, static: false }) team1Field: ElementRef;
+  @ViewChild('roundField', { read: ElementRef, static: false }) roundField: ElementRef;
 
   get date() { return this.matchForm.get('date'); }
   get tournament() { return this.matchForm.get('tournament'); }
+  get matchround() { return this.matchForm.get('matchround'); }
+  get group() { return this.matchForm.get('group'); }
+  get matchday() { return this.matchForm.get('matchday'); }
   get team1() { return this.matchForm.get('team1'); }
   get team2() { return this.matchForm.get('team2'); }
   get goals1() { return this.matchForm.get('goals1'); }
@@ -56,12 +61,16 @@ export class RankingsMatchComponent implements OnInit {
 
     this.tournamenttypes = this.route.snapshot.data.tournamenttypes;
     this.confederations = this.route.snapshot.data.confederations;
+    this.matchrounds = MatchRoundMapping;
     this.teams = this.route.snapshot.data.teams;
   }
 
   modelCreate = () => this.fb.group({
     date: ['', Validators.required],
     tournament: ['', Validators.required],
+    matchround: ['', Validators.required],
+    group: [''],
+    matchday: [''],
     team1: ['', Validators.required],
     team2: ['', Validators.required],
     goals1: [0, Validators.required],
@@ -103,10 +112,14 @@ export class RankingsMatchComponent implements OnInit {
   }
 
   resetMatch = () => {
+    this.group.patchValue('');
+    this.matchday.patchValue('');
     this.team1.patchValue('');
     this.team2.patchValue('');
     this.goals1.patchValue(0);
     this.goals2.patchValue(0);
+    this.penalties1.patchValue(0);
+    this.penalties2.patchValue(0);
   }
 
   goToList = () => this.router.navigate(['../'], { relativeTo: this.route });
@@ -125,6 +138,9 @@ export class RankingsMatchComponent implements OnInit {
     const newMatch = new Match();
     newMatch.date = this.date.value;
     newMatch.tournamentId = this.tournament.value;
+    newMatch.matchRoundId = this.matchround.value;
+    newMatch.group = this.group.value;
+    newMatch.matchday = this.matchday.value;
     newMatch.team1Id = this.selectedTeam1.id;
     newMatch.team2Id = this.selectedTeam2.id;
     newMatch.goalsTeam1 = this.goals1.value;
@@ -135,7 +151,7 @@ export class RankingsMatchComponent implements OnInit {
     this.rankingService.add(newMatch)
       .subscribe(() => {
         this.resetMatch();
-        this.team1Field.nativeElement.focus();
+        this.roundField.nativeElement.focus();
       });
   }
 }

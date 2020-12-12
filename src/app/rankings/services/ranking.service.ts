@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Match } from '../models/match.model';
+import { Match } from '../../matches/models/match.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})

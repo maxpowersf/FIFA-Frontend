@@ -22,6 +22,7 @@ const routes: Routes = [
     path: 'new',
     component: TournamenttypeFormComponent,
     resolve: {
+      matchtypes: MatchtypesResolver,
       confederations: ConfederationsResolver
     }
   },
