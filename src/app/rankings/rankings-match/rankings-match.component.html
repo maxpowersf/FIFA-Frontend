@@ -36,19 +36,50 @@
         </mat-select>
       </mat-form-field>
 
+      <!-- Match Round Column -->
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <mat-select #roundField placeholder="Round" [formControl]="matchround">
+              <mat-option *ngFor="let round of matchrounds" [value]="round.value">
+                {{round.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6" *ngIf="matchForm.controls['matchround'].value == 1">
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Group" type="text" [formControl]="group">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Matchday" type="number" min="1" [formControl]="matchday">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Date Column -->
-      <mat-form-field class="full-width">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" [formControl]="date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="full-width">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [formControl]="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
 
       <!-- Team 1 Column -->
       <div class="row">
         <div class="col-md-4">
           <mat-form-field class="full-width">
-            <mat-select #teamField placeholder="Equipo" (selectionChange)="changeTeam1($event.value)"
+            <mat-select placeholder="Equipo" (selectionChange)="changeTeam1($event.value)"
               [formControl]="team1">
               <mat-option *ngFor="let team of teams" [value]="team.id">
                 <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
@@ -64,7 +95,7 @@
         <div class="col-md-1">
           <mat-form-field class="result"
             *ngIf="matchForm.controls['goals1'].value == matchForm.controls['goals2'].value">
-            <input matInput type="number" min="0" [formControl]="penalties2">{{condition}}
+            <input matInput type="number" min="0" [formControl]="penalties1">{{condition}}
           </mat-form-field>
         </div>
         <div class="col-md-2">

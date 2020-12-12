@@ -9,6 +9,7 @@ import { TournamenttypesResolver } from '../tournamenttype/resolvers/tournamentt
 import { TournamentsPositionComponent } from './tournaments-position/tournaments-position.component';
 import { TournamentsDetailComponent } from './tournaments-detail/tournaments-detail.component';
 import { GoalscorerResolver } from '../players/resolvers/goalscorer.resolver';
+import { MatchByTournamentResolver } from '../matches/resolvers/matchbytournament.resolver';
 
 const routes: Routes = [
   {
@@ -40,6 +41,7 @@ const routes: Routes = [
     component: TournamentsDetailComponent,
     resolve: {
       tournament: TournamentResolver,
+      matches: MatchByTournamentResolver,
       goalscorers: GoalscorerResolver
     }
   },

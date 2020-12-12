@@ -7,6 +7,8 @@ import { Groups } from '../models/groups.model';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
 import { Player } from 'src/app/players/models/player.model';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Match } from 'src/app/matches/models/match.model';
+import { MatchRoundMapping } from 'src/app/shared/models/matchround';
 
 @Component({
   selector: 'app-tournaments-detail',
@@ -16,16 +18,21 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 export class TournamentsDetailComponent implements OnInit {
 
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
+  displayedColumnsMatches: string[] = ['date', 'group', 'matchday', 'team1', 'goals1', 'divider', 'goals2', 'team2'];
   displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
 
   dataSourceGoalscorers;
+  dataSourceMatches;
 
   @ViewChild('paginatorGoalscorers', null) paginatorGoalscorers: MatPaginator;
 
   tournament: Tournament;
   positions: Position[];
   positionGroups: PositionsGroups = new PositionsGroups();
+  matches: Match[];
   goalscorers: Player[];
+
+  matchrounds = MatchRoundMapping;
 
   constructor(
     private router: Router,
@@ -33,6 +40,7 @@ export class TournamentsDetailComponent implements OnInit {
   ) {
     this.tournament = this.route.snapshot.data.tournament;
     this.positions = this.tournament.positions;
+    this.matches = this.route.snapshot.data.matches;
     this.goalscorers = this.route.snapshot.data.goalscorers;
   }
 
@@ -40,6 +48,8 @@ export class TournamentsDetailComponent implements OnInit {
     if (this.tournament.tournamentType.format == TournamentFormat.Qualification) {
       this.processPositions();
     }
+
+    this.dataSourceMatches = new MatTableDataSource(this.matches);
 
     this.dataSourceGoalscorers = new MatTableDataSource(this.goalscorers);
     this.dataSourceGoalscorers.paginator = this.paginatorGoalscorers;
