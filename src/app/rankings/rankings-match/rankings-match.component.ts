@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatchType } from 'src/app/matchtype/models/matchtype.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
 import { MatSnackBar } from '@angular/material';
@@ -21,7 +20,6 @@ export class RankingsMatchComponent implements OnInit {
 
   matchForm: FormGroup;
 
-  matchtypes: MatchType[];
   tournamenttypes: TournamentType[];
   confederations: Confederation[];
   tournaments: Tournament[] = [];
@@ -36,7 +34,6 @@ export class RankingsMatchComponent implements OnInit {
   @ViewChild('teamField', { read: ElementRef, static: false }) team1Field: ElementRef;
 
   get date() { return this.matchForm.get('date'); }
-  get matchtype() { return this.matchForm.get('matchtype'); }
   get tournament() { return this.matchForm.get('tournament'); }
   get team1() { return this.matchForm.get('team1'); }
   get team2() { return this.matchForm.get('team2'); }
@@ -57,7 +54,6 @@ export class RankingsMatchComponent implements OnInit {
   ngOnInit() {
     this.matchForm = this.modelCreate();
 
-    this.matchtypes = this.route.snapshot.data.matchtypes;
     this.tournamenttypes = this.route.snapshot.data.tournamenttypes;
     this.confederations = this.route.snapshot.data.confederations;
     this.teams = this.route.snapshot.data.teams;
@@ -65,7 +61,6 @@ export class RankingsMatchComponent implements OnInit {
 
   modelCreate = () => this.fb.group({
     date: ['', Validators.required],
-    matchtype: ['', Validators.required],
     tournament: ['', Validators.required],
     team1: ['', Validators.required],
     team2: ['', Validators.required],
@@ -129,7 +124,6 @@ export class RankingsMatchComponent implements OnInit {
 
     const newMatch = new Match();
     newMatch.date = this.date.value;
-    newMatch.matchTypeId = this.matchtype.value;
     newMatch.tournamentId = this.tournament.value;
     newMatch.team1Id = this.selectedTeam1.id;
     newMatch.team2Id = this.selectedTeam2.id;

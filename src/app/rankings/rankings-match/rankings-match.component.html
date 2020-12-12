@@ -9,15 +9,6 @@
   <mat-card-subtitle>New match</mat-card-subtitle>
   <mat-card-content>
     <form [formGroup]="matchForm">
-      <!-- Match Type Column -->
-      <mat-form-field class="full-width">
-        <mat-select placeholder="Tipo de Partido" [formControl]="matchtype">
-          <mat-option *ngFor="let matchtype of matchtypes" [value]="matchtype.id">
-            {{matchtype.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
       <!-- Tournament Type Column -->
       <mat-form-field class="full-width">
         <mat-select placeholder="Tipo de Torneo" (selectionChange)="fillTournamentsByTournamentType($event.value)">

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { RankingsListComponent } from './rankings-list/rankings-list.component';
 import { TeamsResolver } from '../teams/resolvers/teams.resolver';
 import { RankingsMatchComponent } from './rankings-match/rankings-match.component';
-import { MatchtypesResolver } from '../matchtype/resolvers/matchtypes.resolver';
 import { TeamsDashboardComponent } from '../teams/teams-dashboard/teams-dashboard.component';
 import { TeamResolver } from '../teams/resolvers/team.resolver';
 import { TournamentsByTeamResolver } from '../tournaments/resolvers/tournamentsbyteam.resolver';
@@ -23,7 +22,6 @@ const routes: Routes = [
     path: 'new',
     component: RankingsMatchComponent,
     resolve: {
-      matchtypes : MatchtypesResolver,
       tournamenttypes: TournamenttypesResolver,
       confederations: ConfederationsResolver,
       teams : TeamsResolver

@@ -8,6 +8,7 @@ import { TournamenttypeDetailResolver } from './resolvers/tournamenttype-detail.
 import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
 import { TournamenttypeDetailComponent } from './tournamenttype-detail/tournamenttype-detail.component';
 import { TournamentsByTournamentTypeResolver } from '../tournaments/resolvers/tournamentsbytournamenttype.resolver';
+import { MatchtypesResolver } from '../matchtype/resolvers/matchtypes.resolver';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     component: TournamenttypeFormComponent,
     resolve: {
       tournamenttype: TournamenttypeResolver,
+      matchtypes: MatchtypesResolver,
       confederations: ConfederationsResolver
     }
   },

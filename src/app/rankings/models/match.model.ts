@@ -1,6 +1,5 @@
 export class Match {
     date: Date;
-    matchTypeId: number;
     tournamentId: number;
     team1Id: number;
     team2Id: number;
