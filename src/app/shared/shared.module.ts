@@ -17,11 +17,12 @@ import {
   MatSnackBarModule,
   MatGridListModule,
   MatCheckboxModule,
-  MatTabsModule
+  MatTabsModule,
+  MatDatepickerModule
 } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MccColorPickerModule } from 'material-community-components';
 import { BlockTemplateComponent } from './templates/block-template/block-template.component';
@@ -42,6 +43,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
     MatGridListModule,
     MatTabsModule,
     MatTableModule,
@@ -57,6 +59,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     MatSliderModule,
     MatRippleModule,
     MatSelectModule,
+    MatDatepickerModule,
     MatChipsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
@@ -81,6 +84,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     MatSliderModule,
     MatSelectModule,
     MatInputModule,
+    MatDatepickerModule,
     MatRippleModule,
     MatChipsModule,
     MatTableModule,

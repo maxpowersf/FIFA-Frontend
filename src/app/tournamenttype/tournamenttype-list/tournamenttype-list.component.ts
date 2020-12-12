@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class TournamenttypeListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'formatName', 'confederationName', 'noTeams', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'matchtypeName', 'formatName', 'confederationName', 'noTeams', 'actions'];
   dataSource;
 
   data: TournamentType[];
