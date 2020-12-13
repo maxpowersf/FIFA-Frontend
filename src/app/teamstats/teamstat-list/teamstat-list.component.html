@@ -1,0 +1,198 @@
+<mat-card>
+    <mat-card-title>
+        <div class="header">
+            <div class="title">
+                Standings
+            </div>
+            <div class="actions">
+
+            </div>
+        </div>
+    </mat-card-title>
+    <mat-card-content>
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+            <mat-tab label="All Time">
+                <table 
+                    mat-table 
+                    matSort 
+                    [dataSource]="dataSource" 
+                    #Sort="matSort" 
+                    matSortStart="desc"
+                    class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="noPosition">
+                        <th mat-header-cell *matHeaderCellDef class="cell-number"> Pos </th>
+                        <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="team">
+                        <th mat-header-cell *matHeaderCellDef class="left"> Team </th>
+                        <td mat-cell *matCellDef="let element" class="left">
+                            <span class="flag-icon flag-icon-{{element.team?.flag}}"></span> {{element.team?.name}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="confederationName">
+                        <th mat-header-cell *matHeaderCellDef> Confederation </th>
+                        <td mat-cell *matCellDef="let element" [attr.alt]="element.team?.confederation.name">
+                            <mat-chip [style.backgroundColor]='element.team?.confederation.color'>
+                                {{element.team?.confederation.name}}
+                            </mat-chip>
+                        </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="points">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PTS </th>
+                        <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="gamesPlayed">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GP </th>
+                        <td mat-cell *matCellDef="let element"> {{element.gamesPlayed}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="wins">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> W </th>
+                        <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="draws">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> D </th>
+                        <td mat-cell *matCellDef="let element"> {{element.draws}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="loses">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> L </th>
+                        <td mat-cell *matCellDef="let element"> {{element.loses}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="goalsFavor">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GF </th>
+                        <td mat-cell *matCellDef="let element"> {{element.goalsFavor}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="goalsAgainst">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GA </th>
+                        <td mat-cell *matCellDef="let element"> {{element.goalsAgainst}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="goalDifference">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GD </th>
+                        <td mat-cell *matCellDef="let element"> {{element.goalDifference}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="effectiveness">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> % </th>
+                        <td mat-cell *matCellDef="let element"> {{element.effectiveness}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-tab>
+            <mat-tab label="World Cup">
+                <table 
+                    mat-table 
+                    matSort 
+                    [dataSource]="dataSourceWorldCup" 
+                    #SortWorldCup="matSort" 
+                    matSortStart="desc"
+                    class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="noPosition">
+                        <th mat-header-cell *matHeaderCellDef class="cell-number"> Pos </th>
+                        <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="team">
+                        <th mat-header-cell *matHeaderCellDef class="left"> Team </th>
+                        <td mat-cell *matCellDef="let element" class="left">
+                            <span class="flag-icon flag-icon-{{element.team?.flag}}"></span> {{element.team?.name}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="confederationName">
+                        <th mat-header-cell *matHeaderCellDef> Confederation </th>
+                        <td mat-cell *matCellDef="let element" [attr.alt]="element.team?.confederation.name">
+                            <mat-chip [style.backgroundColor]='element.team?.confederation.color'>
+                                {{element.team?.confederation.name}}
+                            </mat-chip>
+                        </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="points">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PTS </th>
+                        <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="gamesPlayed">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GP </th>
+                        <td mat-cell *matCellDef="let element"> {{element.gamesPlayed}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="wins">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> W </th>
+                        <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="draws">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> D </th>
+                        <td mat-cell *matCellDef="let element"> {{element.draws}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="loses">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> L </th>
+                        <td mat-cell *matCellDef="let element"> {{element.loses}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="goalsFavor">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GF </th>
+                        <td mat-cell *matCellDef="let element"> {{element.goalsFavor}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="goalsAgainst">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GA </th>
+                        <td mat-cell *matCellDef="let element"> {{element.goalsAgainst}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="goalDifference">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> GD </th>
+                        <td mat-cell *matCellDef="let element"> {{element.goalDifference}} </td>
+                    </ng-container>
+
+                    <!-- Confederation Column -->
+                    <ng-container matColumnDef="effectiveness">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-number"> % </th>
+                        <td mat-cell *matCellDef="let element"> {{element.effectiveness}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsWorldCup"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsWorldCup;"></tr>
+                </table>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>

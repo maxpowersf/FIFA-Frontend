@@ -12,6 +12,7 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 export class TeamsListComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'confederationName', 'totalPoints', 'actualRank', 'rankingChange', 'highestRank', 'lowestRank', 'actions'];
+  
   dataSource;
 
   teams: Team[];
