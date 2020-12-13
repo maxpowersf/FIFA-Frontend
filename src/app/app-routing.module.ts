@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: 'players',
     loadChildren: './players/players.module#PlayersModule'
+  },
+  {
+    path: 'teamstats',
+    loadChildren: './teamstats/teamstats.module#TeamstatsModule'
   }
 ];
 
