@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'teamstats',
     loadChildren: './teamstats/teamstats.module#TeamstatsModule'
+  },
+  {
+    path: 'head2head',
+    loadChildren: './head2head/head2head.module#Head2HeadModule'
   }
 ];
 

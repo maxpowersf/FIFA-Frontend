@@ -26,22 +26,25 @@
       <a mat-list-item [routerLink]="['tournaments']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">event</mat-icon> Tournaments
       </a>
-
-      <h2 matSubheader>Management</h2>
-      <a mat-list-item [routerLink]="['matchtypes']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">build</mat-icon> Match Types
-      </a>
       <a mat-list-item [routerLink]="['tournamenttypes']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">category</mat-icon> Tournament Types
       </a>
-      <a mat-list-item [routerLink]="['confederations']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">public</mat-icon> Confederations
+      <a mat-list-item [routerLink]="['head2head']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">category</mat-icon> Head to Head
       </a>
+
+      <h2 matSubheader>Management</h2>
       <a mat-list-item [routerLink]="['teams']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">group</mat-icon> Teams
       </a>
       <a mat-list-item [routerLink]="['players']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">person</mat-icon> Players
+      </a>
+      <a mat-list-item [routerLink]="['confederations']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">public</mat-icon> Confederations
+      </a>
+      <a mat-list-item [routerLink]="['matchtypes']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">build</mat-icon> Match Types
       </a>
     </mat-nav-list>
   </mat-sidenav>
