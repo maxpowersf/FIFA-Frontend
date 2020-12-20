@@ -11,6 +11,7 @@ import { TournamentService } from 'src/app/tournaments/services/tournament.servi
 import { Confederation } from 'src/app/confederations/models/confederation.model';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
 import { MatchRoundMapping } from 'src/app/shared/models/matchround';
+import { TeamService } from 'src/app/teams/services/team.service';
 
 @Component({
   selector: 'app-rankings-match',
@@ -53,6 +54,7 @@ export class RankingsMatchComponent implements OnInit {
     private route: ActivatedRoute,
     private rankingService: RankingService,
     private tournamentService: TournamentService,
+    private teamService: TeamService,
     private snackBar: MatSnackBar
   ) { }
 
@@ -99,6 +101,28 @@ export class RankingsMatchComponent implements OnInit {
       .subscribe((res) => {
         this.tournaments = res;
       });
+  }
+
+  fillTeamsByTournament = (val) => {
+    let tournament = this.tournaments.find(x => x.id == val);
+    if (tournament.confederationID != null &&
+      (tournament.confederationID != 4 || (tournament.confederationID == 4 && tournament.tournamentType.format == TournamentFormat.Qualification))) {
+      this.teamService.getAllByConfederation(tournament.confederationID)
+        .subscribe((res) => {
+          this.teams = res;
+        });
+    }
+    else {
+      this.teamService.getAll()
+        .subscribe((res) => {
+          if (tournament.host == "America" || tournament.confederationID == 4) {
+            this.teams = res.filter(s => s.confederationID == 3 || s.confederationID == 4);
+          }
+          else {
+            this.teams = res;
+          }
+        });
+    }
   }
 
   changeTeam1 = (val) => {

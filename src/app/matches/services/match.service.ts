@@ -21,4 +21,12 @@ export class MatchService {
   public getByTournament(tournamentId: number): Observable<Match[]> {
     return this.httpClient.get<Match[]>(this.matchUrl + '/getbytournament/' + tournamentId);
   }
+
+  public getByTeam(team1Id: number): Observable<Match[]> {
+    return this.httpClient.get<Match[]>(this.matchUrl + '/getbyteam/' + team1Id);
+  }
+
+  public getByTeams(team1Id: number, team2Id: number = null): Observable<Match[]> {
+    return this.httpClient.get<Match[]>(this.matchUrl + '/getbyteams/' + team1Id + '/' + team2Id);
+  }
 }

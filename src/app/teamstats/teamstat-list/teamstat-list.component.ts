@@ -42,10 +42,7 @@ export class TeamstatListComponent implements OnInit {
   teamStats: TeamStat[];
   teamStatsWorldCup: TeamStatWorldCup[];
 
-  @ViewChild(MatPaginator, null) paginator: MatPaginator;
   @ViewChild('Sort', null) public sort: MatSort;
-
-  @ViewChild(MatPaginator, null) paginatorWorldCup: MatPaginator;
   @ViewChild('SortWorldCup', null) public sortWorldCup: MatSort;
 
   constructor(
@@ -58,11 +55,9 @@ export class TeamstatListComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.teamStats);
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
     this.dataSourceWorldCup = new MatTableDataSource(this.teamStatsWorldCup);
-    this.dataSourceWorldCup.paginator = this.paginatorWorldCup;
     this.dataSourceWorldCup.sort = this.sortWorldCup;
   }
 
