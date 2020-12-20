@@ -19,19 +19,22 @@ export class Head2headDetailComponent implements OnInit {
   searchForm: FormGroup;
 
   teams: Team[];
-  h2h: H2H;
-  matches: Match[];
+  h2h: H2H[] = [];
+  matches: Match[] = [];
 
   matchrounds = MatchRoundMapping;
 
   get team1() { return this.searchForm.get('team1'); }
   get team2() { return this.searchForm.get('team2'); }
 
-  displayedColumns: string[] = ['year', 'date', 'tournament', 'group', 'team1', 'goals1', 'divider', 'goals2', 'team2'];
+  displayedColumns: string[] = ['team2', 'confederation', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst', 'goalDifference'];
+  displayedColumnsMatches: string[] = ['year', 'date', 'tournament', 'group', 'team1', 'goalsTeam1', 'divider', 'goalsTeam2', 'team2'];
 
   dataSource;
+  dataSourceMatches;
 
   @ViewChild('paginator', null) paginator: MatPaginator;
+  @ViewChild('paginatorMatches', null) paginatorMatches: MatPaginator;
 
   constructor(
     private fb: FormBuilder,
@@ -46,7 +49,7 @@ export class Head2headDetailComponent implements OnInit {
 
     this.teams = this.route.snapshot.data.teams;
 
-    this.createDataSource([]);
+    this.createDataSource([], []);
   }
 
   modelCreate = () => this.fb.group({
@@ -54,9 +57,21 @@ export class Head2headDetailComponent implements OnInit {
     team2: ['']
   });
 
-  createDataSource = (res) => {
-    this.dataSource = new MatTableDataSource(res);
+  createDataSource = (h2h, matches) => {
+    this.dataSource = new MatTableDataSource(h2h);
     this.dataSource.paginator = this.paginator;
+
+    this.dataSourceMatches = new MatTableDataSource(matches);
+    this.dataSourceMatches.paginator = this.paginatorMatches;
+  }
+
+  refresh = (data, type: string) => {
+    if (type == "h2h") {
+      this.dataSource.data = data;
+    }
+    else if (type == "matches") {
+      this.dataSourceMatches.data = data;
+    }
   }
 
   onSubmit = () => {
@@ -71,21 +86,27 @@ export class Head2headDetailComponent implements OnInit {
     }
 
     if (this.team2.value == "") {
-      this.matchService.getByTeam(this.team1.value)
+      this.h2hService.getByTeam(this.team1.value)
         .subscribe((res) => {
-          this.createDataSource(res);
+          this.h2h = res;
+
+          this.refresh(this.h2h, 'h2h');
         });
     }
     else {
       this.h2hService.getByTeams(this.team1.value, this.team2.value)
         .subscribe((res) => {
-          this.h2h = res;
-          console.log(res);
+          this.h2h = [];
+          this.h2h.push(res);
+
+          this.refresh(this.h2h, 'h2h');
         });
 
       this.matchService.getByTeams(this.team1.value, this.team2.value)
         .subscribe((res) => {
-          this.createDataSource(res);
+          this.matches = res;
+
+          this.refresh(this.matches, 'matches');
         });
     }
   }

@@ -29,7 +29,7 @@
 
       <!-- Tournament Column -->
       <mat-form-field class="full-width" *ngIf="tournaments.length > 0">
-        <mat-select placeholder="Torneo" [formControl]="tournament">
+        <mat-select placeholder="Torneo" (selectionChange)="fillTeamsByTournament($event.value)" [formControl]="tournament">
           <mat-option *ngFor="let tournament of tournaments" [value]="tournament.id">
             {{tournament.name}}
           </mat-option>

@@ -17,6 +17,10 @@ export class Head2headService {
   constructor(
     private httpClient: HttpClient,
   ) { }
+  
+  public getByTeam(teamId: number): Observable<H2H[]> {
+    return this.httpClient.get<H2H[]>(this.h2hUrl + '/getbyteam/' + teamId);
+  }
 
   public getByTeams(team1Id: number, team2Id: number = null): Observable<H2H> {
     return this.httpClient.get<H2H>(this.h2hUrl + '/getbyteams/' + team1Id + '/' + team2Id);
