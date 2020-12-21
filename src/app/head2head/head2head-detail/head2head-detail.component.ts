@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator, MatSnackBar, MatTableDataSource } from '@angular/material';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Match } from 'src/app/matches/models/match.model';
-import { MatchService } from 'src/app/matches/services/match.service';
-import { MatchRoundMapping } from 'src/app/shared/models/matchround';
-import { Team } from 'src/app/teams/models/team.model';
+import { ActivatedRoute } from '@angular/router';
+import { Match } from '../../matches/models/match.model';
+import { MatchService } from '../../matches/services/match.service';
+import { MatchRoundMapping } from '../../shared/models/matchround';
+import { Team } from '../../teams/models/team.model';
 import { H2H } from '../models/h2h.model';
 import { Head2headService } from '../services/head2head.service';
 

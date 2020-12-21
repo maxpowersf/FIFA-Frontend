@@ -101,7 +101,7 @@
         <mat-paginator #paginator [pageSizeOptions]="[10, 20, 100]" [pageSize]="20" [showFirstLastButtons]="true"
             [length]="dataSource.data.length"></mat-paginator>
 
-        <div [hidden]="!dataSourceMatches.data.length > 0">
+        <div [hidden]="!(dataSourceMatches.data.length > 0)">
             <table mat-table [dataSource]="dataSourceMatches" class="mat-elevation-z8">
 
                 <ng-container matColumnDef="year">

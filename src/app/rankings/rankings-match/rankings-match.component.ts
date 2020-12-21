@@ -106,6 +106,7 @@ export class RankingsMatchComponent implements OnInit {
   fillTeamsByTournament = (val) => {
     let tournament = this.tournaments.find(x => x.id == val);
     if (tournament.confederationID != null &&
+      tournament.confederationID != 5 &&
       (tournament.confederationID != 4 || (tournament.confederationID == 4 && tournament.tournamentType.format == TournamentFormat.Qualification))) {
       this.teamService.getAllByConfederation(tournament.confederationID)
         .subscribe((res) => {
