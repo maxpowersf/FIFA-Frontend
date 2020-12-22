@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ConfederationsResolver } from '../confederations/resolvers/confederations.resolver';
 import { TeamStatsResolver } from './resolvers/teamstats.resolver';
 import { TeamStatsWorldCupResolver } from './resolvers/teamstatsworldcup.resolver';
 import { TeamstatListComponent } from './teamstat-list/teamstat-list.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: TeamstatListComponent,
     resolve: {
       teamstats: TeamStatsResolver,
-      teamstatsWorldCup: TeamStatsWorldCupResolver
+      teamstatsWorldCup: TeamStatsWorldCupResolver,
+      confederations: ConfederationsResolver
     }
   }
 ];

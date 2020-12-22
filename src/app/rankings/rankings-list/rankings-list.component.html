@@ -19,19 +19,23 @@
   </mat-card-title>
   <mat-card-subtitle>Standings</mat-card-subtitle>
   <mat-card-content>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Confederation" (selectionChange)="filterByConfederation($event.value)">
+        <mat-option [value]="0">All</mat-option>
+        <mat-option *ngFor="let confederation of confederations" [value]="confederation.id">
+          {{confederation.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-      <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
       <ng-container matColumnDef="pos">
         <th mat-header-cell *matHeaderCellDef> Pos </th>
         <td mat-cell *matCellDef="let element" matTooltip="Dashboard" [matTooltipPosition]="'above'"
-        (click)="navigateToDetail(element.id)" class="clickable"> {{element.actualRank}} </td>
+          (click)="navigateToDetail(element.id)" class="clickable"> {{element.actualRank}} </td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef class="left"> Team </th>
         <td mat-cell *matCellDef="let element" class="left">
@@ -39,7 +43,6 @@
         </td>
       </ng-container>
 
-      <!-- Confederation Column -->
       <ng-container matColumnDef="confederation">
         <th mat-header-cell *matHeaderCellDef> Confederation </th>
         <td mat-cell *matCellDef="let element" [attr.alt]="element.confederationName">
@@ -49,36 +52,31 @@
         </td>
       </ng-container>
 
-      <!-- Confederation Column -->
       <ng-container matColumnDef="year1">
         <th mat-header-cell *matHeaderCellDef> {{year1}} </th>
         <td mat-cell *matCellDef="let element"> {{element.ranking1?.points | number:'1.2'}} </td>
       </ng-container>
 
-      <!-- Confederation Column -->
       <ng-container matColumnDef="year2">
         <th mat-header-cell *matHeaderCellDef> {{year2}} </th>
         <td mat-cell *matCellDef="let element"> {{element.ranking2?.points | number:'1.2'}} </td>
       </ng-container>
 
-      <!-- Confederation Column -->
       <ng-container matColumnDef="year3">
         <th mat-header-cell *matHeaderCellDef> {{year3}} </th>
         <td mat-cell *matCellDef="let element"> {{element.ranking3?.points | number:'1.2'}} </td>
       </ng-container>
 
-      <!-- Points Column -->
       <ng-container matColumnDef="totalpoints">
         <th mat-header-cell *matHeaderCellDef> Points </th>
         <td mat-cell *matCellDef="let element"> {{element.totalPoints | number:'1.2'}} </td>
       </ng-container>
 
-      <!-- Points Column -->
       <ng-container matColumnDef="rankingChange">
         <th mat-header-cell *matHeaderCellDef> Change </th>
         <td mat-cell *matCellDef="let element"><i class="fa" [ngClass]="{'fa-arrow-up text-success': element.rankingChange > 0,
                                                         'fa-arrow-down text-danger': element.rankingChange < 0}">
-                                              </i> {{element.rankingChange}} </td>
+          </i> {{element.rankingChange}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
