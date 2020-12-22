@@ -26,7 +26,7 @@ export class MatchService {
     return this.httpClient.get<Match[]>(this.matchUrl + '/getbyteam/' + team1Id);
   }
 
-  public getByTeams(team1Id: number, team2Id: number = null): Observable<Match[]> {
-    return this.httpClient.get<Match[]>(this.matchUrl + '/getbyteams/' + team1Id + '/' + team2Id);
+  public getByTeams(team1Id: number, team2Id: number = null, worldcup: boolean): Observable<Match[]> {
+    return this.httpClient.get<Match[]>(this.matchUrl + '/getbyteams/' + team1Id + '/' + team2Id + '?worldcup=' + worldcup);
   }
 }

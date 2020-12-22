@@ -26,6 +26,7 @@ export class Head2headDetailComponent implements OnInit {
 
   get team1() { return this.searchForm.get('team1'); }
   get team2() { return this.searchForm.get('team2'); }
+  get worldcup() { return this.searchForm.get('worldcup'); }
 
   displayedColumns: string[] = ['team2', 'confederation', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst', 'goalDifference'];
   displayedColumnsMatches: string[] = ['year', 'date', 'tournament', 'group', 'team1', 'goalsTeam1', 'divider', 'goalsTeam2', 'team2'];
@@ -54,7 +55,8 @@ export class Head2headDetailComponent implements OnInit {
 
   modelCreate = () => this.fb.group({
     team1: ['', Validators.required],
-    team2: ['']
+    team2: [''],
+    worldcup: [false]
   });
 
   createDataSource = (h2h, matches) => {
@@ -86,7 +88,7 @@ export class Head2headDetailComponent implements OnInit {
     }
 
     if (this.team2.value == "") {
-      this.h2hService.getByTeam(this.team1.value)
+      this.h2hService.getByTeam(this.team1.value, this.worldcup.value)
         .subscribe((res) => {
           this.h2h = res;
 
@@ -94,7 +96,7 @@ export class Head2headDetailComponent implements OnInit {
         });
     }
     else {
-      this.h2hService.getByTeams(this.team1.value, this.team2.value)
+      this.h2hService.getByTeams(this.team1.value, this.team2.value, this.worldcup.value)
         .subscribe((res) => {
           this.h2h = [];
           this.h2h.push(res);
@@ -102,7 +104,7 @@ export class Head2headDetailComponent implements OnInit {
           this.refresh(this.h2h, 'h2h');
         });
 
-      this.matchService.getByTeams(this.team1.value, this.team2.value)
+      this.matchService.getByTeams(this.team1.value, this.team2.value, this.worldcup.value)
         .subscribe((res) => {
           this.matches = res;
 
