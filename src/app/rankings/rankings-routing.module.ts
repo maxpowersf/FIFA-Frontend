@@ -15,7 +15,8 @@ const routes: Routes = [
     path: '',
     component: RankingsListComponent,
     resolve: {
-      teams : TeamsResolver
+      teams: TeamsResolver,
+      confederations: ConfederationsResolver
     }
   },
   {

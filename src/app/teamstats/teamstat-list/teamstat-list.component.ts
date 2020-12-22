@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Confederation } from 'src/app/confederations/models/confederation.model';
 import { TeamStat } from '../models/teamstat.model';
 import { TeamStatWorldCup } from '../models/teamstatworldcup.model';
 
@@ -39,6 +40,7 @@ export class TeamstatListComponent implements OnInit {
   dataSource;
   dataSourceWorldCup;
 
+  confederations: Confederation[];
   teamStats: TeamStat[];
   teamStatsWorldCup: TeamStatWorldCup[];
 
@@ -46,9 +48,9 @@ export class TeamstatListComponent implements OnInit {
   @ViewChild('SortWorldCup', null) public sortWorldCup: MatSort;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute
   ) {
+    this.confederations = this.route.snapshot.data.confederations;
     this.teamStats = this.route.snapshot.data.teamstats;
     this.teamStatsWorldCup = this.route.snapshot.data.teamstatsWorldCup;
    }
@@ -59,6 +61,19 @@ export class TeamstatListComponent implements OnInit {
 
     this.dataSourceWorldCup = new MatTableDataSource(this.teamStatsWorldCup);
     this.dataSourceWorldCup.sort = this.sortWorldCup;
+  }
+
+  filterByConfederation = (val) => {
+    if (val != 0) {
+      let filteredTeams = this.teamStats.filter(x => x.team.confederationID == val);
+      let filteredTeamsWC = this.teamStatsWorldCup.filter(x => x.team.confederationID == val);
+      this.dataSource.data = filteredTeams;
+      this.dataSourceWorldCup.data = filteredTeamsWC;
+    }
+    else {
+      this.dataSource.data = this.teamStats;
+      this.dataSourceWorldCup.data = this.teamStatsWorldCup;
+    }
   }
 
 }

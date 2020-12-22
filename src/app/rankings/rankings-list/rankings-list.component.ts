@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RankingService } from '../services/ranking.service';
 import { TeamService } from 'src/app/teams/services/team.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { Confederation } from 'src/app/confederations/models/confederation.model';
 
 @Component({
   selector: 'app-rankings-list',
@@ -14,6 +15,7 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 export class RankingsListComponent implements OnInit {
 
   teams: Team[];
+  confederations: Confederation[];
 
   displayedColumns: string[] = ['pos', 'name', 'confederation', 'year1', 'year2', 'year3', 'totalpoints', 'rankingChange'];
   dataSource;
@@ -35,9 +37,10 @@ export class RankingsListComponent implements OnInit {
 
   ngOnInit() {
     this.blockUI.start("0");
+    this.confederations = this.route.snapshot.data.confederations;
     this.teams = this.route.snapshot.data.teams;
     this.teams.sort(this.sortByPointsDesc);
-    
+
     this.dataSource = new MatTableDataSource(this.teams);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -46,6 +49,16 @@ export class RankingsListComponent implements OnInit {
     this.year2 = this.teams[0].ranking2.year;
     this.year3 = this.teams[0].ranking3.year;
     this.blockUI.stop();
+  }
+
+  filterByConfederation = (val) => {
+    if (val != 0) {
+      let filteredTeams = this.teams.filter(x => x.confederationID == val);
+      this.dataSource.data = filteredTeams;
+    }
+    else {
+      this.dataSource.data = this.teams;
+    }
   }
 
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
