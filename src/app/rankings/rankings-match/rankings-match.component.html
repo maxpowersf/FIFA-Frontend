@@ -29,7 +29,8 @@
 
       <!-- Tournament Column -->
       <mat-form-field class="full-width" *ngIf="tournaments.length > 0">
-        <mat-select placeholder="Torneo" (selectionChange)="fillTeamsByTournament($event.value)" [formControl]="tournament">
+        <mat-select placeholder="Torneo" (selectionChange)="fillTeamsByTournament($event.value)"
+          [formControl]="tournament">
           <mat-option *ngFor="let tournament of tournaments" [value]="tournament.id">
             {{tournament.name}}
           </mat-option>
@@ -79,8 +80,7 @@
       <div class="row">
         <div class="col-md-4">
           <mat-form-field class="full-width">
-            <mat-select placeholder="Equipo" (selectionChange)="changeTeam1($event.value)"
-              [formControl]="team1">
+            <mat-select placeholder="Equipo" (selectionChange)="changeTeam1($event.value)" [formControl]="team1">
               <mat-option *ngFor="let team of teams" [value]="team.id">
                 <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
               </mat-option>
@@ -94,7 +94,9 @@
         </div>
         <div class="col-md-1">
           <mat-form-field class="result"
-            *ngIf="matchForm.controls['goals1'].value == matchForm.controls['goals2'].value">
+            *ngIf="matchForm.controls['goals1'].value == matchForm.controls['goals2'].value &&
+             isNumber(matchForm.controls['goals1'].value) &&
+             isNumber(matchForm.controls['goals2'].value)">
             <input matInput type="number" min="0" [formControl]="penalties1">{{condition}}
           </mat-form-field>
         </div>
@@ -133,7 +135,9 @@
         </div>
         <div class="col-md-1">
           <mat-form-field class="result"
-            *ngIf="matchForm.controls['goals1'].value == matchForm.controls['goals2'].value">
+            *ngIf="matchForm.controls['goals1'].value == matchForm.controls['goals2'].value &&
+            isNumber(matchForm.controls['goals1'].value) &&
+            isNumber(matchForm.controls['goals2'].value)">
             <input matInput type="number" min="0" [formControl]="penalties2">
           </mat-form-field>
         </div>

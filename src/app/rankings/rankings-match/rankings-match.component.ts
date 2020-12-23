@@ -75,11 +75,13 @@ export class RankingsMatchComponent implements OnInit {
     matchday: [''],
     team1: ['', Validators.required],
     team2: ['', Validators.required],
-    goals1: [0, Validators.required],
-    goals2: [0, Validators.required],
+    goals1: ['', Validators.required],
+    goals2: ['', Validators.required],
     penalties1: [0],
     penalties2: [0]
   });
+
+  isNumber(val): boolean { return typeof val === 'number'; }
 
   fillTournamentsByTournamentType = (val) => {
     this.tournaments = [];
