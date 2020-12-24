@@ -8,11 +8,11 @@ export enum LoadingMode {
   Creating = '4'
 }
 
-const MESSAGE_LOADING = 'Cargando...';
-const MESSAGE_SAVING = 'Guardando...';
-const MESSAGE_RETRIEVING = 'Recuperando información...';
-const MESSAGE_UPDATING = 'Actualizando ranking...';
-const MESSAGE_CREATING = 'Creando nuevo periodo...';
+const MESSAGE_LOADING = 'Loading...';
+const MESSAGE_SAVING = 'Saving...';
+const MESSAGE_RETRIEVING = 'Retrieving...';
+const MESSAGE_UPDATING = 'Updating ranking...';
+const MESSAGE_CREATING = 'Creating new period...';
 
 @Component({
   selector: 'app-block-template',

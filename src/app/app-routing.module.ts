@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'head2head',
     loadChildren: './head2head/head2head.module#Head2HeadModule'
+  },
+  {
+    path: 'matches',
+    loadChildren: './matches/matches.module#MatchesModule'
   }
 ];
 
