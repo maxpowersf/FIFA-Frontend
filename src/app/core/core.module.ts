@@ -12,8 +12,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule, MatListModule, MatGridListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { RankingCardComponent } from './components/ranking-card/ranking-card.component';
