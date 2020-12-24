@@ -76,6 +76,16 @@ export class Head2headDetailComponent implements OnInit {
     }
   }
 
+  swapTeams = () => {
+    let team1 = this.team1.value;
+    let team2 = this.team2.value;
+
+    if (team1 != "" && team2 != "") {
+      this.team1.setValue(team2);
+      this.team2.setValue(team1);
+    }
+  }
+
   onSubmit = () => {
     if (!this.searchForm.valid) {
       this.snackBar.open('Complete todos los campos', '', {

@@ -19,6 +19,9 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div class="col-md-0.5">
+                    <mat-icon class="icon_menu clickable" (click)="swapTeams()">swap_horiz</mat-icon>
+                </div>
                 <div class="col-md-4">
                     <mat-form-field class="full-width">
                         <mat-select placeholder="Team 2" [formControl]="team2">
@@ -28,7 +31,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1.5">
                     <mat-checkbox formControlName="worldcup">World Cup</mat-checkbox>
                 </div>
                 <div class="col-md-2">

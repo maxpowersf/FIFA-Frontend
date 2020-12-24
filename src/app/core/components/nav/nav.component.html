@@ -23,22 +23,28 @@
       <a mat-list-item [routerLink]="['teamstats']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">format_list_numbered</mat-icon> All Time Standings
       </a>
+      <a mat-list-item [routerLink]="['head2head']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">sports_hockey</mat-icon> Head to Head
+      </a>
+      <a mat-list-item [routerLink]="['matches']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">sports_soccer</mat-icon> Matches
+      </a>
       <a mat-list-item [routerLink]="['tournaments']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">event</mat-icon> Tournaments
+        <mat-icon class="icon_menu">emoji_events</mat-icon> Tournaments
       </a>
       <a mat-list-item [routerLink]="['tournamenttypes']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">category</mat-icon> Tournament Types
       </a>
-      <a mat-list-item [routerLink]="['head2head']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">category</mat-icon> Head to Head
+      <a mat-list-item [routerLink]="['reports']" (click)="drawer.toggle()">
+        <mat-icon class="icon_menu">query_stats</mat-icon> Stats
       </a>
 
       <h2 matSubheader>Management</h2>
       <a mat-list-item [routerLink]="['teams']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">group</mat-icon> Teams
+        <mat-icon class="icon_menu">groups</mat-icon> Teams
       </a>
       <a mat-list-item [routerLink]="['players']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">person</mat-icon> Players
+        <mat-icon class="icon_menu">people</mat-icon> Players
       </a>
       <a mat-list-item [routerLink]="['confederations']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">public</mat-icon> Confederations
