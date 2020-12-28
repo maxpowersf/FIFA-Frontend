@@ -7,6 +7,7 @@ import { Confederation } from 'src/app/confederations/models/confederation.model
 import { MatchRoundMapping } from 'src/app/shared/models/matchround';
 import { Team } from 'src/app/teams/models/team.model';
 import { Tournament } from 'src/app/tournaments/models/tournament.model';
+import { TournamentService } from 'src/app/tournaments/services/tournament.service';
 import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.model';
 import { Match } from '../models/match.model';
 import { MatchesCollectionRequest } from '../models/matchescollectionrequest.model';
@@ -49,7 +50,8 @@ export class MatchesListComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private matchService: MatchService
+    private matchService: MatchService,
+    private tournamentService: TournamentService
   ) { }
 
   ngOnInit() {
@@ -76,6 +78,15 @@ export class MatchesListComponent implements OnInit {
 
   refresh = (data) => {
     this.dataSource.data = data;
+  }
+
+  fillTournamentsByTournamentType = (val) => {
+    this.tournaments = [];
+
+    this.tournamentService.getAllByTournamentTypeAndConfederation(val, 0)
+      .subscribe((res) => {
+        this.tournaments = res;
+      });
   }
 
   onSubmit = () => {

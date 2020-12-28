@@ -56,7 +56,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <mat-form-field class="full-width">
-                                <mat-select placeholder="Tournament Type" [formControl]="tournamenttype">
+                                <mat-select placeholder="Tournament Type" [formControl]="tournamenttype" (selectionChange)="fillTournamentsByTournamentType($event.value)">
                                     <mat-option [value]="0">All</mat-option>
                                     <mat-option *ngFor="let tournamenttype of tournamentTypes"
                                         [value]="tournamenttype.id">
