@@ -1,0 +1,17 @@
+.mat-card-min{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+}
+.mat-chip{
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: aliceblue;
+}
+a,
+a:hover,
+a:focus,
+a:visited {
+    color: rgba(0,0,0,.87);
+    text-decoration: none;
+}
