@@ -45,7 +45,8 @@ export class TournamentsDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.tournament.tournamentType.format == TournamentFormat.Qualification) {
+    if (this.tournament.tournamentType.format == TournamentFormat.Qualification &&
+        this.tournament.positions.length > 0) {
       this.processPositions();
     }
 
