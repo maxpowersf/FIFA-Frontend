@@ -21,6 +21,10 @@ export class ReportStreaksResolver implements Resolve<Observable<any>> {
                 return this.matchService.getReportLosing();
             case 'winningless':
                 return this.matchService.getReportWinningless();
+            case 'cleansheets':
+                return this.matchService.getReportCleanSheets();
+            case 'scoreless':
+                return this.matchService.getReportScoreless();
             default:
                 return this.matchService.getReportWinning();
         }

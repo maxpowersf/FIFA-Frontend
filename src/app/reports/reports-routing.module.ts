@@ -43,6 +43,20 @@ const routes: Routes = [
     }
   },
   {
+    path: 'cleansheets',
+    component: ReportStreaksComponent,
+    resolve: {
+      streaks: ReportStreaksResolver
+    }
+  },
+  {
+    path: 'scoreless',
+    component: ReportStreaksComponent,
+    resolve: {
+      streaks: ReportStreaksResolver
+    }
+  },
+  {
     path: 'margin',
     component: ReportMatchesComponent,
     resolve: {

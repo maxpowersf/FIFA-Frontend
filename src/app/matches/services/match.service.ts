@@ -59,4 +59,12 @@ export class MatchService {
   public getReportWinningless(): Observable<StreaksCollectionResponse[]> {
     return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportwinningless');
   }
+
+  public getReportCleanSheets(): Observable<StreaksCollectionResponse[]> {
+    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportcleansheets');
+  }
+
+  public getReportScoreless(): Observable<StreaksCollectionResponse[]> {
+    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportscoreless');
+  }
 }
