@@ -7,50 +7,19 @@ import { ReportStreaksComponent } from './components/report-streaks/report-strea
 
 import { ReportMatchesResolver } from './resolvers/reportmatches.resolver';
 import { ReportStreaksResolver } from './resolvers/reportstreaks.resolver';
+import { TeamsResolver } from '../teams/resolvers/teams.resolver';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: ReportsListComponent
-  },
-  {
-    path: 'winning',
-    component: ReportStreaksComponent,
+    component: ReportsListComponent,
     resolve: {
-      streaks: ReportStreaksResolver
+      teams: TeamsResolver
     }
   },
   {
-    path: 'unbeaten',
-    component: ReportStreaksComponent,
-    resolve: {
-      streaks: ReportStreaksResolver
-    }
-  },
-  {
-    path: 'losing',
-    component: ReportStreaksComponent,
-    resolve: {
-      streaks: ReportStreaksResolver
-    }
-  },
-  {
-    path: 'winningless',
-    component: ReportStreaksComponent,
-    resolve: {
-      streaks: ReportStreaksResolver
-    }
-  },
-  {
-    path: 'cleansheets',
-    component: ReportStreaksComponent,
-    resolve: {
-      streaks: ReportStreaksResolver
-    }
-  },
-  {
-    path: 'scoreless',
+    path: 'streaks/:type',
     component: ReportStreaksComponent,
     resolve: {
       streaks: ReportStreaksResolver

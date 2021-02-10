@@ -44,27 +44,8 @@ export class MatchService {
     return this.httpClient.get<Match[]>(this.matchUrl + '/getreportgoals');
   }
 
-  public getReportWinning(): Observable<StreaksCollectionResponse[]> {
-    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportwinning');
-  }
-
-  public getReportUnbeaten(): Observable<StreaksCollectionResponse[]> {
-    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportunbeaten');
-  }
-
-  public getReportLosing(): Observable<StreaksCollectionResponse[]> {
-    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportlosing');
-  }
-
-  public getReportWinningless(): Observable<StreaksCollectionResponse[]> {
-    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportwinningless');
-  }
-
-  public getReportCleanSheets(): Observable<StreaksCollectionResponse[]> {
-    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportcleansheets');
-  }
-
-  public getReportScoreless(): Observable<StreaksCollectionResponse[]> {
-    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportscoreless');
+  public getReportStreak(reportType: number, teamId: number = 0, amount: number = 20): Observable<StreaksCollectionResponse[]> {
+    let urlParams = '?teamId=' + teamId + '&amount=' + amount;
+    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportstreak/' + reportType + urlParams);
   }
 }

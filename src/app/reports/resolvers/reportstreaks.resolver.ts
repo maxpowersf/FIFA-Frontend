@@ -11,22 +11,9 @@ export class ReportStreaksResolver implements Resolve<Observable<any>> {
     ) { }
 
     resolve(route: ActivatedRouteSnapshot) {
-        let path = route.routeConfig.path;
-        switch (path) {
-            case 'winning':
-                return this.matchService.getReportWinning();
-            case 'unbeaten':
-                return this.matchService.getReportUnbeaten();
-            case 'losing':
-                return this.matchService.getReportLosing();
-            case 'winningless':
-                return this.matchService.getReportWinningless();
-            case 'cleansheets':
-                return this.matchService.getReportCleanSheets();
-            case 'scoreless':
-                return this.matchService.getReportScoreless();
-            default:
-                return this.matchService.getReportWinning();
-        }
+        let reportTypeID = route.params.type;
+        let teamId = route.queryParams.teamId;
+
+        return this.matchService.getReportStreak(reportTypeID, teamId);
     }
 }
