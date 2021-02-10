@@ -29,20 +29,24 @@ export class ReportStreaksComponent implements OnInit {
 
   dataSource;
 
+  stateTeamId;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute
   ) {
-    let path = this.route.snapshot.routeConfig.path;
-    this.report = ReportsList.find(x => x.name.toLowerCase() == path);
+    let reportTypeId = this.route.snapshot.params.type;
+    this.report = ReportsList.find(x => x.id == reportTypeId);
     
     this.streaks = this.route.snapshot.data.streaks;
+
+    this.stateTeamId = this.route.snapshot.queryParams.teamId;
    }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.streaks);
   }
 
-  goToList = () => this.router.navigate(['../'], { relativeTo: this.route })
+  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route, state: { teamId: this.stateTeamId } })
 
 }

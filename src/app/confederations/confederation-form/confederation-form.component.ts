@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./confederation-form.component.css']
 })
 export class ConfederationFormComponent implements OnInit {
-  
+
   isEditing: boolean = false;
   confederationForm: FormGroup;
 
@@ -44,12 +44,12 @@ export class ConfederationFormComponent implements OnInit {
     ? this.router.navigate(['../../'], { relativeTo: this.route })
     : this.router.navigate(['../'], { relativeTo: this.route })
 
-    modelCreate = () => this.fb.group({
-      name: ['', Validators.required],
-      color: ['#FFFFFF', Validators.required],
-      weight: ['0.0', Validators.required]
-    })
-  
+  modelCreate = () => this.fb.group({
+    name: ['', Validators.required],
+    color: ['#FFFFFF', Validators.required],
+    weight: ['0.0', Validators.required]
+  })
+
   onSubmit = () => {
     if (!this.confederationForm.valid) { return; }
     const confederationModified = new Confederation();
@@ -59,9 +59,9 @@ export class ConfederationFormComponent implements OnInit {
     confederationModified.weight = this.weight.value;
 
     this.isEditing
-    ? this.confederationService.update(confederationModified)
-      .subscribe(this.goToList)
-    : this.confederationService.add(confederationModified)
-      .subscribe(this.goToList);
+      ? this.confederationService.update(confederationModified)
+        .subscribe(this.goToList)
+      : this.confederationService.add(confederationModified)
+        .subscribe(this.goToList);
   }
 }
