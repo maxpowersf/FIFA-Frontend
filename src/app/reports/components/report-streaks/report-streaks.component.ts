@@ -30,6 +30,7 @@ export class ReportStreaksComponent implements OnInit {
   dataSource;
 
   stateTeamId;
+  stateActive;
 
   constructor(
     private router: Router,
@@ -41,12 +42,13 @@ export class ReportStreaksComponent implements OnInit {
     this.streaks = this.route.snapshot.data.streaks;
 
     this.stateTeamId = this.route.snapshot.queryParams.teamId;
+    this.stateActive = this.route.snapshot.queryParams.active;
    }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.streaks);
   }
 
-  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route, state: { teamId: this.stateTeamId } })
+  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route, state: { teamId: this.stateTeamId, active: this.stateActive } })
 
 }

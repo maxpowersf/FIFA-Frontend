@@ -13,7 +13,8 @@ export class ReportStreaksResolver implements Resolve<Observable<any>> {
     resolve(route: ActivatedRouteSnapshot) {
         let reportTypeID = route.params.type;
         let teamId = route.queryParams.teamId;
+        let active = route.queryParams.active;
 
-        return this.matchService.getReportStreak(reportTypeID, teamId);
+        return this.matchService.getReportStreak(reportTypeID, teamId, active);
     }
 }

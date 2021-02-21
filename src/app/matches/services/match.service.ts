@@ -44,8 +44,8 @@ export class MatchService {
     return this.httpClient.get<Match[]>(this.matchUrl + '/getreportgoals');
   }
 
-  public getReportStreak(reportType: number, teamId: number = 0, amount: number = 20): Observable<StreaksCollectionResponse[]> {
-    let urlParams = '?teamId=' + teamId + '&amount=' + amount;
+  public getReportStreak(reportType: number, teamId: number = 0, active: boolean = false, amount: number = 20): Observable<StreaksCollectionResponse[]> {
+    let urlParams = '?teamId=' + teamId + '&active=' + active + '&amount=' + amount;
     return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportstreak/' + reportType + urlParams);
   }
 }
