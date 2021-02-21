@@ -14,6 +14,7 @@ export class ReportsListComponent implements OnInit {
   reportsForm: FormGroup;
 
   get team() { return this.reportsForm.get('team'); }
+  get active() { return this.reportsForm.get('active'); }
 
   reports = ReportsList;
   teams: Team[];
@@ -34,10 +35,15 @@ export class ReportsListComponent implements OnInit {
       this.teamId = parseInt(window.history.state.teamId);
       this.team.patchValue(this.teamId);
     }
+
+    if (window.history.state.active != undefined) {
+      this.active.patchValue(window.history.state.active);
+    }
   }
 
   modelCreate = () => this.fb.group({
-    team: [this.teamId]
+    team: [this.teamId],
+    active: [false]
   })
 
   setSelectedTeam = (val) => {
@@ -52,8 +58,8 @@ export class ReportsListComponent implements OnInit {
     if (report.id != undefined) {
       redirectUrl = 'streaks/' + report.id;
 
-      if (this.team.value > 0) {
-        queryParams = { teamId: this.team.value }
+      if (this.team.value > 0 || this.active.value) {
+        queryParams = { teamId: this.team.value, active: this.active.value }
       }
     }
 
