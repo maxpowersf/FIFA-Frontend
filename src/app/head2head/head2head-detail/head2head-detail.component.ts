@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator, MatSnackBar, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Match } from '../../matches/models/match.model';
 import { MatchService } from '../../matches/services/match.service';
 import { MatchRoundMapping } from '../../shared/models/matchround';
@@ -17,12 +18,14 @@ import { Head2headService } from '../services/head2head.service';
 export class Head2headDetailComponent implements OnInit {
 
   searchForm: FormGroup;
+  matchrounds = MatchRoundMapping;
 
   teams: Team[];
   h2h: H2H[] = [];
   matches: Match[] = [];
 
-  matchrounds = MatchRoundMapping;
+  selTeam1: Team;
+  selTeam2: Team;
 
   get team1() { return this.searchForm.get('team1'); }
   get team2() { return this.searchForm.get('team2'); }
@@ -34,6 +37,7 @@ export class Head2headDetailComponent implements OnInit {
   dataSource;
   dataSourceMatches;
 
+  @BlockUI() blockUI: NgBlockUI;
   @ViewChild('paginator', null) paginator: MatPaginator;
   @ViewChild('paginatorMatches', null) paginatorMatches: MatPaginator;
 
@@ -74,6 +78,8 @@ export class Head2headDetailComponent implements OnInit {
     else if (type == "matches") {
       this.dataSourceMatches.data = data;
     }
+
+    this.blockUI.stop();
   }
 
   swapTeams = () => {
@@ -97,6 +103,11 @@ export class Head2headDetailComponent implements OnInit {
       return;
     }
 
+    this.blockUI.start("1");
+
+    this.selTeam1 = this.teams.find((e) => e.id == this.team1.value);
+    this.selTeam2 = this.teams.find((e) => e.id == this.team2.value);
+
     if (this.team2.value == "") {
       this.h2hService.getByTeam(this.team1.value, this.worldcup.value)
         .subscribe((res) => {
@@ -109,7 +120,10 @@ export class Head2headDetailComponent implements OnInit {
       this.h2hService.getByTeams(this.team1.value, this.team2.value, this.worldcup.value)
         .subscribe((res) => {
           this.h2h = [];
-          this.h2h.push(res);
+
+          if(res != null){
+            this.h2h.push(res);
+          }
 
           this.refresh(this.h2h, 'h2h');
         });
