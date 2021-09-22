@@ -11,6 +11,7 @@ export class Tournament {
     tournamentTypeID: number;
     tournamentType: TournamentType;
     confederationID: number;
+    finalPositions: boolean;
     positions: Position[];
     qualifications: Position[];
 }
