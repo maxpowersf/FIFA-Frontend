@@ -1,9 +1,11 @@
 import { Groups } from './groups.model';
+import { Tournament } from './tournament.model';
 
 export class PositionsGroups {
-    groups: Groups[];
+  tournament: Tournament;
+  groups: Groups[];
 
-    constructor() {
-        this.groups = [];
-    }
+  constructor() {
+    this.groups = [];
+  }
 }

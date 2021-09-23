@@ -3,6 +3,7 @@ import { Tournament } from '../models/tournament.model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { PositionsGroups } from '../models/positionsGroups.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
@@ -19,34 +20,38 @@ export class TournamentService {
   ) { }
 
   public getAll(): Observable<Tournament[]> {
-    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getall');
+    return this.httpClient.get<Tournament[]>(`${this.tournamentUrl}/getall`);
   }
 
   public getAllByTeam(teamId: number): Observable<Tournament[]> {
-    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbyteam/' + teamId);
+    return this.httpClient.get<Tournament[]>(`${this.tournamentUrl}/getbyteam/${teamId}`);
   }
 
   public getAllByTournamentType(tournamentTypeId: number): Observable<Tournament[]> {
-    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbytournamenttypewithpositions/' + tournamentTypeId);
+    return this.httpClient.get<Tournament[]>(`${this.tournamentUrl}/getbytournamenttypewithpositions/${tournamentTypeId}`);
   }
 
   public getAllByTournamentTypeAndConfederation(tournamentTypeId: number, confederationId: number): Observable<Tournament[]> {
-    return this.httpClient.get<Tournament[]>(this.tournamentUrl + '/getbytournamenttypeandconfederation/' + tournamentTypeId + '/' + confederationId);
+    return this.httpClient.get<Tournament[]>(`${this.tournamentUrl}/getbytournamenttypeandconfederation/${tournamentTypeId}/${confederationId}`);
+  }
+
+  public getCurrentStandings(id: number): Observable<PositionsGroups> {
+    return this.httpClient.get<PositionsGroups>(`${this.tournamentUrl}/getcurrentstandings/${id}`);
   }
 
   public getOne(id: number): Observable<Tournament> {
-    return this.httpClient.get<Tournament>(this.tournamentUrl + '/get/' + id);
+    return this.httpClient.get<Tournament>(`${this.tournamentUrl}/get/${id}`);
   }
 
   public add(tournament: Tournament) {
-    return this.httpClient.post(this.tournamentUrl + '/add', tournament, httpOptions);
+    return this.httpClient.post(`${this.tournamentUrl}/add`, tournament, httpOptions);
   }
 
   public update(tournament: Tournament) {
-    return this.httpClient.put(this.tournamentUrl + '/update', tournament, httpOptions);
+    return this.httpClient.put(`${this.tournamentUrl}/update`, tournament, httpOptions);
   }
 
   public delete(id: number) {
-    return this.httpClient.delete(this.tournamentUrl + '/delete/' + id);
+    return this.httpClient.delete(`${this.tournamentUrl}/delete/` + id);
   }
 }
