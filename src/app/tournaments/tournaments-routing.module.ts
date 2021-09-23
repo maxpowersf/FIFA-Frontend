@@ -10,6 +10,7 @@ import { TournamentsPositionComponent } from './tournaments-position/tournaments
 import { TournamentsDetailComponent } from './tournaments-detail/tournaments-detail.component';
 import { GoalscorerResolver } from '../players/resolvers/goalscorer.resolver';
 import { MatchByTournamentResolver } from '../matches/resolvers/matchbytournament.resolver';
+import { StandingsResolver } from './resolvers/standings.resolver';
 
 const routes: Routes = [
   {
@@ -40,6 +41,7 @@ const routes: Routes = [
     path: ':id/position',
     component: TournamentsDetailComponent,
     resolve: {
+      standings: StandingsResolver,
       tournament: TournamentResolver,
       matches: MatchByTournamentResolver,
       goalscorers: GoalscorerResolver

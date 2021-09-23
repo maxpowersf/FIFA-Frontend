@@ -18,6 +18,7 @@ import { MatchRoundMapping } from 'src/app/shared/models/matchround';
 export class TournamentsDetailComponent implements OnInit {
 
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
+  displayedColumnsStandings: string[] = ['noPosition', 'team', 'confederationName', 'points', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst', 'goalDifference'];
   displayedColumnsMatches: string[] = ['date', 'group', 'matchday', 'team1', 'goals1', 'divider', 'goals2', 'team2'];
   displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
 
@@ -27,6 +28,7 @@ export class TournamentsDetailComponent implements OnInit {
   @ViewChild('paginatorGoalscorers', null) paginatorGoalscorers: MatPaginator;
 
   tournament: Tournament;
+  standings: PositionsGroups;
   positions: Position[];
   positionGroups: PositionsGroups = new PositionsGroups();
   matches: Match[];
@@ -39,6 +41,7 @@ export class TournamentsDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.tournament = this.route.snapshot.data.tournament;
+    this.standings = this.route.snapshot.data.standings;
     this.positions = this.tournament.positions;
     this.matches = this.route.snapshot.data.matches;
     this.goalscorers = this.route.snapshot.data.goalscorers;
