@@ -19,6 +19,7 @@ export class TournamentsDetailComponent implements OnInit {
 
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
   displayedColumnsStandings: string[] = ['noPosition', 'team', 'confederationName', 'points', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst', 'goalDifference'];
+  displayedColumnsRounds: string[] = ['date', 'team1', 'goals1', 'divider', 'goals2', 'team2'];
   displayedColumnsMatches: string[] = ['date', 'group', 'matchday', 'team1', 'goals1', 'divider', 'goals2', 'team2'];
   displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
 
