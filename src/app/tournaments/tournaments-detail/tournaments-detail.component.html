@@ -33,7 +33,7 @@
           <mat-tab label="Rounds" *ngIf="standings.rounds.length > 0">
             <div *ngFor="let round of standings.rounds;">
               <p class="group-headline text-center">{{round.roundName}}</p>
-              <app-standings-round-tab [data]="round.matches" isHomeAway="playoff.isHomeAway"></app-standings-round-tab>
+              <app-standings-round-tab [data]="round.matches" [isHomeAway]="round.isHomeAway"></app-standings-round-tab>
             </div>
           </mat-tab>
         </mat-tab-group>
