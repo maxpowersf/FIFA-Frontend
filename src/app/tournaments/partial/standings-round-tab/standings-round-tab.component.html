@@ -9,9 +9,12 @@
   <!-- Color Column -->
   <ng-container matColumnDef="team1">
     <th mat-header-cell *matHeaderCellDef class="left"> Home </th>
-    <td mat-cell *matCellDef="let element" [attr.alt]="element.team1.name" class="left">
+    <td mat-cell *matCellDef="let element; let i = index" [attr.alt]="element.team1.name" class="left">
       <span class="flag-icon flag-icon-{{element.team1.flag}}"></span>
       {{element.team1.name}}
+      <span
+        *ngIf="(isPlayoff && ((element.goalsTeam1 > element.goalsTeam2) || (element.penaltiesTeam1 > element.penaltiesTeam2))) || (winnerTeam1 && (i+1) == data.length)">
+        *</span>
     </td>
   </ng-container>
 
@@ -44,9 +47,12 @@
   <!-- Color Column -->
   <ng-container matColumnDef="team2">
     <th mat-header-cell *matHeaderCellDef class="right"> Away </th>
-    <td mat-cell *matCellDef="let element" [attr.alt]="element.team2.name" class="right">
+    <td mat-cell *matCellDef="let element; let i = index" [attr.alt]="element.team2.name" class="right">
       <span class="flag-icon flag-icon-{{element.team2.flag}}"></span>
       {{element.team2.name}}
+      <span
+        *ngIf="(isPlayoff && ((element.goalsTeam2 > element.goalsTeam1) || (element.penaltiesTeam2 > element.penaltiesTeam1))) || (winnerTeam2 && (i+1) == data.length)">
+        *</span>
     </td>
   </ng-container>
 
