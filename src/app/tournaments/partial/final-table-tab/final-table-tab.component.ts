@@ -17,7 +17,7 @@ export class FinalTableTabComponent implements OnInit {
   displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
   dataSource;
 
-  constructor() { debugger; }
+  constructor() { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);
