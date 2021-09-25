@@ -1,0 +1,159 @@
+<table mat-table *ngIf="!isQualification; else qualificationStandings" 
+  [dataSource]="dataSource"
+  matSort class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+                                      The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="noPosition">
+    <th mat-header-cell *matHeaderCellDef class="cell-number"> Pos </th>
+    <td mat-cell *matCellDef="let element"> {{element.noPosition}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="team">
+    <th mat-header-cell *matHeaderCellDef class="left"> Team </th>
+    <td mat-cell *matCellDef="let element" class="left">
+      <span class="flag-icon flag-icon-{{element.team?.flag}}"></span> {{element.team?.name}}
+    </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="confederationName">
+    <th mat-header-cell *matHeaderCellDef> Confederation </th>
+    <td mat-cell *matCellDef="let element" [attr.alt]="element.team?.confederation.name">
+      <mat-chip [style.backgroundColor]='element.team?.confederation.color'>
+        {{element.team?.confederation.name}}
+      </mat-chip>
+    </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="result">
+    <th mat-header-cell *matHeaderCellDef> Result </th>
+    <td mat-cell *matCellDef="let element"> {{element.result}} </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="gamesPlayed">
+    <th mat-header-cell *matHeaderCellDef class="cell-number"> GP </th>
+    <td mat-cell *matCellDef="let element"> {{element.gamesPlayed}} </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="wins">
+    <th mat-header-cell *matHeaderCellDef class="cell-number"> W </th>
+    <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="draws">
+    <th mat-header-cell *matHeaderCellDef class="cell-number"> D </th>
+    <td mat-cell *matCellDef="let element"> {{element.draws}} </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="loses">
+    <th mat-header-cell *matHeaderCellDef class="cell-number"> L </th>
+    <td mat-cell *matCellDef="let element"> {{element.loses}} </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="goalsFavor">
+    <th mat-header-cell *matHeaderCellDef class="cell-number"> GF </th>
+    <td mat-cell *matCellDef="let element"> {{element.goalsFavor}} </td>
+  </ng-container>
+
+  <!-- Confederation Column -->
+  <ng-container matColumnDef="goalsAgainst">
+    <th mat-header-cell *matHeaderCellDef class="cell-number"> GA </th>
+    <td mat-cell *matCellDef="let element"> {{element.goalsAgainst}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
+                        'qualified': row.qualified
+                    }"></tr>
+</table>
+
+<ng-template #qualificationStandings>
+  <div *ngFor="let group of altData.groups;">
+    <p class="group-headline text-center">Group {{group.groupName}}</p>
+    <table mat-table [dataSource]="group.positions" matSort class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+                                            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="noPosition">
+        <th mat-header-cell *matHeaderCellDef class="cell-number"> Pos </th>
+        <td mat-cell *matCellDef="let element"> {{element.noPosition}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="team">
+        <th mat-header-cell *matHeaderCellDef class="left"> Team </th>
+        <td mat-cell *matCellDef="let element" class="left">
+          <span class="flag-icon flag-icon-{{element.team?.flag}}"></span>
+          {{element.team?.name}}
+        </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="confederationName">
+        <th mat-header-cell *matHeaderCellDef> Confederation </th>
+        <td mat-cell *matCellDef="let element" [attr.alt]="element.team?.confederation.name">
+          <mat-chip [style.backgroundColor]='element.team?.confederation.color'>
+            {{element.team?.confederation.name}}
+          </mat-chip>
+        </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="result">
+        <th mat-header-cell *matHeaderCellDef> Result </th>
+        <td mat-cell *matCellDef="let element"> {{element.result}} </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="gamesPlayed">
+        <th mat-header-cell *matHeaderCellDef class="cell-number"> GP </th>
+        <td mat-cell *matCellDef="let element"> {{element.gamesPlayed}} </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="wins">
+        <th mat-header-cell *matHeaderCellDef class="cell-number"> W </th>
+        <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="draws">
+        <th mat-header-cell *matHeaderCellDef class="cell-number"> D </th>
+        <td mat-cell *matCellDef="let element"> {{element.draws}} </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="loses">
+        <th mat-header-cell *matHeaderCellDef class="cell-number"> L </th>
+        <td mat-cell *matCellDef="let element"> {{element.loses}} </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="goalsFavor">
+        <th mat-header-cell *matHeaderCellDef class="cell-number"> GF </th>
+        <td mat-cell *matCellDef="let element"> {{element.goalsFavor}} </td>
+      </ng-container>
+
+      <!-- Confederation Column -->
+      <ng-container matColumnDef="goalsAgainst">
+        <th mat-header-cell *matHeaderCellDef class="cell-number"> GA </th>
+        <td mat-cell *matCellDef="let element"> {{element.goalsAgainst}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
+                                'qualified': row.qualified
+                            }"></tr>
+    </table>
+  </div>
+</ng-template>
