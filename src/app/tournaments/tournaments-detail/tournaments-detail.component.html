@@ -25,6 +25,7 @@
             </div>
           </mat-tab>
           <mat-tab label="Groups" *ngIf="standings.groups.length > 0">
+            <p class="sidenote" *ngIf="tournament.finalPositions && tournament.tournamentType.format == 1">* Qualified as hosts</p>
             <div *ngFor="let group of standings.groups;">
               <p class="group-headline text-center">Group {{group.groupName}}</p>
               <app-standings-groups-tab [data]="group.positions"></app-standings-groups-tab>

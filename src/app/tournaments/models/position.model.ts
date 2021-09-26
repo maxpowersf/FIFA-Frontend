@@ -13,4 +13,5 @@ export class Position {
     round: string;
     group: string;
     qualified: boolean;
+    asHosts: boolean;
 }

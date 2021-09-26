@@ -63,7 +63,7 @@
                                 aria-label="remove">
                                 <mat-icon>delete</mat-icon>
                             </button>
-                            <button *ngIf="row.positions.length == 0" color="primary" (click)="navigateToUpload(row.id)"
+                            <button *ngIf="!row.finalPositions" color="primary" (click)="navigateToUpload(row.id)"
                                 matTooltip="Load standings" mat-icon-button aria-label="reorder">
                                 <mat-icon>reorder</mat-icon>
                             </button>
@@ -125,7 +125,7 @@
                                 aria-label="remove">
                                 <mat-icon>delete</mat-icon>
                             </button>
-                            <button *ngIf="row.positions.length == 0" color="primary" (click)="navigateToUpload(row.id)"
+                            <button *ngIf="!row.finalPositions" color="primary" (click)="navigateToUpload(row.id)"
                                 matTooltip="Load standings" mat-icon-button aria-label="reorder">
                                 <mat-icon>reorder</mat-icon>
                             </button>
@@ -187,7 +187,7 @@
                                 aria-label="remove">
                                 <mat-icon>delete</mat-icon>
                             </button>
-                            <button *ngIf="row.positions.length == 0" color="primary" (click)="navigateToUpload(row.id)"
+                            <button *ngIf="!row.finalPositions" color="primary" (click)="navigateToUpload(row.id)"
                                 matTooltip="Load standings" mat-icon-button aria-label="reorder">
                                 <mat-icon>reorder</mat-icon>
                             </button>
@@ -249,7 +249,7 @@
                                 aria-label="remove">
                                 <mat-icon>delete</mat-icon>
                             </button>
-                            <button *ngIf="row.positions.length == 0" color="primary" (click)="navigateToUpload(row.id)"
+                            <button *ngIf="!row.finalPositions" color="primary" (click)="navigateToUpload(row.id)"
                                 matTooltip="Load standings" mat-icon-button aria-label="reorder">
                                 <mat-icon>reorder</mat-icon>
                             </button>
