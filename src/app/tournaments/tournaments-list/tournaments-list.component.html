@@ -70,8 +70,8 @@
                         </td>
                     </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumnsWorldCup"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsWorldCup;"></tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
                 <mat-paginator #paginatorWorldCup [pageSizeOptions]="[10, 20, 100]" [pageSize]="20"
                     [showFirstLastButtons]="true" [length]="worldCups.length"></mat-paginator>
@@ -132,8 +132,8 @@
                         </td>
                     </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumnsConfederationCup"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsConfederationCup;"></tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
                 <mat-paginator #paginatorConfederationCup [pageSizeOptions]="[10, 20, 100]" [pageSize]="20"
                     [showFirstLastButtons]="true" [length]="confederationCups.length"></mat-paginator>
@@ -194,8 +194,8 @@
                         </td>
                     </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumnsConfederationTournament"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsConfederationTournament;"></tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
                 <mat-paginator #paginatorConfederationTournament [pageSizeOptions]="[10, 20, 100]" [pageSize]="10"
                     [showFirstLastButtons]="true" [length]="confederationTournaments.length"></mat-paginator>
@@ -256,8 +256,8 @@
                         </td>
                     </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumnsQualification"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsQualification;"></tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
                 <mat-paginator #paginatorQualification [pageSizeOptions]="[10, 12, 50]" [pageSize]="12"
                     [showFirstLastButtons]="true" [length]="qualifications.length"></mat-paginator>

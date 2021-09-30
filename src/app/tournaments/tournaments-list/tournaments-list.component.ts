@@ -13,10 +13,7 @@ import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
 })
 export class TournamentsListComponent implements OnInit {
 
-  displayedColumnsWorldCup: string[] = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName', 'actions'];
-  displayedColumnsConfederationCup: string[] = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName', 'actions'];
-  displayedColumnsConfederationTournament: string[] = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName', 'actions'];
-  displayedColumnsQualification: string[] = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName', 'actions'];
+  displayedColumns: string[] = ['year', 'host', 'tournamentTypeName', 'noOfTeams', 'confederationName', 'actions'];
 
   dataSourceWorldCup;
   dataSourceConfederationCup;
