@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { PositionsGroups } from '../models/positionsGroups.model';
+import { Position } from '../models/position.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
@@ -37,6 +38,10 @@ export class TournamentService {
 
   public getCurrentStandings(id: number): Observable<PositionsGroups> {
     return this.httpClient.get<PositionsGroups>(`${this.tournamentUrl}/getcurrentstandings/${id}`);
+  }
+
+  public getFinalTable(id: number): Observable<Position> {
+    return this.httpClient.get<Position>(`${this.tournamentUrl}/getfinaltable/${id}`);
   }
 
   public getOne(id: number): Observable<Tournament> {

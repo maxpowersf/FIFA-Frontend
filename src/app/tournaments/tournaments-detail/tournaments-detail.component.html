@@ -39,7 +39,7 @@
           </mat-tab>
         </mat-tab-group>
       </mat-tab>
-      <mat-tab label="Final Table">
+      <mat-tab label="Final Table" *ngIf="tournament.finalPositions">
         <app-final-table-tab
           [data]="positions"
           [altData]="positionGroups"

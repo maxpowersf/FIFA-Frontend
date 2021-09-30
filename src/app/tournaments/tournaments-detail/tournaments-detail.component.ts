@@ -33,13 +33,13 @@ export class TournamentsDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.tournament.tournamentType.format == TournamentFormat.Qualification &&
+    /*if (this.tournament.tournamentType.format == TournamentFormat.Qualification &&
         this.tournament.positions.length > 0) {
       this.processPositions();
-    }
+    }*/
   }
 
-  processPositions = () => {
+  /*processPositions = () => {
     var firstGroup = this.tournament.positions[0].group;
     this.positionGroups.groups.push(new Groups(firstGroup));
     var arrIndex = 0;
@@ -53,7 +53,7 @@ export class TournamentsDetailComponent implements OnInit {
 
       this.positionGroups.groups[arrIndex].positions.push(element);
     });
-  }
+  }*/
 
   goToList = () => this.router.navigate(['../../'], { relativeTo: this.route })
 
