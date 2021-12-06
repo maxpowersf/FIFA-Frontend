@@ -35,7 +35,6 @@ table {
 .header{
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 .cell-number{
   width: 50px;
