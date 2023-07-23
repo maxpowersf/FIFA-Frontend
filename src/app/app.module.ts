@@ -33,9 +33,6 @@ export class HammerConfig extends GestureConfig {
     HttpClientModule,
     SharedModule
   ],
-  entryComponents: [
-
-  ],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,

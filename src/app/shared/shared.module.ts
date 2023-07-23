@@ -95,9 +95,6 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     FormLayoutComponent,
     ListLayoutComponent,
     TableComponent
-  ],
-  entryComponents: [
-    BlockTemplateComponent,
   ]
 })
 export class SharedModule { }
