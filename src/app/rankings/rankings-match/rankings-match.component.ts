@@ -34,7 +34,7 @@ export class RankingsMatchComponent implements OnInit {
   selectedTeam1: Team;
   selectedTeam2: Team;
 
-  @ViewChild('roundField', { read: ElementRef, static: false }) roundField: ElementRef;
+  @ViewChild('roundField', { read: ElementRef }) roundField: ElementRef;
 
   get date() { return this.matchForm.get('date'); }
   get tournament() { return this.matchForm.get('tournament'); }

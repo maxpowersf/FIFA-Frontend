@@ -10,47 +10,47 @@ const routes: Routes = [
   },
   {
     path: 'matchtypes',
-    loadChildren: './matchtype/matchtype.module#MatchtypeModule'
+    loadChildren: () => import('./matchtype/matchtype.module').then(m => m.MatchtypeModule)
   },
   {
     path: 'confederations',
-    loadChildren: './confederations/confederations.module#ConfederationsModule'
+    loadChildren: () => import('./confederations/confederations.module').then(m => m.ConfederationsModule)
   },
   {
     path: 'teams',
-    loadChildren: './teams/teams.module#TeamsModule'
+    loadChildren: () => import('./teams/teams.module').then(m => m.TeamsModule)
   },
   {
     path: 'rankings',
-    loadChildren: './rankings/rankings.module#RankingsModule'
+    loadChildren: () => import('./rankings/rankings.module').then(m => m.RankingsModule)
   },
   {
     path: 'tournamenttypes',
-    loadChildren: './tournamenttype/tournamenttype.module#TournamenttypeModule'
+    loadChildren: () => import('./tournamenttype/tournamenttype.module').then(m => m.TournamenttypeModule)
   },
   {
     path: 'tournaments',
-    loadChildren: './tournaments/tournaments.module#TournamentsModule'
+    loadChildren: () => import('./tournaments/tournaments.module').then(m => m.TournamentsModule)
   },
   {
     path: 'players',
-    loadChildren: './players/players.module#PlayersModule'
+    loadChildren: () => import('./players/players.module').then(m => m.PlayersModule)
   },
   {
     path: 'teamstats',
-    loadChildren: './teamstats/teamstats.module#TeamstatsModule'
+    loadChildren: () => import('./teamstats/teamstats.module').then(m => m.TeamstatsModule)
   },
   {
     path: 'head2head',
-    loadChildren: './head2head/head2head.module#Head2HeadModule'
+    loadChildren: () => import('./head2head/head2head.module').then(m => m.Head2HeadModule)
   },
   {
     path: 'matches',
-    loadChildren: './matches/matches.module#MatchesModule'
+    loadChildren: () => import('./matches/matches.module').then(m => m.MatchesModule)
   },
   {
     path: 'reports',
-    loadChildren: './reports/reports.module#ReportsModule'
+    loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
   }
 ];
 
