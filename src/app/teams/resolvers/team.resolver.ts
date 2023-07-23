@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TeamService } from '../services/team.service';
 
 @Injectable({providedIn: 'root'})
-export class TeamResolver implements Resolve<Observable<any>> {
+export class TeamResolver  {
     constructor(
         private teamService: TeamService
     ) { }

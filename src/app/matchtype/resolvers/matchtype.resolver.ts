@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatchtypeService } from '../services/matchtype.service';
 
 @Injectable({providedIn: 'root'})
-export class MatchtypeResolver implements Resolve<Observable<any>> {
+export class MatchtypeResolver  {
     constructor(
         private matchtypeService: MatchtypeService
     ) { }

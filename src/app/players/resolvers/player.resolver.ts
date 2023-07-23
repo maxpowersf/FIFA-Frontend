@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PlayerService } from '../services/player.service';
 
 @Injectable({providedIn: 'root'})
-export class PlayerResolver implements Resolve<Observable<any>> {
+export class PlayerResolver  {
     constructor(
         private playerService: PlayerService
     ) { }
