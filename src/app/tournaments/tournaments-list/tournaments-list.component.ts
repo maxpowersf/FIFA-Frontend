@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Tournament } from '../models/tournament.model';
 import { TournamentService } from '../services/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { switchMap } from 'rxjs/operators';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
 

@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Team } from "../models/team.model";
 import { TeamService } from "../services/team.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { MatPaginator } from "@angular/material/paginator";
+import { MatLegacyPaginator as MatPaginator } from "@angular/material/legacy-paginator";
 import { MatSort } from "@angular/material/sort";
-import { MatTableDataSource } from "@angular/material/table";
+import { MatLegacyTableDataSource as MatTableDataSource } from "@angular/material/legacy-table";
 
 @Component({
   selector: "app-teams-list",

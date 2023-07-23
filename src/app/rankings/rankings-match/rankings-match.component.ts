@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { Match } from '../../matches/models/match.model';
 import { RankingService } from '../services/ranking.service';
 import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.model';

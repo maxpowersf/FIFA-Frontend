@@ -6,7 +6,7 @@ import {
   trigger,
 } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
-import { MatTableDataSource } from "@angular/material/table";
+import { MatLegacyTableDataSource as MatTableDataSource } from "@angular/material/legacy-table";
 import { Router, ActivatedRoute } from "@angular/router";
 import { MatchRoundMapping } from "src/app/shared/models/matchround";
 import { Report, ReportsList } from "../../models/report.model";
