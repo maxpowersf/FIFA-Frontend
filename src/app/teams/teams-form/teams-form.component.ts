@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
 import { Team } from "../models/team.model";
 import { TeamService } from "../services/team.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -12,7 +12,7 @@ import { Confederation } from "src/app/confederations/models/confederation.model
 })
 export class TeamsFormComponent implements OnInit {
   isEditing: boolean = false;
-  teamForm: FormGroup;
+  teamForm: UntypedFormGroup;
 
   team: Team = new Team();
 
@@ -37,7 +37,7 @@ export class TeamsFormComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private teamService: TeamService,
     private router: Router,
     private route: ActivatedRoute

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 import { FormLayout } from 'src/app/shared/models/form-layout.model';
 import { Tournament } from '../models/tournament.model';
 import { TournamentService } from '../services/tournament.service';
@@ -14,7 +14,7 @@ import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.mod
 })
 export class TournamentsFormComponent implements OnInit {
 
-  tournamentForm: FormGroup;
+  tournamentForm: UntypedFormGroup;
   formInfo: FormLayout;
 
   isEditing: boolean
@@ -34,7 +34,7 @@ export class TournamentsFormComponent implements OnInit {
   get confederation() { return this.tournamentForm.get('confederation') };
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private tournamentService: TournamentService,
     private router: Router,
     private route: ActivatedRoute

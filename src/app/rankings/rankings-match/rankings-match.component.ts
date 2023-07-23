@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,7 +20,7 @@ import { TeamService } from 'src/app/teams/services/team.service';
 })
 export class RankingsMatchComponent implements OnInit {
 
-  matchForm: FormGroup;
+  matchForm: UntypedFormGroup;
 
   tournamenttypes: TournamentType[];
   confederations: Confederation[];
@@ -49,7 +49,7 @@ export class RankingsMatchComponent implements OnInit {
   get penalties2() { return this.matchForm.get('penalties2'); }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private rankingService: RankingService,

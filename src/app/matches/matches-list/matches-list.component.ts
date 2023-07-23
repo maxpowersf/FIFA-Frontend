@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,7 +22,7 @@ import { MatchService } from '../services/match.service';
 })
 export class MatchesListComponent implements OnInit {
 
-  filterForm: FormGroup;
+  filterForm: UntypedFormGroup;
 
   teams: Team[];
   confederations: Confederation[];
@@ -49,7 +49,7 @@ export class MatchesListComponent implements OnInit {
   get quantity() { return this.filterForm.get('quantity'); }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private matchService: MatchService,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatchtypeService } from '../services/matchtype.service';
 import { MatchType } from '../models/matchtype.model';
@@ -11,7 +11,7 @@ import { FormLayout } from 'src/app/shared/models/form-layout.model';
   styleUrls: ['./matchtype-form.component.css']
 })
 export class MatchtypeFormComponent implements OnInit {
-  matchtypeForm: FormGroup;
+  matchtypeForm: UntypedFormGroup;
   formInfo: FormLayout;
 
   isEditing: boolean;
@@ -21,7 +21,7 @@ export class MatchtypeFormComponent implements OnInit {
   get weight() { return this.matchtypeForm.get('weight'); }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private matchtypeService: MatchtypeService,
     private router: Router,
     private route: ActivatedRoute

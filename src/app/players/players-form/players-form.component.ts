@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Player } from '../models/player.model';
 import { Team } from 'src/app/teams/models/team.model';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { PlayerPositionMapping } from 'src/app/shared/models/playerposition';
   styleUrls: ['./players-form.component.css']
 })
 export class PlayersFormComponent implements OnInit {
-  playerForm: FormGroup;
+  playerForm: UntypedFormGroup;
 
   isEditing: boolean = false;
   player: Player = new Player();
@@ -30,7 +30,7 @@ export class PlayersFormComponent implements OnInit {
   get worldCupGoldenBoots() { return this.playerForm.get('worldCupGoldenBoots'); }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private playerService: PlayerService,
     private router: Router,
     private route: ActivatedRoute

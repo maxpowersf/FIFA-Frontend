@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfederationService } from '../services/confederation.service';
 import { Confederation } from '../models/confederation.model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ConfederationFormComponent implements OnInit {
 
   isEditing: boolean = false;
-  confederationForm: FormGroup;
+  confederationForm: UntypedFormGroup;
 
   confederation: Confederation = new Confederation();
 
@@ -21,7 +21,7 @@ export class ConfederationFormComponent implements OnInit {
   get weight() { return this.confederationForm.get('weight'); }
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private confederationService: ConfederationService,
     private router: Router,
     private route: ActivatedRoute

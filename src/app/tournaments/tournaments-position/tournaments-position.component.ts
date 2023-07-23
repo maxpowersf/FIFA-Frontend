@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from '../models/tournament.model';
-import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
 import { TeamService } from 'src/app/teams/services/team.service';
@@ -16,7 +16,7 @@ import { PositionsArray } from '../models/positionsArray.model';
 })
 export class TournamentsPositionComponent implements OnInit {
 
-  positionsForm: FormGroup;
+  positionsForm: UntypedFormGroup;
 
   tournament: Tournament = new Tournament();
   teams: Team[];
@@ -24,7 +24,7 @@ export class TournamentsPositionComponent implements OnInit {
   isQualification: boolean;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private teamService: TeamService,
@@ -57,7 +57,7 @@ export class TournamentsPositionComponent implements OnInit {
     }
   }
 
-  generateForm = (): FormGroup => {
+  generateForm = (): UntypedFormGroup => {
     let teamsListArray = [];
     for(let i = 0; i < this.tournament.noOfTeams; i++) {
       teamsListArray.push(this.teamModelCreate())
@@ -66,7 +66,7 @@ export class TournamentsPositionComponent implements OnInit {
     return this.positionsModelCreate(teamsListArray);
   }
 
-  positionsModelCreate = (teamsArray: FormGroup[] = []) => {
+  positionsModelCreate = (teamsArray: UntypedFormGroup[] = []) => {
     return this.fb.group({
       teamsPositions: this.fb.array(teamsArray)
     });
@@ -98,7 +98,7 @@ export class TournamentsPositionComponent implements OnInit {
     }
 
     const positions: PositionsArray = new PositionsArray();
-    const teamsPositions = this.positionsForm.get('teamsPositions') as FormArray;
+    const teamsPositions = this.positionsForm.get('teamsPositions') as UntypedFormArray;
     teamsPositions.controls.forEach((element, index) => {
       if(element.get('teamp').value != "") {
         positions.position.push(this.processTeamPositions(element, index));

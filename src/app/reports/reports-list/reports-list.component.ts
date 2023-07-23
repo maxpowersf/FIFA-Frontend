@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
 import { ReportsList } from '../models/report.model';
@@ -11,7 +11,7 @@ import { ReportsList } from '../models/report.model';
 })
 export class ReportsListComponent implements OnInit {
 
-  reportsForm: FormGroup;
+  reportsForm: UntypedFormGroup;
 
   get team() { return this.reportsForm.get('team'); }
   get active() { return this.reportsForm.get('active'); }
@@ -21,7 +21,7 @@ export class ReportsListComponent implements OnInit {
   teamId: number;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private route: ActivatedRoute
   ) { }

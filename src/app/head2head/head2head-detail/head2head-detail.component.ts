@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,7 +19,7 @@ import { Head2headService } from '../services/head2head.service';
 })
 export class Head2headDetailComponent implements OnInit {
 
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   matchrounds = MatchRoundMapping;
 
   teams: Team[];
@@ -44,7 +44,7 @@ export class Head2headDetailComponent implements OnInit {
   @ViewChild('paginatorMatches', null) paginatorMatches: MatPaginator;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private matchService: MatchService,
