@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { Position } from '../../models/position.model';
 import { PositionsGroups } from '../../models/positionsGroups.model';
 

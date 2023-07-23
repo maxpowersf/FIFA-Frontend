@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
 import { TeamService } from 'src/app/teams/services/team.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Position } from '../models/position.model';
 import { PositionService } from '../services/position.service';
 import { PositionsArray } from '../models/positionsArray.model';

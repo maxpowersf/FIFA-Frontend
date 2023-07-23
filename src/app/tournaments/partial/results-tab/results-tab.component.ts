@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { Match } from 'src/app/matches/models/match.model';
 import { MatchRoundMapping } from 'src/app/shared/models/matchround';
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatPaginator, MatTableDataSource } from "@angular/material";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatTableDataSource } from "@angular/material/table";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Match } from "src/app/matches/models/match.model";
 import { MatchRoundMapping } from "src/app/shared/models/matchround";

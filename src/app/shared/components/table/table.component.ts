@@ -1,7 +1,8 @@
 import { Component, ChangeDetectorRef, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TableLayout } from '../../models/table-layout.model';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { DataSource } from '@angular/cdk/table';
 import { Observable, merge, of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators';
