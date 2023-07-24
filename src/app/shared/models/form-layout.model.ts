@@ -1,6 +1,6 @@
 export interface FormLayout {
-    title: string;
-    subtitle: string;
-    submitText: string;
-    isEditing: boolean;
+  title: string;
+  subtitle: string;
+  submitText: string;
+  isEditing: boolean;
 }

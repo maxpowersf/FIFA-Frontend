@@ -10,27 +10,27 @@ const routes: Routes = [
   {
     path: '',
     component: PlayersListComponent,
-    resolve: {players : PlayersResolver}
+    resolve: { players: PlayersResolver },
   },
   {
     path: 'new',
     component: PlayersFormComponent,
     resolve: {
-      teams: TeamsResolver
-    }
+      teams: TeamsResolver,
+    },
   },
   {
     path: ':id/edit',
     component: PlayersFormComponent,
     resolve: {
       player: PlayerResolver,
-      teams: TeamsResolver
-    }
-  }
+      teams: TeamsResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PlayersRoutingModule { }
+export class PlayersRoutingModule {}

@@ -5,18 +5,16 @@ import { environment } from 'src/environments/environment';
 import { TeamStat } from '../models/teamstat.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TeamStatService {
   private teamstatUrl = environment.baseUrl + 'teamstat';
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<TeamStat[]> {
     return this.httpClient.get<TeamStat[]>(this.teamstatUrl + '/getall');
@@ -27,10 +25,18 @@ export class TeamStatService {
   }
 
   public add(teamstat: TeamStat) {
-    return this.httpClient.post(this.teamstatUrl + '/add', teamstat, httpOptions);
+    return this.httpClient.post(
+      this.teamstatUrl + '/add',
+      teamstat,
+      httpOptions,
+    );
   }
 
   public update(teamstat: TeamStat) {
-    return this.httpClient.put(this.teamstatUrl + '/update', teamstat, httpOptions);
+    return this.httpClient.put(
+      this.teamstatUrl + '/update',
+      teamstat,
+      httpOptions,
+    );
   }
 }

@@ -5,7 +5,7 @@ export enum MatchRound {
   Quarterfinal = 4,
   Semifinal = 5,
   ThirdPlace = 6,
-  Final = 7
+  Final = 7,
 }
 
 export const MatchRoundMapping = [
@@ -15,5 +15,5 @@ export const MatchRoundMapping = [
   { value: MatchRound.Quarterfinal, name: 'Quarterfinal' },
   { value: MatchRound.Semifinal, name: 'Semifinal' },
   { value: MatchRound.ThirdPlace, name: 'Third Place' },
-  { value: MatchRound.Final, name: 'Final' }
-]
+  { value: MatchRound.Final, name: 'Final' },
+];

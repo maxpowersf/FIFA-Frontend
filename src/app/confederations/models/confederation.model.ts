@@ -1,6 +1,6 @@
 export class Confederation {
-    id: number;
-    name: string;
-    color: string;
-    weight: number;
+  id: number;
+  name: string;
+  color: string;
+  weight: number;
 }

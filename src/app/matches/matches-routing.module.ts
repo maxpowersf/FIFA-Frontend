@@ -14,13 +14,13 @@ const routes: Routes = [
     resolve: {
       teams: TeamsResolver,
       confederations: ConfederationsResolver,
-      tournamentTypes: TournamenttypesResolver
-    }
-  }
+      tournamentTypes: TournamenttypesResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MatchesRoutingModule { }
+export class MatchesRoutingModule {}

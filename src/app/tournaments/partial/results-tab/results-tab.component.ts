@@ -6,21 +6,28 @@ import { MatchRoundMapping } from 'src/app/shared/models/matchround';
 @Component({
   selector: 'app-results-tab',
   templateUrl: './results-tab.component.html',
-  styleUrls: ['./results-tab.component.css']
+  styleUrls: ['./results-tab.component.css'],
 })
 export class ResultsTabComponent implements OnInit {
-
   @Input() data: Match[];
 
-  displayedColumns: string[] = ['date', 'group', 'matchday', 'team1', 'goals1', 'divider', 'goals2', 'team2'];
+  displayedColumns: string[] = [
+    'date',
+    'group',
+    'matchday',
+    'team1',
+    'goals1',
+    'divider',
+    'goals2',
+    'team2',
+  ];
   dataSource;
 
   matchrounds = MatchRoundMapping;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);
   }
-
 }

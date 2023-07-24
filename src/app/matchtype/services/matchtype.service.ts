@@ -4,21 +4,17 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { MatchType } from '../models/matchtype.model';
 
-
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json' }),
 };
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MatchtypeService {
   private matchtypeUrl = environment.baseUrl + 'matchtype';
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<MatchType[]> {
     return this.httpClient.get<MatchType[]>(this.matchtypeUrl);

@@ -11,30 +11,30 @@ const routes: Routes = [
   {
     path: '',
     component: ConfederationListComponent,
-    resolve: {confederations : ConfederationsResolver}
+    resolve: { confederations: ConfederationsResolver },
   },
   {
     path: 'new',
-    component: ConfederationFormComponent
+    component: ConfederationFormComponent,
   },
   {
     path: ':id/edit',
     component: ConfederationFormComponent,
     resolve: {
-      confederation: ConfederationResolver
-    }
+      confederation: ConfederationResolver,
+    },
   },
   {
     path: ':id/view',
     component: ConfederationRankingComponent,
     resolve: {
-      teams: ConfederationRankingResolver
-    }
-  }
+      teams: ConfederationRankingResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ConfederationsRoutingModule { }
+export class ConfederationsRoutingModule {}

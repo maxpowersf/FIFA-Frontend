@@ -14,6 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
-export class Head2HeadModule { }
+export class Head2HeadModule {}

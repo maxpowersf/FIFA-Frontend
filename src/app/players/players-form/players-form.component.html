@@ -1,64 +1,92 @@
 <mat-card class="form-card">
-    <mat-card-title>
-        <div class="header">
-            <div class="title">
-                Player
-            </div>
-        </div>
-    </mat-card-title>
-    <mat-card-subtitle>{{isEditing ? '' : 'New player'}}</mat-card-subtitle>
-    <mat-card-content>
-        <form [formGroup]="playerForm">
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Ingrese el nombre del jugador" [formControl]="name">
-            </mat-form-field>
+  <mat-card-title>
+    <div class="header">
+      <div class="title">Player</div>
+    </div>
+  </mat-card-title>
+  <mat-card-subtitle>{{ isEditing ? '' : 'New player' }}</mat-card-subtitle>
+  <mat-card-content>
+    <form [formGroup]="playerForm">
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Ingrese el nombre del jugador"
+          [formControl]="name"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <mat-select placeholder="Position" [formControl]="position">
-                    <mat-option *ngFor="let position of positions" [value]="position.value">
-                        {{position.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Position" [formControl]="position">
+          <mat-option
+            *ngFor="let position of positions"
+            [value]="position.value"
+          >
+            {{ position.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <mat-select placeholder="Equipo" [formControl]="team">
-                    <mat-option *ngFor="let team of teams" [value]="team.id">
-                        <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Equipo" [formControl]="team">
+          <mat-option *ngFor="let team of teams" [value]="team.id">
+            <span class="flag-icon flag-icon-{{ team.flag }}"></span>
+            {{ team.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Ingrese el dorsal"
-                    [formControl]="dorsal">
-            </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="number"
+          placeholder="Ingrese el dorsal"
+          [formControl]="dorsal"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Ingrese los goles en confederaciones"
-                    [formControl]="confederationsGoals">
-            </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="number"
+          placeholder="Ingrese los goles en confederaciones"
+          [formControl]="confederationsGoals"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Ingrese los goles en mundiales"
-                    [formControl]="worldCupGoals">
-            </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="number"
+          placeholder="Ingrese los goles en mundiales"
+          [formControl]="worldCupGoals"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Ingrese las botas de oro en Confederations"
-                    [formControl]="confederationsGoldenBoots">
-            </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="number"
+          placeholder="Ingrese las botas de oro en Confederations"
+          [formControl]="confederationsGoldenBoots"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Ingrese las botas de oro en mundiales"
-                    [formControl]="worldCupGoldenBoots">
-            </mat-form-field>
-        </form>
-    </mat-card-content>
-    <mat-card-actions>
-        <div class="actions">
-            <button mat-flat-button (click)="goToList()">Back</button>
-            <button mat-raised-button color="primary" (click)="onSubmit()">{{isEditing ? 'Update' : 'Save'}}</button>
-        </div>
-    </mat-card-actions>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="number"
+          placeholder="Ingrese las botas de oro en mundiales"
+          [formControl]="worldCupGoldenBoots"
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="actions">
+      <button mat-flat-button (click)="goToList()">Back</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">
+        {{ isEditing ? 'Update' : 'Save' }}
+      </button>
+    </div>
+  </mat-card-actions>
 </mat-card>

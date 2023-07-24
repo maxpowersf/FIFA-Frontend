@@ -6,21 +6,31 @@ import { PositionsGroups } from '../../models/positionsGroups.model';
 @Component({
   selector: 'app-final-table-tab',
   templateUrl: './final-table-tab.component.html',
-  styleUrls: ['./final-table-tab.component.css']
+  styleUrls: ['./final-table-tab.component.css'],
 })
 export class FinalTableTabComponent implements OnInit {
-
   @Input() data: Position[];
   @Input() altData: PositionsGroups;
   @Input() isQualification: boolean;
 
-  displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'result', 'points', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
+  displayedColumns: string[] = [
+    'noPosition',
+    'team',
+    'confederationName',
+    'result',
+    'points',
+    'gamesPlayed',
+    'wins',
+    'draws',
+    'loses',
+    'goalsFavor',
+    'goalsAgainst',
+  ];
   dataSource;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);
   }
-
 }

@@ -1,8 +1,8 @@
 export class TournamentType {
-    id: number;
-    name: string;
-    matchTypeID: number;
-    format: number;
-    confederationID: number;
-    noTeams: number;
+  id: number;
+  name: string;
+  matchTypeID: number;
+  format: number;
+  confederationID: number;
+  noTeams: number;
 }

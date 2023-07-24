@@ -1,102 +1,113 @@
 <mat-card class="form-card">
-    <mat-card-title>
-        <div class="header">
-            <div class="title">
-            Standings for {{tournament.name}}
-            </div>
+  <mat-card-title>
+    <div class="header">
+      <div class="title">Standings for {{ tournament.name }}</div>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="row header">
+      <div class="col-lg-3">Team</div>
+      <div class="col-lg-1">W</div>
+      <div class="col-lg-1">D</div>
+      <div class="col-lg-1">L</div>
+      <div class="col-lg-1">GF</div>
+      <div class="col-lg-1">GA</div>
+      <div class="col-lg-3" *ngIf="isQualification">
+        <div class="row">
+          <div class="col-lg-2">Pos</div>
+          <div class="col-lg-2">Group</div>
+          <div class="col-lg-2">Round</div>
+          <div class="col-lg-3">Qualified</div>
+          <div class="col-lg-3">Host</div>
         </div>
-    </mat-card-title>
-    <mat-card-content>
-        <div class="row header">
-            <div class="col-lg-3">Team</div>
-            <div class="col-lg-1">W</div>
-            <div class="col-lg-1">D</div>
-            <div class="col-lg-1">L</div>
-            <div class="col-lg-1">GF</div>
-            <div class="col-lg-1">GA</div>
+      </div>
+    </div>
+    <form [formGroup]="positionsForm">
+      <div formArrayName="teamsPositions">
+        <div
+          *ngFor="
+            let elem of positionsForm.get('teamsPositions')['controls'];
+            let i = index
+          "
+        >
+          <div class="row" [formGroupName]="i">
+            <div class="col-lg-3">
+              <span class="row-header">{{ i + 1 }}º</span>
+              <mat-form-field class="full-width">
+                <mat-select formControlName="teamp">
+                  <mat-option *ngFor="let team of teams" [value]="team.id">
+                    <span class="flag-icon flag-icon-{{ team.flag }}"></span>
+                    {{ team.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-1">
+              <mat-form-field class="result">
+                <input matInput type="number" min="0" formControlName="wins" />
+              </mat-form-field>
+            </div>
+            <div class="col-lg-1">
+              <mat-form-field class="result">
+                <input matInput type="number" min="0" formControlName="draws" />
+              </mat-form-field>
+            </div>
+            <div class="col-lg-1">
+              <mat-form-field class="result">
+                <input matInput type="number" min="0" formControlName="loses" />
+              </mat-form-field>
+            </div>
+            <div class="col-lg-1">
+              <mat-form-field class="result">
+                <input matInput type="number" min="0" formControlName="favor" />
+              </mat-form-field>
+            </div>
+            <div class="col-lg-1">
+              <mat-form-field class="result">
+                <input
+                  matInput
+                  type="number"
+                  min="0"
+                  formControlName="against"
+                />
+              </mat-form-field>
+            </div>
             <div class="col-lg-3" *ngIf="isQualification">
-                <div class="row">
-                    <div class="col-lg-2">Pos</div>
-                    <div class="col-lg-2">Group</div>
-                    <div class="col-lg-2">Round</div>
-                    <div class="col-lg-3">Qualified</div>
-                    <div class="col-lg-3">Host</div>
+              <div class="row">
+                <div class="col-lg-2">
+                  <mat-form-field class="result">
+                    <input matInput formControlName="pos" />
+                  </mat-form-field>
                 </div>
-            </div>
-        </div>
-        <form [formGroup]="positionsForm">
-            <div formArrayName="teamsPositions">
-                <div *ngFor="let elem of positionsForm.get('teamsPositions')['controls']; let i = index">
-                    <div class="row" [formGroupName]="i">
-                        <div class="col-lg-3">
-                            <span class="row-header">{{i+1}}º</span>
-                            <mat-form-field class="full-width">
-                                <mat-select formControlName="teamp">
-                                    <mat-option *ngFor="let team of teams" [value]="team.id">
-                                        <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-1">
-                            <mat-form-field class="result">
-                                <input matInput type="number" min="0" formControlName="wins">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-1">
-                            <mat-form-field class="result">
-                                <input matInput type="number" min="0" formControlName="draws">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-1">
-                            <mat-form-field class="result">
-                                <input matInput type="number" min="0" formControlName="loses">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-1">
-                            <mat-form-field class="result">
-                                <input matInput type="number" min="0" formControlName="favor">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-1">
-                            <mat-form-field class="result">
-                                <input matInput type="number" min="0" formControlName="against">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-3" *ngIf="isQualification">
-                            <div class="row">
-                                <div class="col-lg-2">
-                                    <mat-form-field class="result">
-                                        <input matInput formControlName="pos">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-lg-2">
-                                    <mat-form-field class="result group">
-                                        <input matInput formControlName="group">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-lg-2">
-                                    <mat-form-field class="result">
-                                        <input matInput type="text" formControlName="round">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-lg-3">
-                                    <mat-checkbox formControlName="qualified"></mat-checkbox>
-                                </div>
-                                <div class="col-lg-3">
-                                    <mat-checkbox formControlName="host"></mat-checkbox>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-2">
+                  <mat-form-field class="result group">
+                    <input matInput formControlName="group" />
+                  </mat-form-field>
                 </div>
+                <div class="col-lg-2">
+                  <mat-form-field class="result">
+                    <input matInput type="text" formControlName="round" />
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-checkbox formControlName="qualified"></mat-checkbox>
+                </div>
+                <div class="col-lg-3">
+                  <mat-checkbox formControlName="host"></mat-checkbox>
+                </div>
+              </div>
             </div>
-        </form>
-    </mat-card-content>
-    <mat-card-actions>
-        <div class="actions">
-            <button mat-flat-button (click)="goToList()">Back</button>
-            <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+          </div>
         </div>
-    </mat-card-actions>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="actions">
+      <button mat-flat-button (click)="goToList()">Back</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">
+        Save
+      </button>
+    </div>
+  </mat-card-actions>
 </mat-card>

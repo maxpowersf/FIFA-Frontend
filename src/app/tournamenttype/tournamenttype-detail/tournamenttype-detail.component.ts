@@ -13,14 +13,30 @@ import { Tournament } from 'src/app/tournaments/models/tournament.model';
 @Component({
   selector: 'app-tournamenttype-detail',
   templateUrl: './tournamenttype-detail.component.html',
-  styleUrls: ['./tournamenttype-detail.component.css']
+  styleUrls: ['./tournamenttype-detail.component.css'],
 })
 export class TournamenttypeDetailComponent implements OnInit {
+  displayedColumns: string[] = [
+    'noPosition',
+    'team',
+    'confederationName',
+    'titles',
+  ];
+  displayedColumnsHistory: string[] = [
+    'tournament',
+    'champion',
+    'runnerUp',
+    'third',
+    'fourth',
+  ];
+  displayedColumnsGoalscorers: string[] = [
+    'noPosition',
+    'fullName',
+    'positionName',
+    'team',
+    'goals',
+  ];
 
-  displayedColumns: string[] = ['noPosition', 'team', 'confederationName', 'titles'];
-  displayedColumnsHistory: string[] = ['tournament', 'champion', 'runnerUp', 'third', 'fourth'];
-  displayedColumnsGoalscorers: string[] = ['noPosition', 'fullName', 'positionName', 'team', 'goals'];
-  
   dataSource;
   dataSourceHistory;
   dataSourceGoalscorers;
@@ -38,7 +54,7 @@ export class TournamenttypeDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private teamService: TeamService,
-    private playerService: PlayerService
+    private playerService: PlayerService,
   ) {
     this.tournamentType = this.route.snapshot.data.tournamenttype;
     this.tournamentTypeFormat = this.tournamentType.format;
@@ -53,9 +69,10 @@ export class TournamenttypeDetailComponent implements OnInit {
   }
 
   getTeams() {
-    this.teamService.getTeamsWithTitles(this.tournamentType.id)
+    this.teamService
+      .getTeamsWithTitles(this.tournamentType.id)
       .subscribe((res) => {
-        this.teams = res.map(c => this.mapFromApi(c));
+        this.teams = res.map((c) => this.mapFromApi(c));
 
         this.dataSource = new MatTableDataSource(this.teams);
         this.dataSource.paginator = this.paginator;
@@ -63,13 +80,14 @@ export class TournamenttypeDetailComponent implements OnInit {
   }
 
   getGoalscorers() {
-    this.playerService.getPlayersWithGoals(this.tournamentType.id)
+    this.playerService
+      .getPlayersWithGoals(this.tournamentType.id)
       .subscribe((res) => {
-        this.goalscorers = res.map(c => this.mapGoalscorersFromApi(c));
+        this.goalscorers = res.map((c) => this.mapGoalscorersFromApi(c));
 
         this.dataSourceGoalscorers = new MatTableDataSource(this.goalscorers);
         this.dataSourceGoalscorers.paginator = this.paginatorGoalscorers;
-      })
+      });
   }
 
   mapFromApi(element: any) {
@@ -110,6 +128,5 @@ export class TournamenttypeDetailComponent implements OnInit {
     return { ...element, goals: goals };
   }
 
-  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route })
-
+  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route });
 }

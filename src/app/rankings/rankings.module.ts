@@ -16,7 +16,7 @@ import { TeamsModule } from '../teams/teams.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    TeamsModule
-  ]
+    TeamsModule,
+  ],
 })
-export class RankingsModule { }
+export class RankingsModule {}

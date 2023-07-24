@@ -1,14 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
-import { Team } from "../models/team.model";
-import { TeamService } from "../services/team.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { Confederation } from "src/app/confederations/models/confederation.model";
+import { Component, OnInit } from '@angular/core';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators,
+} from '@angular/forms';
+import { Team } from '../models/team.model';
+import { TeamService } from '../services/team.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Confederation } from 'src/app/confederations/models/confederation.model';
 
 @Component({
-  selector: "app-teams-form",
-  templateUrl: "./teams-form.component.html",
-  styleUrls: ["./teams-form.component.css"],
+  selector: 'app-teams-form',
+  templateUrl: './teams-form.component.html',
+  styleUrls: ['./teams-form.component.css'],
 })
 export class TeamsFormComponent implements OnInit {
   isEditing: boolean = false;
@@ -18,29 +22,29 @@ export class TeamsFormComponent implements OnInit {
 
   confederations: Confederation[];
 
-  teamFlag: string = "eu";
+  teamFlag: string = 'eu';
 
   get name() {
-    return this.teamForm.get("name");
+    return this.teamForm.get('name');
   }
   get flag() {
-    return this.teamForm.get("flag");
+    return this.teamForm.get('flag');
   }
   get confederation() {
-    return this.teamForm.get("confederation");
+    return this.teamForm.get('confederation');
   }
   get actualrank() {
-    return this.teamForm.get("actualrank");
+    return this.teamForm.get('actualrank');
   }
   get totalpoints() {
-    return this.teamForm.get("totalpoints");
+    return this.teamForm.get('totalpoints');
   }
 
   constructor(
     private fb: UntypedFormBuilder,
     private teamService: TeamService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -48,7 +52,7 @@ export class TeamsFormComponent implements OnInit {
 
     this.confederations = this.route.snapshot.data.confederations;
 
-    this.isEditing = this.route.snapshot.url.toString().includes("edit");
+    this.isEditing = this.route.snapshot.url.toString().includes('edit');
 
     if (this.isEditing) {
       this.team = this.route.snapshot.data.team;
@@ -67,16 +71,16 @@ export class TeamsFormComponent implements OnInit {
 
   goToList = () =>
     this.isEditing
-      ? this.router.navigate(["../../"], { relativeTo: this.route })
-      : this.router.navigate(["../"], { relativeTo: this.route });
+      ? this.router.navigate(['../../'], { relativeTo: this.route })
+      : this.router.navigate(['../'], { relativeTo: this.route });
 
   modelCreate = () =>
     this.fb.group({
-      name: ["", Validators.required],
-      flag: [""],
-      confederation: ["", Validators.required],
-      actualrank: [""],
-      totalpoints: [""],
+      name: ['', Validators.required],
+      flag: [''],
+      confederation: ['', Validators.required],
+      actualrank: [''],
+      totalpoints: [''],
     });
 
   onSubmit = () => {
@@ -97,7 +101,8 @@ export class TeamsFormComponent implements OnInit {
     teamModified.worldCupTitles = this.team.worldCupTitles;
     teamModified.worldCupQualifications = this.team.worldCupQualifications;
     teamModified.confederationsCupTitles = this.team.confederationsCupTitles;
-    teamModified.confederationTournamentTitles = this.team.confederationTournamentTitles;
+    teamModified.confederationTournamentTitles =
+      this.team.confederationTournamentTitles;
     teamModified.rankingChange = this.team.rankingChange;
 
     this.isEditing

@@ -10,22 +10,29 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-tournamenttype-list',
   templateUrl: './tournamenttype-list.component.html',
-  styleUrls: ['./tournamenttype-list.component.css']
+  styleUrls: ['./tournamenttype-list.component.css'],
 })
 export class TournamenttypeListComponent implements OnInit {
-
-  displayedColumns: string[] = ['id', 'name', 'matchtypeName', 'formatName', 'confederationName', 'noTeams', 'actions'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'matchtypeName',
+    'formatName',
+    'confederationName',
+    'noTeams',
+    'actions',
+  ];
   dataSource;
 
   data: TournamentType[];
 
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private tournamenttypeService: TournamenttypeService
+    private tournamenttypeService: TournamenttypeService,
   ) {
     this.data = this.route.snapshot.data.tournamenttypes;
   }
@@ -38,18 +45,21 @@ export class TournamenttypeListComponent implements OnInit {
 
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
 
-  navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+  navigateToEdit = (id) =>
+    this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
-  navigateToDetail = (id) => this.router.navigate([id, 'history'], { relativeTo: this.route });
+  navigateToDetail = (id) =>
+    this.router.navigate([id, 'history'], { relativeTo: this.route });
 
   onDelete = (id: number) => {
-    this.tournamenttypeService.delete(id)
+    this.tournamenttypeService
+      .delete(id)
       .pipe(switchMap(this.updateDataTable))
-      .subscribe(res => {
+      .subscribe((res) => {
         this.data = res;
         this.dataSource.data = this.data;
       });
-  }
+  };
 
   updateDataTable = () => this.tournamenttypeService.getAll();
 }

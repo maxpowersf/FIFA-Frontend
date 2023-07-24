@@ -5,10 +5,9 @@ import { FormLayout } from '../../models/form-layout.model';
 @Component({
   selector: 'form-layout',
   templateUrl: './form-layout.component.html',
-  styleUrls: ['./form-layout.component.css']
+  styleUrls: ['./form-layout.component.css'],
 })
 export class FormLayoutComponent implements OnInit {
-
   @Input() info: FormLayout;
   @Output() submitEvent: EventEmitter<any> = new EventEmitter();
 
@@ -16,13 +15,15 @@ export class FormLayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   emitSubmit = () => this.submitEvent.emit();
 
-  goToList = () => this.info.isEditing ? this.router.navigate(['../../'], { relativeTo: this.route }) : this.router.navigate(['../'], { relativeTo: this.route });
+  goToList = () =>
+    this.info.isEditing
+      ? this.router.navigate(['../../'], { relativeTo: this.route })
+      : this.router.navigate(['../'], { relativeTo: this.route });
 }

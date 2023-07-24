@@ -1,48 +1,58 @@
 <mat-card>
-    <mat-card-title>
-        <div class="header">
-            <div class="title">
-                Stats
+  <mat-card-title>
+    <div class="header">
+      <div class="title">Stats</div>
+    </div>
+  </mat-card-title>
+  <mat-card-subtitle>List of reports</mat-card-subtitle>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="reportsForm">
+          <div class="row">
+            <div class="col-md-3">
+              <mat-form-field class="full-width">
+                <mat-select
+                  [formControl]="team"
+                  placeholder="Filter by Team"
+                  (selectionChange)="setSelectedTeam($event.value)"
+                >
+                  <mat-option [value]="0">All</mat-option>
+                  <mat-option *ngFor="let team of teams" [value]="team.id">
+                    <span class="flag-icon flag-icon-{{ team.flag }}"></span>
+                    {{ team.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
-        </div>
-    </mat-card-title>
-    <mat-card-subtitle>List of reports</mat-card-subtitle>
-    <mat-card-content>
-        <div class="row">
-            <div class="col-md-12">
-                <form [formGroup]="reportsForm">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <mat-form-field class="full-width">
-                                <mat-select [formControl]="team" placeholder="Filter by Team"
-                                    (selectionChange)="setSelectedTeam($event.value)">
-                                    <mat-option [value]="0">All</mat-option>
-                                    <mat-option *ngFor="let team of teams" [value]="team.id">
-                                        <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-3 my-auto">
-                            <mat-checkbox formControlName="active">Only active</mat-checkbox>
-                        </div>
-                    </div>
-                </form>
+            <div class="col-md-3 my-auto">
+              <mat-checkbox formControlName="active">Only active</mat-checkbox>
             </div>
-        </div>
-        <mat-grid-list cols="2" rowHeight="140px">
-            <mat-grid-tile *ngFor="let report of reports; let i = index" [colspan]="1" [rowspan]="1">
-                <mat-card class="mat-card-min">
-                    <a mat-list-item [routerLink]="[]" (click)="goToReportPage(report.url)">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p class="mat-card-title-group">{{report.title}}</p>
-                                <p class="mat-card-subtitle">{{report.subtitle}}</p>
-                            </div>
-                        </div>
-                    </a>
-                </mat-card>
-            </mat-grid-tile>
-        </mat-grid-list>
-    </mat-card-content>
+          </div>
+        </form>
+      </div>
+    </div>
+    <mat-grid-list cols="2" rowHeight="140px">
+      <mat-grid-tile
+        *ngFor="let report of reports; let i = index"
+        [colspan]="1"
+        [rowspan]="1"
+      >
+        <mat-card class="mat-card-min">
+          <a
+            mat-list-item
+            [routerLink]="[]"
+            (click)="goToReportPage(report.url)"
+          >
+            <div class="row">
+              <div class="col-lg-12">
+                <p class="mat-card-title-group">{{ report.title }}</p>
+                <p class="mat-card-subtitle">{{ report.subtitle }}</p>
+              </div>
+            </div>
+          </a>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
 </mat-card>

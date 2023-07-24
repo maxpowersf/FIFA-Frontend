@@ -8,13 +8,13 @@ const routes: Routes = [
     path: '',
     component: Head2headDetailComponent,
     resolve: {
-      teams: TeamsResolver
-    }
-  }
+      teams: TeamsResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class Head2headRoutingModule { }
+export class Head2headRoutingModule {}

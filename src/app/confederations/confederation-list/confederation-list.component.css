@@ -1,15 +1,15 @@
 table {
-    width: 100%;
+  width: 100%;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.mat-icon-button{
-    margin-top: 5px;
+.mat-icon-button {
+  margin-top: 5px;
 }
-.clickable:hover{
-    background-color: rgba(0, 0, 0, .05);
-    cursor: pointer;
+.clickable:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }

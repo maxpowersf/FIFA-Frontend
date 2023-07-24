@@ -9,13 +9,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamenttypeDetailComponent } from './tournamenttype-detail/tournamenttype-detail.component';
 
 @NgModule({
-  declarations: [TournamenttypeListComponent, TournamenttypeFormComponent, TournamenttypeDetailComponent],
+  declarations: [
+    TournamenttypeListComponent,
+    TournamenttypeFormComponent,
+    TournamenttypeDetailComponent,
+  ],
   imports: [
     CommonModule,
     TournamenttypeRoutingModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
-export class TournamenttypeModule { }
+export class TournamenttypeModule {}

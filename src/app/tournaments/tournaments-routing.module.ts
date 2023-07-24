@@ -17,16 +17,16 @@ const routes: Routes = [
     path: '',
     component: TournamentsListComponent,
     resolve: {
-      tournaments : TournamentsResolver
-    }
+      tournaments: TournamentsResolver,
+    },
   },
   {
     path: 'new',
     component: TournamentsFormComponent,
     resolve: {
       tournamenttypes: TournamenttypesResolver,
-      confederations: ConfederationsResolver
-    }
+      confederations: ConfederationsResolver,
+    },
   },
   {
     path: ':id/edit',
@@ -34,8 +34,8 @@ const routes: Routes = [
     resolve: {
       tournamenttypes: TournamenttypesResolver,
       confederations: ConfederationsResolver,
-      tournament: TournamentResolver
-    }
+      tournament: TournamentResolver,
+    },
   },
   {
     path: ':id/position',
@@ -44,20 +44,20 @@ const routes: Routes = [
       standings: StandingsResolver,
       tournament: TournamentResolver,
       matches: MatchByTournamentResolver,
-      goalscorers: GoalscorerResolver
-    }
+      goalscorers: GoalscorerResolver,
+    },
   },
   {
     path: ':id/positions',
     component: TournamentsPositionComponent,
     resolve: {
-      tournament: TournamentResolver
-    }
-  }
+      tournament: TournamentResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TournamentsRoutingModule { }
+export class TournamentsRoutingModule {}

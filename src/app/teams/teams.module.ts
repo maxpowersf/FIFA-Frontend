@@ -10,13 +10,18 @@ import { TeamsSquadComponent } from './teams-squad/teams-squad.component';
 import { TeamsDashboardComponent } from './teams-dashboard/teams-dashboard.component';
 
 @NgModule({
-  declarations: [TeamsFormComponent, TeamsListComponent, TeamsSquadComponent, TeamsDashboardComponent],
+  declarations: [
+    TeamsFormComponent,
+    TeamsListComponent,
+    TeamsSquadComponent,
+    TeamsDashboardComponent,
+  ],
   imports: [
     CommonModule,
     TeamsRoutingModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
-export class TeamsModule { }
+export class TeamsModule {}

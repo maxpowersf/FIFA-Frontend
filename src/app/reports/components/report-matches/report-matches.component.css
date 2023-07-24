@@ -1,12 +1,12 @@
 table {
-    width: 100%;
+  width: 100%;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .mat-header-cell,
-.mat-cell{
-    text-align: center;
+.mat-cell {
+  text-align: center;
 }

@@ -4,21 +4,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Match } from '../../matches/models/match.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RankingService {
   private rankingUrl = environment.baseUrl + 'ranking';
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   public add(match: Match) {
-    return this.httpClient.post(this.rankingUrl + '/addMatch', match, httpOptions);
+    return this.httpClient.post(
+      this.rankingUrl + '/addMatch',
+      match,
+      httpOptions,
+    );
   }
 
   public update() {

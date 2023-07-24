@@ -24,7 +24,7 @@ import { StandingsRoundTabComponent } from './partial/standings-round-tab/standi
     ResultsTabComponent,
     FinalTableTabComponent,
     StandingsGroupsTabComponent,
-    StandingsRoundTabComponent
+    StandingsRoundTabComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +32,6 @@ import { StandingsRoundTabComponent } from './partial/standings-round-tab/standi
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
-export class TournamentsModule { }
+export class TournamentsModule {}

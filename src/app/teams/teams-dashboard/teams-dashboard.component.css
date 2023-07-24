@@ -1,78 +1,78 @@
 .mat-card-small {
-    width: 230px;
-    display: inline-block;
-    margin: 10px 5px;
-    text-align: center;
+  width: 230px;
+  display: inline-block;
+  margin: 10px 5px;
+  text-align: center;
 }
 .mat-tab-label {
-    cursor: pointer;
+  cursor: pointer;
 }
 table {
-    width: 100%;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .mat-header-cell,
-.mat-cell{
-    text-align: center;
+.mat-cell {
+  text-align: center;
 }
-.mat-fab{
-    margin: 0 10px;
+.mat-fab {
+  margin: 0 10px;
 }
-.cell-number{
-    width: 50px;
+.cell-number {
+  width: 50px;
 }
 .worldcup-header {
-    margin: 0;
-    text-align: center;
+  margin: 0;
+  text-align: center;
 }
 .worldcup-header .first-row {
-    padding: 10px;
-    width: 70%;
+  padding: 10px;
+  width: 70%;
 }
 th.left,
-td.left{
-    text-align: left;
-    padding-left: 20px;
+td.left {
+  text-align: left;
+  padding-left: 20px;
 }
 th:nth-child(10),
 td:nth-child(10) {
-    border-left: #eaecf0 solid 10px;
+  border-left: #eaecf0 solid 10px;
 }
 .host {
-    border: red solid 2px;
+  border: red solid 2px;
 }
 .champion {
-    background-color: gold;
-    font-weight: bold;
+  background-color: gold;
+  font-weight: bold;
 }
 .runnerup {
-    background-color: silver;
+  background-color: silver;
 }
 .third {
-    background-color: #cc9966;
+  background-color: #cc9966;
 }
 .fourth {
-    background-color: #9acdff;
+  background-color: #9acdff;
 }
 .mat-chip {
-    border-radius: 20px;
-    padding: 5px 15px;
-    color: black;
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: black;
 }
 .mat-chip.Goalkeeper {
-    background-color: rgba(254, 185, 7, 0.3);
+  background-color: rgba(254, 185, 7, 0.3);
 }
 .mat-chip.Defender {
-    background-color: rgba(0, 171, 210, 0.3);
+  background-color: rgba(0, 171, 210, 0.3);
 }
 .mat-chip.Midfielder {
-    background-color: rgba(136, 201, 0, 0.3);
+  background-color: rgba(136, 201, 0, 0.3);
 }
 .mat-chip.Attacker {
-    background-color: rgba(239, 30, 30, 0.3);
+  background-color: rgba(239, 30, 30, 0.3);
 }

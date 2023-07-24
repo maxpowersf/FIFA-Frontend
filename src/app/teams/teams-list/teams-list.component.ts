@@ -1,27 +1,27 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { Team } from "../models/team.model";
-import { TeamService } from "../services/team.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { MatLegacyPaginator as MatPaginator } from "@angular/material/legacy-paginator";
-import { MatSort } from "@angular/material/sort";
-import { MatLegacyTableDataSource as MatTableDataSource } from "@angular/material/legacy-table";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Team } from '../models/team.model';
+import { TeamService } from '../services/team.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 
 @Component({
-  selector: "app-teams-list",
-  templateUrl: "./teams-list.component.html",
-  styleUrls: ["./teams-list.component.css"],
+  selector: 'app-teams-list',
+  templateUrl: './teams-list.component.html',
+  styleUrls: ['./teams-list.component.css'],
 })
 export class TeamsListComponent implements OnInit {
   displayedColumns: string[] = [
-    "id",
-    "name",
-    "confederationName",
-    "totalPoints",
-    "actualRank",
-    "rankingChange",
-    "highestRank",
-    "lowestRank",
-    "actions",
+    'id',
+    'name',
+    'confederationName',
+    'totalPoints',
+    'actualRank',
+    'rankingChange',
+    'highestRank',
+    'lowestRank',
+    'actions',
   ];
 
   dataSource;
@@ -34,7 +34,7 @@ export class TeamsListComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private teamService: TeamService
+    private teamService: TeamService,
   ) {
     this.teams = this.route.snapshot.data.teams;
     this.teams.sort((a, b) => {
@@ -50,16 +50,16 @@ export class TeamsListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  addAction = () => this.router.navigate(["new"], { relativeTo: this.route });
+  addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
 
   navigateToDetail = (id) =>
-    this.router.navigate([id, "dashboard"], { relativeTo: this.route });
+    this.router.navigate([id, 'dashboard'], { relativeTo: this.route });
 
   navigateToEdit = (id) =>
-    this.router.navigate([id, "edit"], { relativeTo: this.route });
+    this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
   navigateToSquad = (id) =>
-    this.router.navigate([id, "squad"], { relativeTo: this.route });
+    this.router.navigate([id, 'squad'], { relativeTo: this.route });
 
   onDelete = (id) => this.teamService.delete(id).subscribe(this.getAllTeams);
 

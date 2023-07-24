@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from '../models/tournament.model';
-import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray, AbstractControl } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators,
+  UntypedFormArray,
+  AbstractControl,
+} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
 import { TeamService } from 'src/app/teams/services/team.service';
@@ -12,10 +18,9 @@ import { PositionsArray } from '../models/positionsArray.model';
 @Component({
   selector: 'app-tournaments-position',
   templateUrl: './tournaments-position.component.html',
-  styleUrls: ['./tournaments-position.component.css']
+  styleUrls: ['./tournaments-position.component.css'],
 })
 export class TournamentsPositionComponent implements OnInit {
-
   positionsForm: UntypedFormGroup;
 
   tournament: Tournament = new Tournament();
@@ -29,85 +34,87 @@ export class TournamentsPositionComponent implements OnInit {
     private route: ActivatedRoute,
     private teamService: TeamService,
     private positionService: PositionService,
-    private snackBar: MatSnackBar
-  ) { }
+    private snackBar: MatSnackBar,
+  ) {}
 
   ngOnInit() {
     this.tournament = this.route.snapshot.data.tournament;
-    this.isQualification = (this.tournament.tournamentType.format == 1);
+    this.isQualification = this.tournament.tournamentType.format == 1;
 
     this.positionsForm = this.generateForm();
 
-    if(this.tournament.confederationID != null){
-      this.teamService.getAllByConfederation(this.tournament.confederationID)
+    if (this.tournament.confederationID != null) {
+      this.teamService
+        .getAllByConfederation(this.tournament.confederationID)
         .subscribe((res) => {
           this.teams = res;
         });
-    }
-    else{
-      this.teamService.getAll()
-        .subscribe((res) => {
-          if(this.tournament.host == "America") {
-            this.teams = res.filter(s => s.confederationID == 3 || s.confederationID == 4);
-          }
-          else {
-            this.teams = res;
-          }
-        });
+    } else {
+      this.teamService.getAll().subscribe((res) => {
+        if (this.tournament.host == 'America') {
+          this.teams = res.filter(
+            (s) => s.confederationID == 3 || s.confederationID == 4,
+          );
+        } else {
+          this.teams = res;
+        }
+      });
     }
   }
 
   generateForm = (): UntypedFormGroup => {
     let teamsListArray = [];
-    for(let i = 0; i < this.tournament.noOfTeams; i++) {
-      teamsListArray.push(this.teamModelCreate())
+    for (let i = 0; i < this.tournament.noOfTeams; i++) {
+      teamsListArray.push(this.teamModelCreate());
     }
 
     return this.positionsModelCreate(teamsListArray);
-  }
+  };
 
   positionsModelCreate = (teamsArray: UntypedFormGroup[] = []) => {
     return this.fb.group({
-      teamsPositions: this.fb.array(teamsArray)
+      teamsPositions: this.fb.array(teamsArray),
     });
-  }
+  };
 
-  teamModelCreate = () => this.fb.group({
-    teamp: [''],
-    wins: [0, Validators.required],
-    draws: [0, Validators.required],
-    loses: [0, Validators.required],
-    favor: [0, Validators.required],
-    against: [0, Validators.required],
-    pos: [0],
-    group: [''],
-    round: [''],
-    qualified: [0],
-    host: [0]
-  });
+  teamModelCreate = () =>
+    this.fb.group({
+      teamp: [''],
+      wins: [0, Validators.required],
+      draws: [0, Validators.required],
+      loses: [0, Validators.required],
+      favor: [0, Validators.required],
+      against: [0, Validators.required],
+      pos: [0],
+      group: [''],
+      round: [''],
+      qualified: [0],
+      host: [0],
+    });
 
   onSubmit = () => {
-    if (!this.positionsForm.valid) { 
-      this.snackBar.open('Complete todos los campos', '', { 
+    if (!this.positionsForm.valid) {
+      this.snackBar.open('Complete todos los campos', '', {
         duration: 2000,
         verticalPosition: 'top',
-        horizontalPosition: 'right'
+        horizontalPosition: 'right',
       });
 
-      return; 
+      return;
     }
 
     const positions: PositionsArray = new PositionsArray();
-    const teamsPositions = this.positionsForm.get('teamsPositions') as UntypedFormArray;
+    const teamsPositions = this.positionsForm.get(
+      'teamsPositions',
+    ) as UntypedFormArray;
     teamsPositions.controls.forEach((element, index) => {
-      if(element.get('teamp').value != "") {
+      if (element.get('teamp').value != '') {
         positions.position.push(this.processTeamPositions(element, index));
       }
     });
 
-    this.positionService.add(positions)
-      .subscribe(this.goToList);
-  }
+    this.positionService.add(positions).subscribe(this.goToList);
+  };
 
   processTeamPositions = (teamPosition: AbstractControl, index: number) => {
     let position: Position = new Position();
@@ -121,7 +128,7 @@ export class TournamentsPositionComponent implements OnInit {
     position.goalsFavor = teamPosition.get('favor').value;
     position.goalsAgainst = teamPosition.get('against').value;
 
-    if(this.isQualification) {
+    if (this.isQualification) {
       position.noPosition = teamPosition.get('pos').value;
       position.group = teamPosition.get('group').value;
       position.round = teamPosition.get('round').value;
@@ -130,57 +137,52 @@ export class TournamentsPositionComponent implements OnInit {
 
     position.result = this.getTeamResult(position);
 
-    if(teamPosition.get('host').value)
-      position.result = "Host";
+    if (teamPosition.get('host').value) position.result = 'Host';
 
     return position;
-  }
+  };
 
   getTeamResult = (position: Position) => {
-    if(this.isQualification) {
-      switch(position.round) {
-        case "1":
-          return "Primera Ronda";
-        case "2":
-          return "Segunda Ronda";
-        case "3":
-          return "Tercera Ronda";
+    if (this.isQualification) {
+      switch (position.round) {
+        case '1':
+          return 'Primera Ronda';
+        case '2':
+          return 'Segunda Ronda';
+        case '3':
+          return 'Tercera Ronda';
       }
-    }
-    else {
-      let positionText: string = "";
-      switch(position.noPosition) {
+    } else {
+      let positionText: string = '';
+      switch (position.noPosition) {
         case 1:
-          positionText = "Campeón";
+          positionText = 'Campeón';
           break;
         case 2:
-          positionText = "Sub Campeón";
+          positionText = 'Sub Campeón';
           break;
         case 3:
-          if(this.tournament.noOfTeams < 8) {
-            positionText = "Grupos";
-          }
-          else {
-            positionText = "Tercero";
+          if (this.tournament.noOfTeams < 8) {
+            positionText = 'Grupos';
+          } else {
+            positionText = 'Tercero';
           }
           break;
         case 4:
-          if(this.tournament.noOfTeams < 8) {
-            positionText = "Grupos";
-          }
-          else {
-            positionText = "Cuarto";
+          if (this.tournament.noOfTeams < 8) {
+            positionText = 'Grupos';
+          } else {
+            positionText = 'Cuarto';
           }
           break;
         case 5:
         case 6:
         case 7:
         case 8:
-          if(this.tournament.noOfTeams > 8) {
-            positionText = "Cuartos de Final";
-          }
-          else {
-            positionText = "Grupos";
+          if (this.tournament.noOfTeams > 8) {
+            positionText = 'Cuartos de Final';
+          } else {
+            positionText = 'Grupos';
           }
           break;
         case 9:
@@ -191,20 +193,18 @@ export class TournamentsPositionComponent implements OnInit {
         case 14:
         case 15:
         case 16:
-          if(this.tournament.noOfTeams > 16) {
-            positionText = "Octavos de Final";
-          }
-          else {
-            positionText = "Grupos";
+          if (this.tournament.noOfTeams > 16) {
+            positionText = 'Octavos de Final';
+          } else {
+            positionText = 'Grupos';
           }
           break;
         default:
-          positionText = "Grupos";
+          positionText = 'Grupos';
       }
       return positionText;
     }
-  }
+  };
 
   goToList = () => this.router.navigate(['tournaments']);
-
 }

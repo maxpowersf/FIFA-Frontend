@@ -16,8 +16,8 @@ const routes: Routes = [
     component: RankingsListComponent,
     resolve: {
       teams: TeamsResolver,
-      confederations: ConfederationsResolver
-    }
+      confederations: ConfederationsResolver,
+    },
   },
   {
     path: 'new',
@@ -25,8 +25,8 @@ const routes: Routes = [
     resolve: {
       tournamenttypes: TournamenttypesResolver,
       confederations: ConfederationsResolver,
-      teams : TeamsResolver
-    }
+      teams: TeamsResolver,
+    },
   },
   {
     path: ':id/dashboard',
@@ -34,13 +34,13 @@ const routes: Routes = [
     resolve: {
       team: TeamResolver,
       tournaments: TournamentsByTeamResolver,
-      players: TeamSquadResolver
-    }
-  }
+      players: TeamSquadResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RankingsRoutingModule { }
+export class RankingsRoutingModule {}

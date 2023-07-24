@@ -8,13 +8,47 @@ import { Player } from 'src/app/players/models/player.model';
 @Component({
   selector: 'app-teams-dashboard',
   templateUrl: './teams-dashboard.component.html',
-  styleUrls: ['./teams-dashboard.component.css']
+  styleUrls: ['./teams-dashboard.component.css'],
 })
 export class TeamsDashboardComponent implements OnInit {
-
-  displayedColumnsWC: string[] = ['tournament', 'result', 'noPosition', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst', 'gamesPlayedQ', 'winsQ', 'drawsQ', 'losesQ', 'goalsFavorQ', 'goalsAgainstQ'];
-  displayedColumns: string[] = ['tournament', 'result', 'noPosition', 'gamesPlayed', 'wins', 'draws', 'loses', 'goalsFavor', 'goalsAgainst'];
-  displayedColumnsGoalscorers: string[] = ['dorsal', 'fullName', 'positionName', 'totalGoals', 'worldCupGoals', 'confederationsGoals', 'confederationTournamentGoals', 'qualificationGoals'];
+  displayedColumnsWC: string[] = [
+    'tournament',
+    'result',
+    'noPosition',
+    'gamesPlayed',
+    'wins',
+    'draws',
+    'loses',
+    'goalsFavor',
+    'goalsAgainst',
+    'gamesPlayedQ',
+    'winsQ',
+    'drawsQ',
+    'losesQ',
+    'goalsFavorQ',
+    'goalsAgainstQ',
+  ];
+  displayedColumns: string[] = [
+    'tournament',
+    'result',
+    'noPosition',
+    'gamesPlayed',
+    'wins',
+    'draws',
+    'loses',
+    'goalsFavor',
+    'goalsAgainst',
+  ];
+  displayedColumnsGoalscorers: string[] = [
+    'dorsal',
+    'fullName',
+    'positionName',
+    'totalGoals',
+    'worldCupGoals',
+    'confederationsGoals',
+    'confederationTournamentGoals',
+    'qualificationGoals',
+  ];
 
   team: Team;
   tournaments: Tournament[];
@@ -29,20 +63,26 @@ export class TeamsDashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.team = this.route.snapshot.data.team;
     this.tournaments = this.route.snapshot.data.tournaments;
     this.goalscorers = this.route.snapshot.data.players;
 
-    let sum = el => el.worldCupGoals + el.confederationsGoals + el.confederationTournamentGoals + el.qualificationGoals
-    this.goalscorers.sort((a,b) => (sum(b)) - (sum(a)));
+    let sum = (el) =>
+      el.worldCupGoals +
+      el.confederationsGoals +
+      el.confederationTournamentGoals +
+      el.qualificationGoals;
+    this.goalscorers.sort((a, b) => sum(b) - sum(a));
 
-    const confTournaments: Tournament[] = this.tournaments
-      .filter(a => a.tournamentType.format == TournamentFormat.ConfederationTournament);
+    const confTournaments: Tournament[] = this.tournaments.filter(
+      (a) =>
+        a.tournamentType.format == TournamentFormat.ConfederationTournament,
+    );
     if (confTournaments.length > 0) {
       this.hasConfederationTournament = true;
-      this.confederationTournamentName = confTournaments[0].tournamentType.name
+      this.confederationTournamentName = confTournaments[0].tournamentType.name;
     }
   }
 
@@ -51,13 +91,15 @@ export class TeamsDashboardComponent implements OnInit {
   }
 
   processPositions = () => {
-    this.tournaments.forEach(element => {
+    this.tournaments.forEach((element) => {
       switch (element.tournamentType.format) {
         case TournamentFormat.WorldCup:
-          const qualification: Tournament[] = this.tournaments
-            .filter(a => a.tournamentType.format == TournamentFormat.Qualification &&
-              a.year == element.year);
-          if(qualification.length > 0) {
+          const qualification: Tournament[] = this.tournaments.filter(
+            (a) =>
+              a.tournamentType.format == TournamentFormat.Qualification &&
+              a.year == element.year,
+          );
+          if (qualification.length > 0) {
             element.qualifications = [];
             element.qualifications.push(qualification[0].positions[0]);
           }
@@ -71,8 +113,7 @@ export class TeamsDashboardComponent implements OnInit {
           break;
       }
     });
-  }
+  };
 
-  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route })
-
+  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route });
 }

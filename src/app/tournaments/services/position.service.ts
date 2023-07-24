@@ -6,25 +6,25 @@ import { Position } from '../models/position.model';
 import { PositionsArray } from '../models/positionsArray.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PositionService {
   private positionUrl = environment.baseUrl + 'position';
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<Position[]> {
     return this.httpClient.get<Position[]>(this.positionUrl + '/getall');
   }
 
   public getByTournament(id: number): Observable<Position[]> {
-    return this.httpClient.get<Position[]>(this.positionUrl + '/getbytournament/' + id);
+    return this.httpClient.get<Position[]>(
+      this.positionUrl + '/getbytournament/' + id,
+    );
   }
 
   public getOne(id: number): Observable<Position> {
@@ -32,11 +32,19 @@ export class PositionService {
   }
 
   public add(positions: PositionsArray) {
-    return this.httpClient.post(this.positionUrl + '/add', positions, httpOptions);
+    return this.httpClient.post(
+      this.positionUrl + '/add',
+      positions,
+      httpOptions,
+    );
   }
 
   public update(position: Position) {
-    return this.httpClient.put(this.positionUrl + '/update', position, httpOptions);
+    return this.httpClient.put(
+      this.positionUrl + '/update',
+      position,
+      httpOptions,
+    );
   }
 
   public delete(id: number) {

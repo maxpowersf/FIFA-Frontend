@@ -15,30 +15,30 @@ const routes: Routes = [
     path: '',
     component: TeamsListComponent,
     resolve: {
-      teams: TeamsResolver
-    }
+      teams: TeamsResolver,
+    },
   },
   {
     path: 'new',
     component: TeamsFormComponent,
     resolve: {
-      confederations: ConfederationsResolver
-    }
+      confederations: ConfederationsResolver,
+    },
   },
   {
     path: ':id/edit',
     component: TeamsFormComponent,
     resolve: {
       confederations: ConfederationsResolver,
-      team: TeamResolver
-    }
+      team: TeamResolver,
+    },
   },
   {
     path: ':id/squad',
     component: TeamsSquadComponent,
     resolve: {
-      players: TeamSquadResolver
-    }
+      players: TeamSquadResolver,
+    },
   },
   {
     path: ':id/dashboard',
@@ -46,13 +46,13 @@ const routes: Routes = [
     resolve: {
       team: TeamResolver,
       tournaments: TournamentsByTeamResolver,
-      players: TeamSquadResolver
-    }
-  }
+      players: TeamSquadResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TeamsRoutingModule { }
+export class TeamsRoutingModule {}

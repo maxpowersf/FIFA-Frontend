@@ -9,13 +9,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-confederation-ranking',
   templateUrl: './confederation-ranking.component.html',
-  styleUrls: ['./confederation-ranking.component.css']
+  styleUrls: ['./confederation-ranking.component.css'],
 })
 export class ConfederationRankingComponent implements OnInit {
-
   teams: Team[];
 
-  displayedColumns: string[] = ['pos', 'name', 'confederation', 'year1', 'year2', 'year3', 'totalpoints'];
+  displayedColumns: string[] = [
+    'pos',
+    'name',
+    'confederation',
+    'year1',
+    'year2',
+    'year3',
+    'totalpoints',
+  ];
   dataSource;
 
   year1: number;
@@ -29,13 +36,13 @@ export class ConfederationRankingComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.blockUI.start("0");
+    this.blockUI.start('0');
     this.teams = this.route.snapshot.data.teams;
     this.teams.sort(this.sortByPointsDesc);
-    
+
     this.dataSource = new MatTableDataSource(this.teams);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -46,7 +53,7 @@ export class ConfederationRankingComponent implements OnInit {
     this.blockUI.stop();
   }
 
-  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route })
+  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route });
 
   sortByPointsDesc = (f1: any, f2: any) => f2.totalPoints - f1.totalPoints;
 }

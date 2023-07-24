@@ -4,25 +4,25 @@ import {
   style,
   transition,
   trigger,
-} from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
-import { MatLegacyTableDataSource as MatTableDataSource } from "@angular/material/legacy-table";
-import { Router, ActivatedRoute } from "@angular/router";
-import { MatchRoundMapping } from "src/app/shared/models/matchround";
-import { Report, ReportsList } from "../../models/report.model";
-import { StreaksCollectionResponse } from "../../models/streakscollectionresponse.model";
+} from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatchRoundMapping } from 'src/app/shared/models/matchround';
+import { Report, ReportsList } from '../../models/report.model';
+import { StreaksCollectionResponse } from '../../models/streakscollectionresponse.model';
 
 @Component({
-  selector: "app-report-streaks",
-  templateUrl: "./report-streaks.component.html",
-  styleUrls: ["./report-streaks.component.css"],
+  selector: 'app-report-streaks',
+  templateUrl: './report-streaks.component.html',
+  styleUrls: ['./report-streaks.component.css'],
   animations: [
-    trigger("detailExpand", [
-      state("collapsed", style({ height: "0px", minHeight: "0" })),
-      state("expanded", style({ height: "*" })),
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition(
-        "expanded <=> collapsed",
-        animate("225ms cubic-bezier(0.4, 0.0, 0.2, 1)")
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'),
       ),
     ]),
   ],
@@ -33,23 +33,23 @@ export class ReportStreaksComponent implements OnInit {
   matchrounds = MatchRoundMapping;
 
   displayedColumns: string[] = [
-    "noPosition",
-    "team",
-    "confederation",
-    "startDate",
-    "endDate",
-    "streak",
+    'noPosition',
+    'team',
+    'confederation',
+    'startDate',
+    'endDate',
+    'streak',
   ];
   displayedColumnsMatches: string[] = [
-    "date",
-    "tournament",
-    "group",
-    "matchday",
-    "team1",
-    "goals1",
-    "divider",
-    "goals2",
-    "team2",
+    'date',
+    'tournament',
+    'group',
+    'matchday',
+    'team1',
+    'goals1',
+    'divider',
+    'goals2',
+    'team2',
   ];
 
   dataSource;
@@ -57,7 +57,10 @@ export class ReportStreaksComponent implements OnInit {
   stateTeamId;
   stateActive;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
     let reportTypeId = this.route.snapshot.params.type;
     this.report = ReportsList.find((x) => x.id == reportTypeId);
 
@@ -72,7 +75,7 @@ export class ReportStreaksComponent implements OnInit {
   }
 
   goToList = () =>
-    this.router.navigate(["../../"], {
+    this.router.navigate(['../../'], {
       relativeTo: this.route,
       state: { teamId: this.stateTeamId, active: this.stateActive },
     });

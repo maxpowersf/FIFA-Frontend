@@ -4,13 +4,11 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TournamentService } from '../services/tournament.service';
 
-@Injectable({providedIn: 'root'})
-export class TournamentsResolver  {
-    constructor(
-        private tournamentService: TournamentService
-    ) { }
+@Injectable({ providedIn: 'root' })
+export class TournamentsResolver {
+  constructor(private tournamentService: TournamentService) {}
 
-    resolve(route: ActivatedRouteSnapshot) {
-        return this.tournamentService.getAll();
-    }
+  resolve(route: ActivatedRouteSnapshot) {
+    return this.tournamentService.getAll();
+  }
 }

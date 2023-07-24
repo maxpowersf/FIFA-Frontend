@@ -12,13 +12,13 @@ const routes: Routes = [
     resolve: {
       teamstats: TeamStatsResolver,
       teamstatsWorldCup: TeamStatsWorldCupResolver,
-      confederations: ConfederationsResolver
-    }
-  }
+      confederations: ConfederationsResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TeamstatsRoutingModule { }
+export class TeamstatsRoutingModule {}

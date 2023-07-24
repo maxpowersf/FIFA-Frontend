@@ -10,14 +10,18 @@ import { RankingsModule } from '../rankings/rankings.module';
 import { ConfederationRankingComponent } from './confederation-ranking/confederation-ranking.component';
 
 @NgModule({
-  declarations: [ConfederationFormComponent, ConfederationListComponent, ConfederationRankingComponent],
+  declarations: [
+    ConfederationFormComponent,
+    ConfederationListComponent,
+    ConfederationRankingComponent,
+  ],
   imports: [
     CommonModule,
     ConfederationsRoutingModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    RankingsModule
-  ]
+    RankingsModule,
+  ],
 })
-export class ConfederationsModule { }
+export class ConfederationsModule {}

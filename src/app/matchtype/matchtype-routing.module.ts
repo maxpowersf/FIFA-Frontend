@@ -9,23 +9,23 @@ const routes: Routes = [
   {
     path: '',
     component: MatchtypeListComponent,
-    resolve: {matchtypes : MatchtypesResolver}
+    resolve: { matchtypes: MatchtypesResolver },
   },
   {
     path: 'new',
-    component: MatchtypeFormComponent
+    component: MatchtypeFormComponent,
   },
   {
     path: ':id/edit',
     component: MatchtypeFormComponent,
     resolve: {
-      matchtype: MatchtypeResolver
-    }
-  }
+      matchtype: MatchtypeResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MatchtypeRoutingModule { }
+export class MatchtypeRoutingModule {}

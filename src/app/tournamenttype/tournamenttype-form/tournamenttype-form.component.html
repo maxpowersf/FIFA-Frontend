@@ -1,31 +1,42 @@
 <form-layout [info]="formInfo" (submitEvent)="onSubmit()">
   <form [formGroup]="tournamenttypeForm">
     <mat-form-field class="full-width">
-      <input matInput placeholder="Ingrese el tipo de torneo" [formControl]="name">
+      <input
+        matInput
+        placeholder="Ingrese el tipo de torneo"
+        [formControl]="name"
+      />
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-select placeholder="Tipo de partido" [formControl]="matchtype">
         <mat-option *ngFor="let matchtype of matchtypes" [value]="matchtype.id">
-          {{matchtype.name}}
+          {{ matchtype.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-select placeholder="Format" [formControl]="format">
         <mat-option *ngFor="let format of formats" [value]="format.value">
-          {{format.name}}
+          {{ format.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-select placeholder="Confederation" [formControl]="confederation">
-        <mat-option *ngFor="let confederation of confederations" [value]="confederation.id">
-          {{confederation.name}}
+        <mat-option
+          *ngFor="let confederation of confederations"
+          [value]="confederation.id"
+        >
+          {{ confederation.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Ingrese la cantidad de equipos" [formControl]="noTeams">
+      <input
+        matInput
+        placeholder="Ingrese la cantidad de equipos"
+        [formControl]="noTeams"
+      />
     </mat-form-field>
   </form>
 </form-layout>

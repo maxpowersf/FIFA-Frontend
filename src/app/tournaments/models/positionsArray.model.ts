@@ -1,9 +1,9 @@
 import { Position } from './position.model';
 
 export class PositionsArray {
-    position: Position[];
+  position: Position[];
 
-    constructor() {
-        this.position = [];
-    }
+  constructor() {
+    this.position = [];
+  }
 }

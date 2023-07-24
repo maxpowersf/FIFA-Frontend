@@ -1,176 +1,223 @@
 <mat-card class="form-card">
-    <mat-card-title>
-        <div class="header">
-            <div class="title">
-                Matches
+  <mat-card-title>
+    <div class="header">
+      <div class="title">Matches</div>
+    </div>
+  </mat-card-title>
+  <mat-card-subtitle>List of matches</mat-card-subtitle>
+  <mat-card-content>
+    <form [formGroup]="filterForm">
+      <div class="row">
+        <div class="col-md-11">
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field class="full-width">
+                <mat-select
+                  placeholder="Confederation"
+                  [formControl]="confederation"
+                >
+                  <mat-option [value]="0">All</mat-option>
+                  <mat-option
+                    *ngFor="let confederation of confederations"
+                    [value]="confederation.id"
+                  >
+                    {{ confederation.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
+            <div class="col-md-4">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Team 1" [formControl]="team1">
+                  <mat-option [value]="0">All</mat-option>
+                  <mat-option *ngFor="let team of teams" [value]="team.id">
+                    <span class="flag-icon flag-icon-{{ team.flag }}"></span>
+                    {{ team.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Team 2" [formControl]="team2">
+                  <mat-option [value]="0">All</mat-option>
+                  <mat-option *ngFor="let team of teams" [value]="team.id">
+                    <span class="flag-icon flag-icon-{{ team.flag }}"></span>
+                    {{ team.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
         </div>
-    </mat-card-title>
-    <mat-card-subtitle>List of matches</mat-card-subtitle>
-    <mat-card-content>
-        <form [formGroup]="filterForm">
-            <div class="row">
-                <div class="col-md-11">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width">
-                                <mat-select placeholder="Confederation" [formControl]="confederation">
-                                    <mat-option [value]="0">All</mat-option>
-                                    <mat-option *ngFor="let confederation of confederations" [value]="confederation.id">
-                                        {{confederation.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width">
-                                <mat-select placeholder="Team 1" [formControl]="team1">
-                                    <mat-option [value]="0">All</mat-option>
-                                    <mat-option *ngFor="let team of teams" [value]="team.id">
-                                        <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width">
-                                <mat-select placeholder="Team 2" [formControl]="team2">
-                                    <mat-option [value]="0">All</mat-option>
-                                    <mat-option *ngFor="let team of teams" [value]="team.id">
-                                        <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1">
-                    <mat-form-field class="full-width">
-                        <mat-label>Quantity</mat-label>
-                        <input matInput [formControl]="quantity">
-                    </mat-form-field>
-                </div>
+        <div class="col-md-1">
+          <mat-form-field class="full-width">
+            <mat-label>Quantity</mat-label>
+            <input matInput [formControl]="quantity" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <mat-select
+                  placeholder="Tournament Type"
+                  [formControl]="tournamenttype"
+                  (selectionChange)="
+                    fillTournamentsByTournamentType($event.value)
+                  "
+                >
+                  <mat-option [value]="0">All</mat-option>
+                  <mat-option
+                    *ngFor="let tournamenttype of tournamentTypes"
+                    [value]="tournamenttype.id"
+                  >
+                    {{ tournamenttype.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width">
-                                <mat-select placeholder="Tournament Type" [formControl]="tournamenttype" (selectionChange)="fillTournamentsByTournamentType($event.value)">
-                                    <mat-option [value]="0">All</mat-option>
-                                    <mat-option *ngFor="let tournamenttype of tournamentTypes"
-                                        [value]="tournamenttype.id">
-                                        {{tournamenttype.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width">
-                                <mat-select placeholder="Tournament" [formControl]="tournament">
-                                    <mat-option [value]="0">All</mat-option>
-                                    <mat-option *ngFor="let tournament of tournaments" [value]="tournament.id">
-                                        {{tournament.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width">
-                                <mat-label>Start date</mat-label>
-                                <input matInput [matDatepicker]="pickerStart" [formControl]="startdate">
-                                <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
-                                <mat-datepicker #pickerStart></mat-datepicker>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width">
-                                <mat-label>End date</mat-label>
-                                <input matInput [matDatepicker]="pickerEnd" [formControl]="enddate">
-                                <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
-                                <mat-datepicker #pickerEnd></mat-datepicker>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="actions">
-                                <button mat-raised-button color="primary" (click)="onSubmit()">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Tournament" [formControl]="tournament">
+                  <mat-option [value]="0">All</mat-option>
+                  <mat-option
+                    *ngFor="let tournament of tournaments"
+                    [value]="tournament.id"
+                  >
+                    {{ tournament.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
-        </form>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field class="full-width">
+                <mat-label>Start date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerStart"
+                  [formControl]="startdate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerStart"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerStart></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field class="full-width">
+                <mat-label>End date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerEnd"
+                  [formControl]="enddate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerEnd"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerEnd></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <div class="actions">
+                <button mat-raised-button color="primary" (click)="onSubmit()">
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef>Year</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.date | date: 'yyyy' }}
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="year">
-                <th mat-header-cell *matHeaderCellDef> Year </th>
-                <td mat-cell *matCellDef="let element"> {{element.date | date: 'yyyy'}} </td>
-            </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.date | date: 'EEEE dd MMMM' }}
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.date | date: 'EEEE dd MMMM'}} </td>
-            </ng-container>
+      <ng-container matColumnDef="tournament">
+        <th mat-header-cell *matHeaderCellDef>Tournament</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.tournament?.name }}
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="tournament">
-                <th mat-header-cell *matHeaderCellDef> Tournament </th>
-                <td mat-cell *matCellDef="let element"> {{element.tournament?.name}}</td>
-            </ng-container>
+      <ng-container matColumnDef="group">
+        <th mat-header-cell *matHeaderCellDef>Round</th>
+        <td mat-cell *matCellDef="let element">
+          {{ matchrounds[element.matchRound - 1]?.name }}
+          <span *ngIf="element.group != null">{{ element.group }}</span>
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="group">
-                <th mat-header-cell *matHeaderCellDef> Round </th>
-                <td mat-cell *matCellDef="let element"> {{matchrounds[element.matchRound - 1]?.name}} <span
-                        *ngIf="element.group != null">{{element.group}}</span></td>
-            </ng-container>
+      <ng-container matColumnDef="team1">
+        <th mat-header-cell *matHeaderCellDef>Home</th>
+        <td mat-cell *matCellDef="let element" [attr.alt]="element.team1.name">
+          <span class="flag-icon flag-icon-{{ element.team1.flag }}"></span>
+          {{ element.team1.name }}
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="team1">
-                <th mat-header-cell *matHeaderCellDef> Home </th>
-                <td mat-cell *matCellDef="let element" [attr.alt]="element.team1.name">
-                    <span class="flag-icon flag-icon-{{element.team1.flag}}"></span>
-                    {{element.team1.name}}
-                </td>
-            </ng-container>
+      <ng-container matColumnDef="goalsTeam1">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="cell-number">
+          {{ element.goalsTeam1 }}
+          <span *ngIf="element.penaltiesTeam1 > 0 || element.penaltiesTeam2 > 0"
+            >({{ element.penaltiesTeam1 }})</span
+          >
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="goalsTeam1">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element" class="cell-number">
-                    {{element.goalsTeam1}} <span
-                        *ngIf="element.penaltiesTeam1 > 0 || element.penaltiesTeam2 > 0">({{element.penaltiesTeam1}})</span>
-                </td>
-            </ng-container>
+      <ng-container matColumnDef="divider">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="cell-number">-</td>
+      </ng-container>
 
-            <ng-container matColumnDef="divider">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element" class="cell-number">
-                    -
-                </td>
-            </ng-container>
+      <ng-container matColumnDef="goalsTeam2">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="cell-number">
+          {{ element.goalsTeam2 }}
+          <span *ngIf="element.penaltiesTeam1 > 0 || element.penaltiesTeam2 > 0"
+            >({{ element.penaltiesTeam2 }})</span
+          >
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="goalsTeam2">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element" class="cell-number">
-                    {{element.goalsTeam2}} <span
-                        *ngIf="element.penaltiesTeam1 > 0 || element.penaltiesTeam2 > 0">({{element.penaltiesTeam2}})</span>
-                </td>
-            </ng-container>
+      <ng-container matColumnDef="team2">
+        <th mat-header-cell *matHeaderCellDef>Away</th>
+        <td mat-cell *matCellDef="let element" [attr.alt]="element.team2.name">
+          <span class="flag-icon flag-icon-{{ element.team2.flag }}"></span>
+          {{ element.team2.name }}
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="team2">
-                <th mat-header-cell *matHeaderCellDef> Away </th>
-                <td mat-cell *matCellDef="let element" [attr.alt]="element.team2.name">
-                    <span class="flag-icon flag-icon-{{element.team2.flag}}"></span>
-                    {{element.team2.name}}
-                </td>
-            </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-
-        <mat-paginator #paginator [pageSizeOptions]="[10, 20, 100]" [pageSize]="10" [showFirstLastButtons]="true"
-            [length]="dataSource.data.length"></mat-paginator>
-    </mat-card-content>
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[10, 20, 100]"
+      [pageSize]="10"
+      [showFirstLastButtons]="true"
+      [length]="dataSource.data.length"
+    ></mat-paginator>
+  </mat-card-content>
 </mat-card>

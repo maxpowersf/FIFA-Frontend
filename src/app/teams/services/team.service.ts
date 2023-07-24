@@ -22,25 +22,25 @@ export class TeamService {
 
   public getAllByConfederation(id: number): Observable<Team[]> {
     return this.httpClient.get<Team[]>(
-      this.teamUrl + '/getallbyconfederation/' + id
+      this.teamUrl + '/getallbyconfederation/' + id,
     );
   }
 
   public getFirstTeams(quantity: number): Observable<Team[]> {
     return this.httpClient.get<Team[]>(
-      this.teamUrl + '/getFirstTeams/' + quantity
+      this.teamUrl + '/getFirstTeams/' + quantity,
     );
   }
 
   public getTeamsWithTitles(tournamenttypeID: number): Observable<Team[]> {
     return this.httpClient.get<Team[]>(
-      this.teamUrl + '/getTeamsWithTitles/' + tournamenttypeID
+      this.teamUrl + '/getTeamsWithTitles/' + tournamenttypeID,
     );
   }
 
   public getTeamsChampionsCard(quantity: number): Observable<Team[]> {
     return this.httpClient.get<Team[]>(
-      this.teamUrl + '/getTeamsWithTitles/0/' + quantity
+      this.teamUrl + '/getTeamsWithTitles/0/' + quantity,
     );
   }
 

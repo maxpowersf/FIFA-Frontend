@@ -1,20 +1,20 @@
 table {
-    width: 100%;
+  width: 100%;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .mat-header-cell,
-.mat-cell{
-    text-align: center;
+.mat-cell {
+  text-align: center;
 }
-.mat-chip{
-    border-radius: 20px;
-    padding: 5px 15px;
-    color: aliceblue;
+.mat-chip {
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: aliceblue;
 }
-.mat-fab{
-    margin: 0 10px;
+.mat-fab {
+  margin: 0 10px;
 }

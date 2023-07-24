@@ -1,47 +1,47 @@
 table {
-    width: 100%;
+  width: 100%;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.mat-icon-button{
-    margin-top: 5px;
+.mat-icon-button {
+  margin-top: 5px;
 }
 .mat-header-cell,
-.mat-cell{
-    text-align: center;
+.mat-cell {
+  text-align: center;
 }
-.mat-chip{
-    border-radius: 20px;
-    padding: 5px 15px;
-    color: black;
+.mat-chip {
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: black;
 }
 .mat-chip.Goalkeeper {
-    background-color: rgba(254, 185, 7, 0.3);
+  background-color: rgba(254, 185, 7, 0.3);
 }
 .mat-chip.Defender {
-    background-color: rgba(0, 171, 210, 0.3);
+  background-color: rgba(0, 171, 210, 0.3);
 }
 .mat-chip.Midfielder {
-    background-color: rgba(136, 201, 0, 0.3);
+  background-color: rgba(136, 201, 0, 0.3);
 }
 .mat-chip.Attacker {
-    background-color: rgba(239, 30, 30, 0.3);
+  background-color: rgba(239, 30, 30, 0.3);
 }
-.cell-number{
-    width: 50px;
+.cell-number {
+  width: 50px;
 }
 th.left,
-td.left{
-    text-align: left;
-    padding-left: 20px;
+td.left {
+  text-align: left;
+  padding-left: 20px;
 }
-.clickable:hover{
-    background-color: rgba(0, 0, 0, .05);
-    cursor: pointer;
+.clickable:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 .filter-field {
-    margin: 0 5px;
+  margin: 0 5px;
 }

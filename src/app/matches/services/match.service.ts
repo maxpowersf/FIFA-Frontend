@@ -7,33 +7,51 @@ import { Match } from '../models/match.model';
 import { MatchesCollectionRequest } from '../models/matchescollectionrequest.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MatchService {
   private matchUrl = environment.baseUrl + 'match';
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   public getAll(request: MatchesCollectionRequest): Observable<Match[]> {
-    return this.httpClient.post<Match[]>(this.matchUrl + '/getfiltered', request, httpOptions);
+    return this.httpClient.post<Match[]>(
+      this.matchUrl + '/getfiltered',
+      request,
+      httpOptions,
+    );
   }
 
   public getByTournament(tournamentId: number): Observable<Match[]> {
-    return this.httpClient.get<Match[]>(this.matchUrl + '/getbytournament/' + tournamentId);
+    return this.httpClient.get<Match[]>(
+      this.matchUrl + '/getbytournament/' + tournamentId,
+    );
   }
 
   public getByTeam(team1Id: number): Observable<Match[]> {
-    return this.httpClient.get<Match[]>(this.matchUrl + '/getbyteam/' + team1Id);
+    return this.httpClient.get<Match[]>(
+      this.matchUrl + '/getbyteam/' + team1Id,
+    );
   }
 
-  public getByTeams(team1Id: number, team2Id: number = null, worldcup: boolean): Observable<Match[]> {
-    return this.httpClient.get<Match[]>(this.matchUrl + '/getbyteams/' + team1Id + '/' + team2Id + '?worldcup=' + worldcup);
+  public getByTeams(
+    team1Id: number,
+    team2Id: number = null,
+    worldcup: boolean,
+  ): Observable<Match[]> {
+    return this.httpClient.get<Match[]>(
+      this.matchUrl +
+        '/getbyteams/' +
+        team1Id +
+        '/' +
+        team2Id +
+        '?worldcup=' +
+        worldcup,
+    );
   }
 
   public getReportMargin(): Observable<Match[]> {
@@ -44,8 +62,16 @@ export class MatchService {
     return this.httpClient.get<Match[]>(this.matchUrl + '/getreportgoals');
   }
 
-  public getReportStreak(reportType: number, teamId: number = 0, active: boolean = false, amount: number = 20): Observable<StreaksCollectionResponse[]> {
-    let urlParams = '?teamId=' + teamId + '&active=' + active + '&amount=' + amount;
-    return this.httpClient.get<StreaksCollectionResponse[]>(this.matchUrl + '/getreportstreak/' + reportType + urlParams);
+  public getReportStreak(
+    reportType: number,
+    teamId: number = 0,
+    active: boolean = false,
+    amount: number = 20,
+  ): Observable<StreaksCollectionResponse[]> {
+    let urlParams =
+      '?teamId=' + teamId + '&active=' + active + '&amount=' + amount;
+    return this.httpClient.get<StreaksCollectionResponse[]>(
+      this.matchUrl + '/getreportstreak/' + reportType + urlParams,
+    );
   }
 }

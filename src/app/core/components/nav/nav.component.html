@@ -1,19 +1,36 @@
 <mat-toolbar color="primary" class="navbar mat-elevation-z5">
   <mat-toolbar-row>
-    <button type="button" aria-label="Toggle sidenav" mat-mini-fab (click)="drawer.toggle()">
-      <mat-icon aria-label="Example icon-button with a heart icon">more_vert</mat-icon>
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-mini-fab
+      (click)="drawer.toggle()"
+    >
+      <mat-icon aria-label="Example icon-button with a heart icon"
+        >more_vert</mat-icon
+      >
     </button>
     <mat-icon class="title">home</mat-icon>
     <span [routerLink]="['']">
-      <h2 class="title"> Teams Ranking</h2>
+      <h2 class="title">Teams Ranking</h2>
     </span>
   </mat-toolbar-row>
-  <mat-progress-bar *ngIf="loading" class="progress-bar" mode="indeterminate" color="accent"></mat-progress-bar>
+  <mat-progress-bar
+    *ngIf="loading"
+    class="progress-bar"
+    mode="indeterminate"
+    color="accent"
+  ></mat-progress-bar>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [mode]="'over'" [opened]="(isHandset$ | async)">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [mode]="'over'"
+    [opened]="isHandset$ | async"
+  >
     <div color="primary" class="profile-section"></div>
     <mat-nav-list>
       <h2 matSubheader>Statistics</h2>
@@ -21,7 +38,8 @@
         <mat-icon class="icon_menu">table_chart</mat-icon> Ranking
       </a>
       <a mat-list-item [routerLink]="['teamstats']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">format_list_numbered</mat-icon> All Time Standings
+        <mat-icon class="icon_menu">format_list_numbered</mat-icon> All Time
+        Standings
       </a>
       <a mat-list-item [routerLink]="['head2head']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">sports_hockey</mat-icon> Head to Head
@@ -32,7 +50,11 @@
       <a mat-list-item [routerLink]="['tournaments']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">emoji_events</mat-icon> Tournaments
       </a>
-      <a mat-list-item [routerLink]="['tournamenttypes']" (click)="drawer.toggle()">
+      <a
+        mat-list-item
+        [routerLink]="['tournamenttypes']"
+        (click)="drawer.toggle()"
+      >
         <mat-icon class="icon_menu">category</mat-icon> Tournament Types
       </a>
       <a mat-list-item [routerLink]="['reports']" (click)="drawer.toggle()">
@@ -46,7 +68,11 @@
       <a mat-list-item [routerLink]="['players']" (click)="drawer.toggle()">
         <mat-icon class="icon_menu">people</mat-icon> Players
       </a>
-      <a mat-list-item [routerLink]="['confederations']" (click)="drawer.toggle()">
+      <a
+        mat-list-item
+        [routerLink]="['confederations']"
+        (click)="drawer.toggle()"
+      >
         <mat-icon class="icon_menu">public</mat-icon> Confederations
       </a>
       <a mat-list-item [routerLink]="['matchtypes']" (click)="drawer.toggle()">
@@ -60,5 +86,4 @@
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
-
 </mat-sidenav-container>

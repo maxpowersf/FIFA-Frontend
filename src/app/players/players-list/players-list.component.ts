@@ -10,25 +10,36 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-players-list',
   templateUrl: './players-list.component.html',
-  styleUrls: ['./players-list.component.css']
+  styleUrls: ['./players-list.component.css'],
 })
 export class PlayersListComponent implements OnInit {
-
-  displayedColumns: string[] = ['dorsal', 'name', 'fullname', 'positionName', 'team', 'totalGoals', 'worldCupGoals', 'confederationsGoals', 'confederationTournamentGoals', 'qualificationGoals', 'actions'];
+  displayedColumns: string[] = [
+    'dorsal',
+    'name',
+    'fullname',
+    'positionName',
+    'team',
+    'totalGoals',
+    'worldCupGoals',
+    'confederationsGoals',
+    'confederationTournamentGoals',
+    'qualificationGoals',
+    'actions',
+  ];
   dataSource;
 
   players: Player[];
 
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private playerService: PlayerService
+    private playerService: PlayerService,
   ) {
     this.players = this.route.snapshot.data.players;
-   }
+  }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.players);
@@ -39,23 +50,25 @@ export class PlayersListComponent implements OnInit {
   applyFilter = (event: Event) => {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  };
 
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
 
-  navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+  navigateToEdit = (id) =>
+    this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
-  navigateToDetail = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+  navigateToDetail = (id) =>
+    this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
   onDelete = (id: number) => {
-    this.playerService.delete(id)
+    this.playerService
+      .delete(id)
       .pipe(switchMap(this.updateDataTable))
-      .subscribe(res => {
+      .subscribe((res) => {
         this.players = res;
         this.dataSource.data = this.players;
       });
-  }
+  };
 
   updateDataTable = () => this.playerService.getAll();
-
 }

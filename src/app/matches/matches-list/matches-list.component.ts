@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
@@ -18,10 +22,9 @@ import { MatchService } from '../services/match.service';
 @Component({
   selector: 'app-matches-list',
   templateUrl: './matches-list.component.html',
-  styleUrls: ['./matches-list.component.css']
+  styleUrls: ['./matches-list.component.css'],
 })
 export class MatchesListComponent implements OnInit {
-
   filterForm: UntypedFormGroup;
 
   teams: Team[];
@@ -32,29 +35,55 @@ export class MatchesListComponent implements OnInit {
 
   matchrounds = MatchRoundMapping;
 
-  displayedColumns: string[] = ['year', 'date', 'tournament', 'group', 'team1', 'goalsTeam1', 'divider', 'goalsTeam2', 'team2'];
+  displayedColumns: string[] = [
+    'year',
+    'date',
+    'tournament',
+    'group',
+    'team1',
+    'goalsTeam1',
+    'divider',
+    'goalsTeam2',
+    'team2',
+  ];
 
   dataSource;
 
   @BlockUI() blockUI: NgBlockUI;
   @ViewChild('paginator', null) paginator: MatPaginator;
 
-  get team1() { return this.filterForm.get('team1'); }
-  get team2() { return this.filterForm.get('team2'); }
-  get confederation() { return this.filterForm.get('confederation'); }
-  get tournamenttype() { return this.filterForm.get('tournamenttype'); }
-  get tournament() { return this.filterForm.get('tournament'); }
-  get startdate() { return this.filterForm.get('startdate'); }
-  get enddate() { return this.filterForm.get('enddate'); }
-  get quantity() { return this.filterForm.get('quantity'); }
+  get team1() {
+    return this.filterForm.get('team1');
+  }
+  get team2() {
+    return this.filterForm.get('team2');
+  }
+  get confederation() {
+    return this.filterForm.get('confederation');
+  }
+  get tournamenttype() {
+    return this.filterForm.get('tournamenttype');
+  }
+  get tournament() {
+    return this.filterForm.get('tournament');
+  }
+  get startdate() {
+    return this.filterForm.get('startdate');
+  }
+  get enddate() {
+    return this.filterForm.get('enddate');
+  }
+  get quantity() {
+    return this.filterForm.get('quantity');
+  }
 
   constructor(
     private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private matchService: MatchService,
-    private tournamentService: TournamentService
-  ) { }
+    private tournamentService: TournamentService,
+  ) {}
 
   ngOnInit() {
     this.filterForm = this.modelCreate();
@@ -67,51 +96,52 @@ export class MatchesListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  modelCreate = () => this.fb.group({
-    team1: [''],
-    team2: [''],
-    confederation: [0],
-    tournamenttype: [0],
-    tournament: [0],
-    startdate: [''],
-    enddate: [''],
-    quantity: ['']
-  });
+  modelCreate = () =>
+    this.fb.group({
+      team1: [''],
+      team2: [''],
+      confederation: [0],
+      tournamenttype: [0],
+      tournament: [0],
+      startdate: [''],
+      enddate: [''],
+      quantity: [''],
+    });
 
   refresh = (data) => {
     this.dataSource.data = data;
-  }
+  };
 
   fillTournamentsByTournamentType = (val) => {
     this.tournaments = [];
 
-    this.tournamentService.getAllByTournamentTypeAndConfederation(val, 0)
+    this.tournamentService
+      .getAllByTournamentTypeAndConfederation(val, 0)
       .subscribe((res) => {
         this.tournaments = res;
       });
-  }
+  };
 
   onSubmit = () => {
     if (!this.filterForm.valid) {
       this.snackBar.open('Complete todos los campos', '', {
         duration: 2000,
         verticalPosition: 'top',
-        horizontalPosition: 'right'
+        horizontalPosition: 'right',
       });
 
       return;
     }
 
-    this.blockUI.start("2");
+    this.blockUI.start('2');
     let request = new MatchesCollectionRequest();
     request = this.buildRequest(request);
-    this.matchService.getAll(request)
-      .subscribe((res) => {
-        this.matches = res;
-        this.refresh(this.matches);
-        this.blockUI.stop();
-      });
-  }
+    this.matchService.getAll(request).subscribe((res) => {
+      this.matches = res;
+      this.refresh(this.matches);
+      this.blockUI.stop();
+    });
+  };
 
   buildRequest = (request: MatchesCollectionRequest) => {
     if (this.team1.value != '' && this.team1.value != 0) {
@@ -140,6 +170,5 @@ export class MatchesListComponent implements OnInit {
     }
 
     return request;
-  }
-
+  };
 }

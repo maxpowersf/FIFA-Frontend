@@ -10,15 +10,14 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
 export class TableComponent {
-
   constructor(
     private cdRef: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {}
 
   @Input() tableData: TableLayout;
 
@@ -28,35 +27,54 @@ export class TableComponent {
   columnsToDisplay: string[];
 
   ngAfterViewInit() {
-    this.dataSource = new GenericDataSource(this.paginator, this.sort, this.tableData.data);
+    this.dataSource = new GenericDataSource(
+      this.paginator,
+      this.sort,
+      this.tableData.data,
+    );
 
     this.cdRef.detectChanges();
   }
 
   ngOnChanges(changes) {
     if (changes.tableData.currentValue.headerRows) {
-      this.columnsToDisplay = (this.tableData.canEdit || this.tableData.canRemove) ? [...this.tableData.headerRows, 'acciones'] : this.tableData.headerRows;
+      this.columnsToDisplay =
+        this.tableData.canEdit || this.tableData.canRemove
+          ? [...this.tableData.headerRows, 'acciones']
+          : this.tableData.headerRows;
     }
 
-    if (changes.tableData && !changes.tableData.firstChange && changes.tableData.currentValue.data) {
-      this.dataSource = new GenericDataSource(this.paginator, this.sort, changes.tableData.currentValue.data);
+    if (
+      changes.tableData &&
+      !changes.tableData.firstChange &&
+      changes.tableData.currentValue.data
+    ) {
+      this.dataSource = new GenericDataSource(
+        this.paginator,
+        this.sort,
+        changes.tableData.currentValue.data,
+      );
       this.cdRef.detectChanges();
     }
   }
 
   openDialog = (id: number) => {
     this.tableData.functionRemove(id);
-  }
+  };
 
-  navigateToEdit = (id) => this.router.navigate([id, 'edit'], { relativeTo: this.route });
+  navigateToEdit = (id) =>
+    this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
-  navigateToUpload = (id) => this.router.navigate(['positions'], { relativeTo: this.route });
+  navigateToUpload = (id) =>
+    this.router.navigate(['positions'], { relativeTo: this.route });
 }
 
-
 export class GenericDataSource extends DataSource<any> {
-
-  constructor(private paginator: MatPaginator, private sort: MatSort, public data: any[]) {
+  constructor(
+    private paginator: MatPaginator,
+    private sort: MatSort,
+    public data: any[],
+  ) {
     super();
   }
 
@@ -71,22 +89,24 @@ export class GenericDataSource extends DataSource<any> {
     const dataMutations = [
       observableOf(this.data),
       this.paginator.page,
-      this.sort.sortChange
+      this.sort.sortChange,
     ];
 
     // Set the paginator's length
     this.paginator.length = this.data.length;
 
-    return merge(...dataMutations).pipe(map(() => {
-      return this.getPagedData(this.getSortedData([...this.data]));
-    }));
+    return merge(...dataMutations).pipe(
+      map(() => {
+        return this.getPagedData(this.getSortedData([...this.data]));
+      }),
+    );
   }
 
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() { }
+  disconnect() {}
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -107,7 +127,6 @@ export class GenericDataSource extends DataSource<any> {
     }
 
     return data.sort((a, b) => {
-
       const isAsc = this.sort.direction === 'asc';
       return compare(a[this.sort.active], b[this.sort.active], isAsc);
       // switch (this.sort.active) {

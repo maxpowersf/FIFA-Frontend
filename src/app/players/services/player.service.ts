@@ -5,29 +5,31 @@ import { Observable } from 'rxjs';
 import { Player } from '../models/player.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlayerService {
   private playerUrl = environment.baseUrl + 'player';
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<Player[]> {
     return this.httpClient.get<Player[]>(this.playerUrl + '/getall');
   }
 
   public getAllByTeam(teamId: number): Observable<Player[]> {
-    return this.httpClient.get<Player[]>(this.playerUrl + '/getbyteam/' + teamId);
+    return this.httpClient.get<Player[]>(
+      this.playerUrl + '/getbyteam/' + teamId,
+    );
   }
 
   public getPlayersWithGoals(tournamentTypeId: number): Observable<Player[]> {
-    return this.httpClient.get<Player[]>(this.playerUrl + '/getplayerswithgoals/' + tournamentTypeId);
+    return this.httpClient.get<Player[]>(
+      this.playerUrl + '/getplayerswithgoals/' + tournamentTypeId,
+    );
   }
 
   public getOne(id: number): Observable<Player> {

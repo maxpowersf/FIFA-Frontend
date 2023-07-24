@@ -8,10 +8,9 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-matchtype-list',
   templateUrl: './matchtype-list.component.html',
-  styleUrls: ['./matchtype-list.component.css']
+  styleUrls: ['./matchtype-list.component.css'],
 })
 export class MatchtypeListComponent implements OnInit {
-
   headerRows = ['id', 'name', 'weight'];
 
   data: MatchType[];
@@ -20,7 +19,7 @@ export class MatchtypeListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private matchtypeService: MatchtypeService
+    private matchtypeService: MatchtypeService,
   ) {
     this.data = this.route.snapshot.data.matchtypes;
   }
@@ -32,18 +31,19 @@ export class MatchtypeListComponent implements OnInit {
       canRemove: true,
       data: this.data,
       functionRemove: this.onDelete,
-      headerRows: this.headerRows
-    }
+      headerRows: this.headerRows,
+    };
   }
 
   onDelete = (id: number) => {
-    this.matchtypeService.delete(id)
+    this.matchtypeService
+      .delete(id)
       .pipe(switchMap(this.updateDataTable))
-      .subscribe(res => {
+      .subscribe((res) => {
         this.data = res;
         this.tableData.data = this.data;
       });
-  }
+  };
 
   updateDataTable = () => this.matchtypeService.getAll();
 }

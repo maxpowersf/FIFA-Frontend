@@ -1,44 +1,44 @@
 table {
-    width: 100%;
+  width: 100%;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .mat-header-cell,
-.mat-cell{
-    text-align: center;
+.mat-cell {
+  text-align: center;
 }
-.mat-chip{
-    border-radius: 20px;
-    padding: 5px 15px;
-    color: aliceblue;
+.mat-chip {
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: aliceblue;
 }
 .mat-chip.Goalkeeper {
-    background-color: rgba(254, 185, 7, 0.3);
-    color: black;
+  background-color: rgba(254, 185, 7, 0.3);
+  color: black;
 }
 .mat-chip.Defender {
-    background-color: rgba(0, 171, 210, 0.3);
-    color: black;
+  background-color: rgba(0, 171, 210, 0.3);
+  color: black;
 }
 .mat-chip.Midfielder {
-    background-color: rgba(136, 201, 0, 0.3);
-    color: black;
+  background-color: rgba(136, 201, 0, 0.3);
+  color: black;
 }
 .mat-chip.Attacker {
-    background-color: rgba(239, 30, 30, 0.3);
-    color: black;
+  background-color: rgba(239, 30, 30, 0.3);
+  color: black;
 }
-.mat-fab{
-    margin: 0 10px;
+.mat-fab {
+  margin: 0 10px;
 }
-.cell-number{
-    width: 50px;
+.cell-number {
+  width: 50px;
 }
 th.left,
-td.left{
-    text-align: left;
-    padding-left: 20px;
+td.left {
+  text-align: left;
+  padding-left: 20px;
 }

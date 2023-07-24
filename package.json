@@ -1,15 +1,29 @@
 {
   "name": "frontend",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "ng": "ng",
     "start": "ng serve -o --port=4202",
     "build": "ng build --configuration production",
+    "cz": "git-cz",
+    "cza": "git add . && yarn cz",
+    "lint:staged": "lint-staged",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "eslint . && prettier --check .",
+    "lint:fix": "eslint . --fix && prettier --write .",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint .",
+      "prettier --check ."
+    ]
+  },
   "dependencies": {
     "@angular/animations": "^16.1.6",
     "@angular/cdk": "^16.1.5",
@@ -33,13 +47,27 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.5",
+    "@angular-eslint/eslint-plugin": "^16.1.0",
+    "@angular-eslint/eslint-plugin-template": "^16.1.0",
+    "@angular-eslint/template-parser": "^16.1.0",
     "@angular/cli": "^16.1.5",
     "@angular/compiler-cli": "^16.1.6",
     "@angular/language-service": "^16.1.6",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
-    "codelyzer": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^46.4.4",
+    "eslint-plugin-ordered-imports": "^0.6.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-rxjs": "^5.0.3",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.2",
@@ -47,9 +75,10 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~7.0.0",
-    "tslint": "~6.1.0",
     "typescript": "~4.9.5"
   }
 }

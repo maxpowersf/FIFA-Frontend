@@ -2,12 +2,23 @@
   <mat-card-title>
     <div class="header">
       <div class="title">
-        {{tournament?.name}}<span
-          *ngIf="tournament?.tournamentType.format != 1 && tournament?.tournamentType.format != 4"> -
-          {{tournament?.host}}</span>
+        {{ tournament?.name
+        }}<span
+          *ngIf="
+            tournament?.tournamentType.format != 1 &&
+            tournament?.tournamentType.format != 4
+          "
+        >
+          - {{ tournament?.host }}</span
+        >
       </div>
       <div class="actions">
-        <button mat-fab aria-label="back to list" matTooltip="Back" (click)="goToList()">
+        <button
+          mat-fab
+          aria-label="back to list"
+          matTooltip="Back"
+          (click)="goToList()"
+        >
           <mat-icon>keyboard_backspace</mat-icon>
         </button>
       </div>
@@ -15,26 +26,47 @@
   </mat-card-title>
   <mat-card-subtitle>Summary</mat-card-subtitle>
   <mat-card-content>
-    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+    <mat-tab-group
+      mat-stretch-tabs
+      class="example-stretched-tabs mat-elevation-z4"
+    >
       <mat-tab label="Standings" *ngIf="standings">
         <mat-tab-group mat-stretch-tabs class="">
           <mat-tab label="Play Offs" *ngIf="standings.playoffs.length > 0">
-            <div *ngFor="let playoff of standings.playoffs;">
-              <p class="group-headline text-center">{{playoff.roundName}}</p>
-              <app-standings-round-tab [data]="playoff.matches" isPlayoff="true"></app-standings-round-tab>
+            <div *ngFor="let playoff of standings.playoffs">
+              <p class="group-headline text-center">{{ playoff.roundName }}</p>
+              <app-standings-round-tab
+                [data]="playoff.matches"
+                isPlayoff="true"
+              ></app-standings-round-tab>
             </div>
           </mat-tab>
           <mat-tab label="Groups" *ngIf="standings.groups.length > 0">
-            <p class="sidenote" *ngIf="tournament.finalPositions && tournament.tournamentType.format == 1">* Qualified as hosts</p>
-            <div *ngFor="let group of standings.groups;">
-              <p class="group-headline text-center">Group {{group.groupName}}</p>
-              <app-standings-groups-tab [data]="group.positions"></app-standings-groups-tab>
+            <p
+              class="sidenote"
+              *ngIf="
+                tournament.finalPositions &&
+                tournament.tournamentType.format == 1
+              "
+            >
+              * Qualified as hosts
+            </p>
+            <div *ngFor="let group of standings.groups">
+              <p class="group-headline text-center">
+                Group {{ group.groupName }}
+              </p>
+              <app-standings-groups-tab
+                [data]="group.positions"
+              ></app-standings-groups-tab>
             </div>
           </mat-tab>
           <mat-tab label="Rounds" *ngIf="standings.rounds.length > 0">
-            <div *ngFor="let round of standings.rounds;">
-              <p class="group-headline text-center">{{round.roundName}}</p>
-              <app-standings-round-tab [data]="round.matches" [isHomeAway]="round.isHomeAway"></app-standings-round-tab>
+            <div *ngFor="let round of standings.rounds">
+              <p class="group-headline text-center">{{ round.roundName }}</p>
+              <app-standings-round-tab
+                [data]="round.matches"
+                [isHomeAway]="round.isHomeAway"
+              ></app-standings-round-tab>
             </div>
           </mat-tab>
         </mat-tab-group>
@@ -43,7 +75,8 @@
         <app-final-table-tab
           [data]="positions"
           [altData]="positionGroups"
-          [isQualification]="tournament.tournamentType.format == 1"></app-final-table-tab>
+          [isQualification]="tournament.tournamentType.format == 1"
+        ></app-final-table-tab>
       </mat-tab>
       <mat-tab label="Results">
         <app-results-tab [data]="matches"></app-results-tab>

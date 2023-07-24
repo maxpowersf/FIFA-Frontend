@@ -9,13 +9,17 @@ import { ReportMatchesComponent } from './components/report-matches/report-match
 import { ReportStreaksComponent } from './components/report-streaks/report-streaks.component';
 
 @NgModule({
-  declarations: [ReportsListComponent, ReportMatchesComponent, ReportStreaksComponent],
+  declarations: [
+    ReportsListComponent,
+    ReportMatchesComponent,
+    ReportStreaksComponent,
+  ],
   imports: [
     CommonModule,
     ReportsRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class ReportsModule { }
+export class ReportsModule {}

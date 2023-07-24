@@ -1,17 +1,30 @@
 <mat-card>
   <mat-card-title>
     <div class="header">
-      <div class="title">
-        Ranking
-      </div>
+      <div class="title">Ranking</div>
       <div class="actions">
-        <button mat-fab aria-label="Add new registry" matTooltip="New match" (click)="addAction()">
+        <button
+          mat-fab
+          aria-label="Add new registry"
+          matTooltip="New match"
+          (click)="addAction()"
+        >
           <mat-icon>add</mat-icon>
         </button>
-        <button mat-fab aria-label="update list" matTooltip="Update rankings" (click)="updateRankings()">
+        <button
+          mat-fab
+          aria-label="update list"
+          matTooltip="Update rankings"
+          (click)="updateRankings()"
+        >
           <mat-icon>reorder</mat-icon>
         </button>
-        <button mat-fab aria-label="end period" matTooltip="End period" (click)="finishPeriod()">
+        <button
+          mat-fab
+          aria-label="end period"
+          matTooltip="End period"
+          (click)="finishPeriod()"
+        >
           <mat-icon>done_all</mat-icon>
         </button>
       </div>
@@ -20,70 +33,108 @@
   <mat-card-subtitle>Standings</mat-card-subtitle>
   <mat-card-content>
     <mat-form-field class="full-width">
-      <mat-select placeholder="Confederation" (selectionChange)="filterByConfederation($event.value)">
+      <mat-select
+        placeholder="Confederation"
+        (selectionChange)="filterByConfederation($event.value)"
+      >
         <mat-option [value]="0">All</mat-option>
-        <mat-option *ngFor="let confederation of confederations" [value]="confederation.id">
-          {{confederation.name}}
+        <mat-option
+          *ngFor="let confederation of confederations"
+          [value]="confederation.id"
+        >
+          {{ confederation.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
       <ng-container matColumnDef="pos">
-        <th mat-header-cell *matHeaderCellDef> Pos </th>
-        <td mat-cell *matCellDef="let element" matTooltip="Dashboard" [matTooltipPosition]="'above'"
-          (click)="navigateToDetail(element.id)" class="clickable"> {{element.actualRank}} </td>
+        <th mat-header-cell *matHeaderCellDef>Pos</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          matTooltip="Dashboard"
+          [matTooltipPosition]="'above'"
+          (click)="navigateToDetail(element.id)"
+          class="clickable"
+        >
+          {{ element.actualRank }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="left"> Team </th>
+        <th mat-header-cell *matHeaderCellDef class="left">Team</th>
         <td mat-cell *matCellDef="let element" class="left">
-          <span class="flag-icon flag-icon-{{element.flag}}"></span> {{element.name}}
+          <span class="flag-icon flag-icon-{{ element.flag }}"></span>
+          {{ element.name }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="confederation">
-        <th mat-header-cell *matHeaderCellDef> Confederation </th>
-        <td mat-cell *matCellDef="let element" [attr.alt]="element.confederationName">
-          <mat-chip [style.backgroundColor]='element.confederationColor'>
-            {{element.confederationName}}
+        <th mat-header-cell *matHeaderCellDef>Confederation</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [attr.alt]="element.confederationName"
+        >
+          <mat-chip [style.backgroundColor]="element.confederationColor">
+            {{ element.confederationName }}
           </mat-chip>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="year1">
-        <th mat-header-cell *matHeaderCellDef> {{year1}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.ranking1?.points | number:'1.2'}} </td>
+        <th mat-header-cell *matHeaderCellDef>{{ year1 }}</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ranking1?.points | number: '1.2' }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="year2">
-        <th mat-header-cell *matHeaderCellDef> {{year2}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.ranking2?.points | number:'1.2'}} </td>
+        <th mat-header-cell *matHeaderCellDef>{{ year2 }}</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ranking2?.points | number: '1.2' }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="year3">
-        <th mat-header-cell *matHeaderCellDef> {{year3}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.ranking3?.points | number:'1.2'}} </td>
+        <th mat-header-cell *matHeaderCellDef>{{ year3 }}</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ranking3?.points | number: '1.2' }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="totalpoints">
-        <th mat-header-cell *matHeaderCellDef> Points </th>
-        <td mat-cell *matCellDef="let element"> {{element.totalPoints | number:'1.2'}} </td>
+        <th mat-header-cell *matHeaderCellDef>Points</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.totalPoints | number: '1.2' }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="rankingChange">
-        <th mat-header-cell *matHeaderCellDef> Change </th>
-        <td mat-cell *matCellDef="let element"><i class="fa" [ngClass]="{'fa-arrow-up text-success': element.rankingChange > 0,
-                                                        'fa-arrow-down text-danger': element.rankingChange < 0}">
-          </i> {{element.rankingChange}} </td>
+        <th mat-header-cell *matHeaderCellDef>Change</th>
+        <td mat-cell *matCellDef="let element">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-arrow-up text-success': element.rankingChange > 0,
+              'fa-arrow-down text-danger': element.rankingChange < 0
+            }"
+          >
+          </i>
+          {{ element.rankingChange }}
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-    <mat-paginator #paginator [pageSizeOptions]="[10, 20, 100]" [pageSize]="10" [length]="teams.length"
-      showFirstLastButtons></mat-paginator>
-
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[10, 20, 100]"
+      [pageSize]="10"
+      [length]="teams.length"
+      showFirstLastButtons
+    ></mat-paginator>
   </mat-card-content>
 </mat-card>

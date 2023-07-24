@@ -1,9 +1,7 @@
 <mat-card class="form-card">
   <mat-card-title>
     <div class="header">
-      <div class="title">
-        Matches
-      </div>
+      <div class="title">Matches</div>
     </div>
   </mat-card-title>
   <mat-card-subtitle>New match</mat-card-subtitle>
@@ -11,28 +9,46 @@
     <form [formGroup]="matchForm">
       <!-- Tournament Type Column -->
       <mat-form-field class="full-width">
-        <mat-select placeholder="Tipo de Torneo" (selectionChange)="fillTournamentsByTournamentType($event.value)">
-          <mat-option *ngFor="let tournamenttype of tournamenttypes" [value]="tournamenttype.id">
-            {{tournamenttype.name}}
+        <mat-select
+          placeholder="Tipo de Torneo"
+          (selectionChange)="fillTournamentsByTournamentType($event.value)"
+        >
+          <mat-option
+            *ngFor="let tournamenttype of tournamenttypes"
+            [value]="tournamenttype.id"
+          >
+            {{ tournamenttype.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Confederation Column -->
       <mat-form-field class="full-width" *ngIf="selectedTournamentType == 10">
-        <mat-select placeholder="Confederacion" (selectionChange)="fillTournamentsByConfederation($event.value)">
-          <mat-option *ngFor="let confederation of confederations" [value]="confederation.id">
-            {{confederation.name}}
+        <mat-select
+          placeholder="Confederacion"
+          (selectionChange)="fillTournamentsByConfederation($event.value)"
+        >
+          <mat-option
+            *ngFor="let confederation of confederations"
+            [value]="confederation.id"
+          >
+            {{ confederation.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Tournament Column -->
       <mat-form-field class="full-width" *ngIf="tournaments.length > 0">
-        <mat-select placeholder="Torneo" (selectionChange)="fillTeamsByTournament($event.value)"
-          [formControl]="tournament">
-          <mat-option *ngFor="let tournament of tournaments" [value]="tournament.id">
-            {{tournament.name}}
+        <mat-select
+          placeholder="Torneo"
+          (selectionChange)="fillTeamsByTournament($event.value)"
+          [formControl]="tournament"
+        >
+          <mat-option
+            *ngFor="let tournament of tournaments"
+            [value]="tournament.id"
+          >
+            {{ tournament.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -41,23 +57,44 @@
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width">
-            <mat-select #roundField placeholder="Round" [formControl]="matchround">
-              <mat-option *ngFor="let round of matchrounds" [value]="round.value">
-                {{round.name}}
+            <mat-select
+              #roundField
+              placeholder="Round"
+              [formControl]="matchround"
+            >
+              <mat-option
+                *ngFor="let round of matchrounds"
+                [value]="round.value"
+              >
+                {{ round.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-md-6" *ngIf="matchForm.controls['matchround'].value == 2">
+        <div
+          class="col-md-6"
+          *ngIf="matchForm.controls['matchround'].value == 2"
+        >
           <div class="row">
             <div class="col-md-6">
               <mat-form-field class="full-width">
-                <input matInput placeholder="Group" type="text" [formControl]="group">
+                <input
+                  matInput
+                  placeholder="Group"
+                  type="text"
+                  [formControl]="group"
+                />
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
-                <input matInput placeholder="Matchday" type="number" min="1" [formControl]="matchday">
+                <input
+                  matInput
+                  placeholder="Matchday"
+                  type="number"
+                  min="1"
+                  [formControl]="matchday"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -69,8 +106,11 @@
         <div class="col-md-4">
           <mat-form-field class="full-width">
             <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" [formControl]="date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <input matInput [matDatepicker]="picker" [formControl]="date" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
@@ -80,39 +120,69 @@
       <div class="row">
         <div class="col-md-4">
           <mat-form-field class="full-width">
-            <mat-select placeholder="Equipo" (selectionChange)="changeTeam1($event.value)" [formControl]="team1">
+            <mat-select
+              placeholder="Equipo"
+              (selectionChange)="changeTeam1($event.value)"
+              [formControl]="team1"
+            >
               <mat-option *ngFor="let team of teams" [value]="team.id">
-                <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
+                <span class="flag-icon flag-icon-{{ team.flag }}"></span>
+                {{ team.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-1">
           <mat-form-field class="result">
-            <input matInput type="number" min="0" [formControl]="goals1">
+            <input matInput type="number" min="0" [formControl]="goals1" />
           </mat-form-field>
         </div>
         <div class="col-md-1">
-          <mat-form-field class="result"
-            *ngIf="matchForm.controls['goals1'].value == matchForm.controls['goals2'].value &&
-             isNumber(matchForm.controls['goals1'].value) &&
-             isNumber(matchForm.controls['goals2'].value)">
-            <input matInput type="number" min="0" [formControl]="penalties1">{{condition}}
+          <mat-form-field
+            class="result"
+            *ngIf="
+              matchForm.controls['goals1'].value ==
+                matchForm.controls['goals2'].value &&
+              isNumber(matchForm.controls['goals1'].value) &&
+              isNumber(matchForm.controls['goals2'].value)
+            "
+          >
+            <input
+              matInput
+              type="number"
+              min="0"
+              [formControl]="penalties1"
+            />{{ condition }}
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="result">
-            <input matInput placeholder="Ranking" [value]="selectedTeam1?.actualRank" disabled>
+            <input
+              matInput
+              placeholder="Ranking"
+              [value]="selectedTeam1?.actualRank"
+              disabled
+            />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="result">
-            <input matInput placeholder="Region" [value]="selectedTeam1?.confederationWeight" disabled>
+            <input
+              matInput
+              placeholder="Region"
+              [value]="selectedTeam1?.confederationWeight"
+              disabled
+            />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="result">
-            <input matInput placeholder="Points" [value]="selectedTeam1?.totalPoints" disabled>
+            <input
+              matInput
+              placeholder="Points"
+              [value]="selectedTeam1?.totalPoints"
+              disabled
+            />
           </mat-form-field>
         </div>
       </div>
@@ -121,50 +191,76 @@
       <div class="row">
         <div class="col-md-4">
           <mat-form-field class="full-width">
-            <mat-select placeholder="Equipo" (selectionChange)="changeTeam2($event.value)" [formControl]="team2">
+            <mat-select
+              placeholder="Equipo"
+              (selectionChange)="changeTeam2($event.value)"
+              [formControl]="team2"
+            >
               <mat-option *ngFor="let team of teams" [value]="team.id">
-                <span class="flag-icon flag-icon-{{team.flag}}"></span> {{team.name}}
+                <span class="flag-icon flag-icon-{{ team.flag }}"></span>
+                {{ team.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-1">
           <mat-form-field class="result">
-            <input matInput type="number" min="0" [formControl]="goals2">
+            <input matInput type="number" min="0" [formControl]="goals2" />
           </mat-form-field>
         </div>
         <div class="col-md-1">
-          <mat-form-field class="result"
-            *ngIf="matchForm.controls['goals1'].value == matchForm.controls['goals2'].value &&
-            isNumber(matchForm.controls['goals1'].value) &&
-            isNumber(matchForm.controls['goals2'].value)">
-            <input matInput type="number" min="0" [formControl]="penalties2">
+          <mat-form-field
+            class="result"
+            *ngIf="
+              matchForm.controls['goals1'].value ==
+                matchForm.controls['goals2'].value &&
+              isNumber(matchForm.controls['goals1'].value) &&
+              isNumber(matchForm.controls['goals2'].value)
+            "
+          >
+            <input matInput type="number" min="0" [formControl]="penalties2" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="result">
-            <input matInput placeholder="Ranking" [value]="selectedTeam2?.actualRank" disabled>
+            <input
+              matInput
+              placeholder="Ranking"
+              [value]="selectedTeam2?.actualRank"
+              disabled
+            />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="result">
-            <input matInput placeholder="Region" [value]="selectedTeam2?.confederationWeight" disabled>
+            <input
+              matInput
+              placeholder="Region"
+              [value]="selectedTeam2?.confederationWeight"
+              disabled
+            />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="result">
-            <input matInput placeholder="Points" [value]="selectedTeam2?.totalPoints" disabled>
+            <input
+              matInput
+              placeholder="Points"
+              [value]="selectedTeam2?.totalPoints"
+              disabled
+            />
           </mat-form-field>
         </div>
       </div>
-
     </form>
   </mat-card-content>
   <mat-card-actions>
     <div class="actions">
       <button mat-flat-button (click)="goToList()">Back</button>
       <div>
-        <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          Save
+        </button>
       </div>
     </div>
   </mat-card-actions>

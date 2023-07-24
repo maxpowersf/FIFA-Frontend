@@ -7,15 +7,13 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    TeamstatListComponent
-  ],
+  declarations: [TeamstatListComponent],
   imports: [
     CommonModule,
     TeamstatsRoutingModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
-export class TeamstatsModule { }
+export class TeamstatsModule {}

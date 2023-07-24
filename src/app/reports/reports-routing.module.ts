@@ -9,40 +9,39 @@ import { ReportMatchesResolver } from './resolvers/reportmatches.resolver';
 import { ReportStreaksResolver } from './resolvers/reportstreaks.resolver';
 import { TeamsResolver } from '../teams/resolvers/teams.resolver';
 
-
 const routes: Routes = [
   {
     path: '',
     component: ReportsListComponent,
     resolve: {
-      teams: TeamsResolver
-    }
+      teams: TeamsResolver,
+    },
   },
   {
     path: 'streaks/:type',
     component: ReportStreaksComponent,
     resolve: {
-      streaks: ReportStreaksResolver
-    }
+      streaks: ReportStreaksResolver,
+    },
   },
   {
     path: 'margin',
     component: ReportMatchesComponent,
     resolve: {
-      matches: ReportMatchesResolver
-    }
+      matches: ReportMatchesResolver,
+    },
   },
   {
     path: 'goals',
     component: ReportMatchesComponent,
     resolve: {
-      matches: ReportMatchesResolver
-    }
-  }
+      matches: ReportMatchesResolver,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ReportsRoutingModule { }
+export class ReportsRoutingModule {}

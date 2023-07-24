@@ -12,14 +12,22 @@ import { Confederation } from 'src/app/confederations/models/confederation.model
 @Component({
   selector: 'app-rankings-list',
   templateUrl: './rankings-list.component.html',
-  styleUrls: ['./rankings-list.component.css']
+  styleUrls: ['./rankings-list.component.css'],
 })
 export class RankingsListComponent implements OnInit {
-
   teams: Team[];
   confederations: Confederation[];
 
-  displayedColumns: string[] = ['pos', 'name', 'confederation', 'year1', 'year2', 'year3', 'totalpoints', 'rankingChange'];
+  displayedColumns: string[] = [
+    'pos',
+    'name',
+    'confederation',
+    'year1',
+    'year2',
+    'year3',
+    'totalpoints',
+    'rankingChange',
+  ];
   dataSource;
 
   year1: number;
@@ -34,11 +42,11 @@ export class RankingsListComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private rankingService: RankingService,
-    private teamService: TeamService
-  ) { }
+    private teamService: TeamService,
+  ) {}
 
   ngOnInit() {
-    this.blockUI.start("0");
+    this.blockUI.start('0');
     this.confederations = this.route.snapshot.data.confederations;
     this.teams = this.route.snapshot.data.teams;
     this.teams.sort(this.sortByPointsDesc);
@@ -55,29 +63,28 @@ export class RankingsListComponent implements OnInit {
 
   filterByConfederation = (val) => {
     if (val != 0) {
-      let filteredTeams = this.teams.filter(x => x.confederationID == val);
+      let filteredTeams = this.teams.filter((x) => x.confederationID == val);
       this.dataSource.data = filteredTeams;
-    }
-    else {
+    } else {
       this.dataSource.data = this.teams;
     }
-  }
+  };
 
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
 
   updateRankings = () => {
-    this.blockUI.start("3");
+    this.blockUI.start('3');
     this.rankingService.update().subscribe(() => {
       this.getAllRankings();
     });
-  }
+  };
 
   finishPeriod = () => {
-    this.blockUI.start("4");
+    this.blockUI.start('4');
     this.rankingService.finishPeriod().subscribe(() => {
       this.getAllRankings();
     });
-  }
+  };
 
   getAllRankings = () => {
     this.teamService.getAll().subscribe((res) => {
@@ -86,9 +93,10 @@ export class RankingsListComponent implements OnInit {
       this.dataSource.data = this.teams;
       this.blockUI.stop();
     });
-  }
+  };
 
   sortByPointsDesc = (f1: any, f2: any) => f2.totalPoints - f1.totalPoints;
 
-  navigateToDetail = (id) => this.router.navigate([id, 'dashboard'], { relativeTo: this.route });
+  navigateToDetail = (id) =>
+    this.router.navigate([id, 'dashboard'], { relativeTo: this.route });
 }

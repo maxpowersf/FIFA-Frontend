@@ -21,7 +21,12 @@ import { RankingCardComponent } from './components/ranking-card/ranking-card.com
 import { ChampionsCardComponent } from './components/champions-card/champions-card.component';
 
 @NgModule({
-  declarations: [NavComponent, HomeComponent, RankingCardComponent, ChampionsCardComponent],
+  declarations: [
+    NavComponent,
+    HomeComponent,
+    RankingCardComponent,
+    ChampionsCardComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -37,11 +42,8 @@ import { ChampionsCardComponent } from './components/champions-card/champions-ca
     MatListModule,
     MatGridListModule,
     MatProgressBarModule,
-    SharedModule
+    SharedModule,
   ],
-  exports: [
-    NavComponent,
-    HomeComponent
-  ]
+  exports: [NavComponent, HomeComponent],
 })
-export class CoreModule { }
+export class CoreModule {}

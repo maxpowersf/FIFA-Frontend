@@ -1,10 +1,18 @@
 <form-layout [info]="formInfo" (submitEvent)="onSubmit()">
   <form [formGroup]="matchtypeForm">
     <mat-form-field class="full-width">
-      <input matInput placeholder="Ingrese el tipo de partido" [formControl]="name">
+      <input
+        matInput
+        placeholder="Ingrese el tipo de partido"
+        [formControl]="name"
+      />
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Ingrese el coeficiente" [formControl]="weight">
+      <input
+        matInput
+        placeholder="Ingrese el coeficiente"
+        [formControl]="weight"
+      />
     </mat-form-field>
   </form>
 </form-layout>

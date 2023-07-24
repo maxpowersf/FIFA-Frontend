@@ -1,5 +1,5 @@
-import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,24 +11,22 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     {
-      provide : LocationStrategy, 
-      useClass: HashLocationStrategy
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
     },
-    httpInterceptorProviders
+    httpInterceptorProviders,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

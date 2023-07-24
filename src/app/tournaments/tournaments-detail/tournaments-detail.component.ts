@@ -10,10 +10,9 @@ import { Match } from 'src/app/matches/models/match.model';
 @Component({
   selector: 'app-tournaments-detail',
   templateUrl: './tournaments-detail.component.html',
-  styleUrls: ['./tournaments-detail.component.css']
+  styleUrls: ['./tournaments-detail.component.css'],
 })
 export class TournamentsDetailComponent implements OnInit {
-
   tournament: Tournament;
   standings: PositionsGroups;
   positions: Position[];
@@ -23,7 +22,7 @@ export class TournamentsDetailComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.tournament = this.route.snapshot.data.tournament;
     this.standings = this.route.snapshot.data.standings;
@@ -55,6 +54,5 @@ export class TournamentsDetailComponent implements OnInit {
     });
   }*/
 
-  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route })
-
+  goToList = () => this.router.navigate(['../../'], { relativeTo: this.route });
 }

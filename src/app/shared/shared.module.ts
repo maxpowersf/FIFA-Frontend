@@ -22,7 +22,7 @@ import { MatLegacySelectModule as MatSelectModule } from '@angular/material/lega
 import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MccColorPickerModule } from 'material-community-components';
+import { MccColorPickerModule } from 'material-community-components/color-picker';
 import { BlockTemplateComponent } from './templates/block-template/block-template.component';
 import { FormLayoutComponent } from './components/form-layout/form-layout.component';
 import { ListLayoutComponent } from './components/list-layout/list-layout.component';
@@ -35,7 +35,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     FormLayoutComponent,
     ListLayoutComponent,
     TableComponent,
-    TranslateHeaderPipe
+    TranslateHeaderPipe,
   ],
   imports: [
     CommonModule,
@@ -63,12 +63,12 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     MatCheckboxModule,
     MatSnackBarModule,
     BlockUIModule.forRoot({
-      template: BlockTemplateComponent
+      template: BlockTemplateComponent,
     }),
     MccColorPickerModule.forRoot({
       empty_color: '#ffffff',
-      used_colors: ['#000000', '#FFF555']
-    })
+      used_colors: ['#000000', '#FFF555'],
+    }),
   ],
   exports: [
     MatCardModule,
@@ -94,7 +94,7 @@ import { TranslateHeaderPipe } from './pipes/translate-header.pipe';
     BlockUIModule,
     FormLayoutComponent,
     ListLayoutComponent,
-    TableComponent
-  ]
+    TableComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

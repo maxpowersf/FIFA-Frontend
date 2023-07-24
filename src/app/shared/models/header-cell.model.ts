@@ -1,4 +1,4 @@
 export interface HeaderCell {
-    name: string;
-    display: boolean;
+  name: string;
+  display: boolean;
 }
