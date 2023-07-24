@@ -10,7 +10,7 @@ import { Player } from 'src/app/players/models/player.model';
 })
 export class GoalscorersTabComponent implements OnInit {
   @Input() data: Player[];
-  @ViewChild('paginator', null) paginator: MatPaginator;
+  @ViewChild('paginator') paginator: MatPaginator;
 
   displayedColumns: string[] = [
     'noPosition',
@@ -20,8 +20,6 @@ export class GoalscorersTabComponent implements OnInit {
     'goals',
   ];
   dataSource;
-
-  constructor() {}
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);

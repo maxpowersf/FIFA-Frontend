@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { Confederation } from 'src/app/confederations/models/confederation.model';
+
 import { TeamStat } from '../models/teamstat.model';
 import { TeamStatWorldCup } from '../models/teamstatworldcup.model';
 
@@ -49,8 +49,8 @@ export class TeamstatListComponent implements OnInit {
   teamStats: TeamStat[];
   teamStatsWorldCup: TeamStatWorldCup[];
 
-  @ViewChild('Sort', null) public sort: MatSort;
-  @ViewChild('SortWorldCup', null) public sortWorldCup: MatSort;
+  @ViewChild('Sort') public sort: MatSort;
+  @ViewChild('SortWorldCup') public sortWorldCup: MatSort;
 
   constructor(private route: ActivatedRoute) {
     this.confederations = this.route.snapshot.data.confederations;
@@ -67,12 +67,12 @@ export class TeamstatListComponent implements OnInit {
   }
 
   filterByConfederation = (val) => {
-    if (val != 0) {
-      let filteredTeams = this.teamStats.filter(
-        (x) => x.team.confederationID == val,
+    if (val !== 0) {
+      const filteredTeams = this.teamStats.filter(
+        (x) => x.team.confederationID === val,
       );
-      let filteredTeamsWC = this.teamStatsWorldCup.filter(
-        (x) => x.team.confederationID == val,
+      const filteredTeamsWC = this.teamStatsWorldCup.filter(
+        (x) => x.team.confederationID === val,
       );
       this.dataSource.data = filteredTeams;
       this.dataSourceWorldCup.data = filteredTeamsWC;

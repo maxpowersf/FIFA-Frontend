@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { TournamentType } from '../models/tournamenttype.model';
 import { TournamenttypeService } from '../services/tournamenttype.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tournamenttype-list',
@@ -26,7 +26,7 @@ export class TournamenttypeListComponent implements OnInit {
 
   data: TournamentType[];
 
-  @ViewChild(MatPaginator, null) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(

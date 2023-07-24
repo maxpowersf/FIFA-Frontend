@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Team } from '../models/team.model';
 import { TeamService } from '../services/team.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 
 @Component({
   selector: 'app-teams-list',
@@ -28,7 +29,7 @@ export class TeamsListComponent implements OnInit {
 
   teams: Team[];
 
-  @ViewChild(MatPaginator, null) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
@@ -38,8 +39,8 @@ export class TeamsListComponent implements OnInit {
   ) {
     this.teams = this.route.snapshot.data.teams;
     this.teams.sort((a, b) => {
-      let aName = a.name.toLowerCase();
-      let bName = b.name.toLowerCase();
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
       return aName < bName ? -1 : aName < bName ? 1 : 0;
     });
   }

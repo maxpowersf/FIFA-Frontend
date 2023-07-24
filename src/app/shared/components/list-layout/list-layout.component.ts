@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './list-layout.component.html',
   styleUrls: ['./list-layout.component.css'],
 })
-export class ListLayoutComponent implements OnInit {
+export class ListLayoutComponent {
   @Input() title: string;
   @Input() subtitle: string;
   @Input() canAdd: boolean;
@@ -15,8 +15,6 @@ export class ListLayoutComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   ) {}
-
-  ngOnInit() {}
 
   addAction = () => this.router.navigate(['new'], { relativeTo: this.route });
 }

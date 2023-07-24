@@ -1,0 +1,9 @@
+{
+    "eslint.nodePath": "C:\\Users\\canal\\.nvm\\versions\\node\\v18.17.0\\bin",
+    "eslint.workingDirectories": [
+        "./"
+    ],
+    "editor.formatOnSave": true,
+    "eslint.codeActionsOnSave.rules": null,
+    "angular.enable-strict-mode-prompt": false
+}

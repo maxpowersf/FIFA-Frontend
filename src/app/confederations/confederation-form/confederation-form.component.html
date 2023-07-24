@@ -21,23 +21,11 @@
           <mat-form-field class="example-full-width">
             <input
               matInput
-              mccColorPickerOrigin
-              #trigger="mccColorPickerOrigin"
               placeholder="Color"
               autocomplete="off"
               formControlName="color"
             />
           </mat-form-field>
-          <mcc-color-picker
-            mccConnectedColorPicker
-            [mccConnectedColorPickerOrigin]="trigger"
-            [hideHexForms]="true"
-            [hideUsedColors]="true"
-            [btnCancel]="'Cancel'"
-            [btnConfirm]="'Confirm'"
-            [selectedColor]="'#ffffff'"
-          >
-          </mcc-color-picker>
         </div>
       </div>
       <mat-form-field class="example-full-width">

@@ -4,11 +4,11 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { BlockUI, NgBlockUI } from 'ng-block-ui';
+
 import { Match } from '../../matches/models/match.model';
 import { MatchService } from '../../matches/services/match.service';
 import { MatchRoundMapping } from '../../shared/models/matchround';
@@ -68,9 +68,8 @@ export class Head2headDetailComponent implements OnInit {
   dataSource;
   dataSourceMatches;
 
-  @BlockUI() blockUI: NgBlockUI;
-  @ViewChild('paginator', null) paginator: MatPaginator;
-  @ViewChild('paginatorMatches', null) paginatorMatches: MatPaginator;
+  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild('paginatorMatches') paginatorMatches: MatPaginator;
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -104,20 +103,18 @@ export class Head2headDetailComponent implements OnInit {
   };
 
   refresh = (data, type: string) => {
-    if (type == 'h2h') {
+    if (type === 'h2h') {
       this.dataSource.data = data;
-    } else if (type == 'matches') {
+    } else if (type === 'matches') {
       this.dataSourceMatches.data = data;
     }
-
-    this.blockUI.stop();
   };
 
   swapTeams = () => {
-    let team1 = this.team1.value;
-    let team2 = this.team2.value;
+    const team1 = this.team1.value;
+    const team2 = this.team2.value;
 
-    if (team1 != '' && team2 != '') {
+    if (team1 !== '' && team2 !== '') {
       this.team1.setValue(team2);
       this.team2.setValue(team1);
     }
@@ -134,12 +131,10 @@ export class Head2headDetailComponent implements OnInit {
       return;
     }
 
-    this.blockUI.start('1');
+    this.selTeam1 = this.teams.find((e) => e.id === this.team1.value);
+    this.selTeam2 = this.teams.find((e) => e.id === this.team2.value);
 
-    this.selTeam1 = this.teams.find((e) => e.id == this.team1.value);
-    this.selTeam2 = this.teams.find((e) => e.id == this.team2.value);
-
-    if (this.team2.value == '') {
+    if (this.team2.value === '') {
       this.h2hService
         .getByTeam(this.team1.value, this.worldcup.value)
         .subscribe((res) => {

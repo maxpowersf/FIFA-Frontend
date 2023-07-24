@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Player } from '../models/player.model';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PlayerService } from '../services/player.service';
 import { switchMap } from 'rxjs/operators';
+
+import { Player } from '../models/player.model';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-players-list',
@@ -30,7 +31,7 @@ export class PlayersListComponent implements OnInit {
 
   players: Player[];
 
-  @ViewChild(MatPaginator, null) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(

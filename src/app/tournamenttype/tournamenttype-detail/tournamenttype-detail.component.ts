@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Team } from 'src/app/teams/models/team.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { TournamentType } from '../models/tournamenttype.model';
-import { TeamService } from 'src/app/teams/services/team.service';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Player } from 'src/app/players/models/player.model';
 import { PlayerService } from 'src/app/players/services/player.service';
+import { Team } from 'src/app/teams/models/team.model';
+import { TeamService } from 'src/app/teams/services/team.service';
 import { Tournament } from 'src/app/tournaments/models/tournament.model';
+
+import { TournamentType } from '../models/tournamenttype.model';
 
 @Component({
   selector: 'app-tournamenttype-detail',
@@ -41,8 +41,8 @@ export class TournamenttypeDetailComponent implements OnInit {
   dataSourceHistory;
   dataSourceGoalscorers;
 
-  @ViewChild('paginator', null) paginator: MatPaginator;
-  @ViewChild('paginatorGoalscorers', null) paginatorGoalscorers: MatPaginator;
+  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild('paginatorGoalscorers') paginatorGoalscorers: MatPaginator;
 
   tournamentType: TournamentType;
   tournamentTypeFormat: number;
@@ -91,7 +91,7 @@ export class TournamenttypeDetailComponent implements OnInit {
   }
 
   mapFromApi(element: any) {
-    var titles = 0;
+    let titles = 0;
     switch (this.tournamentTypeFormat) {
       case 1:
         titles = element.worldCupQualifications;
@@ -106,11 +106,11 @@ export class TournamenttypeDetailComponent implements OnInit {
         titles = element.worldCupTitles;
         break;
     }
-    return { ...element, titles: titles };
+    return { ...element, titles };
   }
 
   mapGoalscorersFromApi(element: any) {
-    var goals = 0;
+    let goals = 0;
     switch (this.tournamentTypeFormat) {
       case 1:
         goals = element.qualificationGoals;
@@ -125,7 +125,7 @@ export class TournamenttypeDetailComponent implements OnInit {
         goals = element.worldCupGoals;
         break;
     }
-    return { ...element, goals: goals };
+    return { ...element, goals };
   }
 
   goToList = () => this.router.navigate(['../../'], { relativeTo: this.route });

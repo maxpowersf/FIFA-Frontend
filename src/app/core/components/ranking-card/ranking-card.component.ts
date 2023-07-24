@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { TeamService } from 'src/app/teams/services/team.service';
 
 @Component({
@@ -11,19 +10,15 @@ export class RankingCardComponent implements OnInit {
   quantity: number = 10;
   teams: any[];
 
-  @BlockUI() blockUI: NgBlockUI;
-
   constructor(private teamService: TeamService) {}
 
   ngOnInit() {
-    this.blockUI.start('0');
     this.loadRankingsCard();
   }
 
   loadRankingsCard() {
     this.teamService.getFirstTeams(this.quantity).subscribe((res) => {
       this.teams = res;
-      this.blockUI.stop();
     });
   }
 }

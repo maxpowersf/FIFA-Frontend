@@ -1,18 +1,27 @@
-import { Component, ChangeDetectorRef, Input, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TableLayout } from '../../models/table-layout.model';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
 import { DataSource } from '@angular/cdk/table';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  ViewChild,
+} from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, merge, of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { CollectionViewer } from '@angular/cdk/collections';
+import { MatPaginator } from '@angular/material/paginator';
+import { TableLayout } from '../../models/table-layout.model';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent {
+export class TableComponent implements AfterViewInit, OnChanges {
   constructor(
     private cdRef: ChangeDetectorRef,
     private route: ActivatedRoute,
@@ -21,8 +30,8 @@ export class TableComponent {
 
   @Input() tableData: TableLayout;
 
-  @ViewChild(MatPaginator, null) paginator: MatPaginator;
-  @ViewChild(MatSort, null) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   dataSource: GenericDataSource;
   columnsToDisplay: string[];
 
@@ -65,11 +74,17 @@ export class TableComponent {
   navigateToEdit = (id) =>
     this.router.navigate([id, 'edit'], { relativeTo: this.route });
 
-  navigateToUpload = (id) =>
+  navigateToUpload = (_id) =>
     this.router.navigate(['positions'], { relativeTo: this.route });
 }
 
+/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+const compare = (a, b, isAsc) => (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+
 export class GenericDataSource extends DataSource<any> {
+  disconnect(_collectionViewer: CollectionViewer): void {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     private paginator: MatPaginator,
     private sort: MatSort,
@@ -103,12 +118,6 @@ export class GenericDataSource extends DataSource<any> {
   }
 
   /**
-   *  Called when the table is being destroyed. Use this function, to clean up
-   * any open connections or free any held resources that were set up during connect.
-   */
-  disconnect() {}
-
-  /**
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
@@ -129,15 +138,6 @@ export class GenericDataSource extends DataSource<any> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       return compare(a[this.sort.active], b[this.sort.active], isAsc);
-      // switch (this.sort.active) {
-      //   case 'name': return compare(a.name, b.name, isAsc);
-      //   case 'id': return compare(+a.id, +b.id, isAsc);
-      //   default: return 0;
-      // }
     });
   }
-}
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a, b, isAsc) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

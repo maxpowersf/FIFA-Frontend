@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { Router, ActivatedRoute } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Match } from 'src/app/matches/models/match.model';
 import { MatchRoundMapping } from 'src/app/shared/models/matchround';
+
 import { Report, ReportsList } from '../../models/report.model';
 
 @Component({
@@ -33,19 +34,19 @@ export class ReportMatchesComponent implements OnInit {
 
   dataSource;
 
-  @ViewChild('paginator', null) paginator: MatPaginator;
+  @ViewChild('paginator') paginator: MatPaginator;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
   ) {
-    let path = this.route.snapshot.routeConfig.path;
-    this.report = ReportsList.find((x) => x.name.toLowerCase() == path);
+    const path = this.route.snapshot.routeConfig.path;
+    this.report = ReportsList.find((x) => x.name.toLowerCase() === path);
     this.matches = this.route.snapshot.data.matches.map((match) => {
       return {
         ...match,
         amount:
-          path == 'margin'
+          path === 'margin'
             ? Math.abs(match.goalsTeam1 - match.goalsTeam2)
             : match.goalsTeam1 + match.goalsTeam2,
       };

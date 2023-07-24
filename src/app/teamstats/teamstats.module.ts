@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { TeamstatsRoutingModule } from './teamstats-routing.module';
-import { TeamstatListComponent } from './teamstat-list/teamstat-list.component';
-import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { TeamstatListComponent } from './teamstat-list/teamstat-list.component';
+import { TeamstatsRoutingModule } from './teamstats-routing.module';
 
 @NgModule({
   declarations: [TeamstatListComponent],

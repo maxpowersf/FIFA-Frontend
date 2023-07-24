@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Tournament } from '../models/tournament.model';
-import { TournamentService } from '../services/tournament.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { switchMap } from 'rxjs/operators';
 import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
+
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Tournament } from '../models/tournament.model';
+import { TournamentService } from '../services/tournament.service';
 
 @Component({
   selector: 'app-tournament-list',
@@ -34,12 +34,12 @@ export class TournamentsListComponent implements OnInit {
   confederationTournaments: Tournament[];
   qualifications: Tournament[];
 
-  @ViewChild('paginatorWorldCup', null) paginatorWorldCup: MatPaginator;
-  @ViewChild('paginatorConfederationCup', null)
+  @ViewChild('paginatorWorldCup') paginatorWorldCup: MatPaginator;
+  @ViewChild('paginatorConfederationCup')
   paginatorConfederationCup: MatPaginator;
-  @ViewChild('paginatorConfederationTournament', null)
+  @ViewChild('paginatorConfederationTournament')
   paginatorConfederationTournament: MatPaginator;
-  @ViewChild('paginatorQualification', null)
+  @ViewChild('paginatorQualification')
   paginatorQualification: MatPaginator;
 
   constructor(
@@ -56,13 +56,13 @@ export class TournamentsListComponent implements OnInit {
 
   mapTournamentsList = (list) => {
     this.worldCups = list.filter(
-      (x) => x.tournamentType.format == TournamentFormat.WorldCup,
+      (x) => x.tournamentType.format === TournamentFormat.WorldCup,
     );
     this.dataSourceWorldCup = new MatTableDataSource(this.worldCups);
     this.dataSourceWorldCup.paginator = this.paginatorWorldCup;
 
     this.confederationCups = list.filter(
-      (x) => x.tournamentType.format == TournamentFormat.ConfederationsCup,
+      (x) => x.tournamentType.format === TournamentFormat.ConfederationsCup,
     );
     this.dataSourceConfederationCup = new MatTableDataSource(
       this.confederationCups,
@@ -71,7 +71,7 @@ export class TournamentsListComponent implements OnInit {
 
     this.confederationTournaments = list.filter(
       (x) =>
-        x.tournamentType.format == TournamentFormat.ConfederationTournament,
+        x.tournamentType.format === TournamentFormat.ConfederationTournament,
     );
     this.dataSourceConfederationTournament = new MatTableDataSource(
       this.confederationTournaments,
@@ -80,7 +80,7 @@ export class TournamentsListComponent implements OnInit {
       this.paginatorConfederationTournament;
 
     this.qualifications = list.filter(
-      (x) => x.tournamentType.format == TournamentFormat.Qualification,
+      (x) => x.tournamentType.format === TournamentFormat.Qualification,
     );
     this.dataSourceQualification = new MatTableDataSource(this.qualifications);
     this.dataSourceQualification.paginator = this.paginatorQualification;

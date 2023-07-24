@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TeamsRoutingModule } from './teams-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { TeamsDashboardComponent } from './teams-dashboard/teams-dashboard.component';
 import { TeamsFormComponent } from './teams-form/teams-form.component';
 import { TeamsListComponent } from './teams-list/teams-list.component';
-import { SharedModule } from '../shared/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeamsRoutingModule } from './teams-routing.module';
 import { TeamsSquadComponent } from './teams-squad/teams-squad.component';
-import { TeamsDashboardComponent } from './teams-dashboard/teams-dashboard.component';
 
 @NgModule({
   declarations: [

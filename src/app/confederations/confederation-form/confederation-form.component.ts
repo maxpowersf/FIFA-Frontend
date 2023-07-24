@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfederationService } from '../services/confederation.service';
-import { Confederation } from '../models/confederation.model';
 import {
-  UntypedFormGroup,
   UntypedFormBuilder,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Confederation } from '../models/confederation.model';
+import { ConfederationService } from '../services/confederation.service';
 
 @Component({
   selector: 'app-confederation-form',

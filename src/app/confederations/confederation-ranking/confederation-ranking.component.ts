@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Team } from 'src/app/teams/models/team.model';
-import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { Router, ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Team } from 'src/app/teams/models/team.model';
 
 @Component({
   selector: 'app-confederation-ranking',
@@ -29,9 +28,8 @@ export class ConfederationRankingComponent implements OnInit {
   year2: number;
   year3: number;
 
-  @BlockUI() blockUI: NgBlockUI;
-  @ViewChild(MatSort, null) sort: MatSort;
-  @ViewChild(MatPaginator, null) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private router: Router,
@@ -39,7 +37,6 @@ export class ConfederationRankingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.blockUI.start('0');
     this.teams = this.route.snapshot.data.teams;
     this.teams.sort(this.sortByPointsDesc);
 
@@ -50,7 +47,6 @@ export class ConfederationRankingComponent implements OnInit {
     this.year1 = this.teams[0].ranking1.year;
     this.year2 = this.teams[0].ranking2.year;
     this.year3 = this.teams[0].ranking3.year;
-    this.blockUI.stop();
   }
 
   goToList = () => this.router.navigate(['../../'], { relativeTo: this.route });

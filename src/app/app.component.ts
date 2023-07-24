@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
-  Router,
-  NavigationStart,
-  NavigationError,
-  NavigationEnd,
   NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
 } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Ranking de Equipos';
   isLoading = false;
 
