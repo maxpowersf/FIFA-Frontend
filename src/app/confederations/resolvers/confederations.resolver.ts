@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import { ConfederationService } from '../services/confederation.service';
+import { ConfederationService } from '../services';
 
 @Injectable({ providedIn: 'root' })
 export class ConfederationsResolver {
   constructor(private confederationService: ConfederationService) {}
 
-  resolve(route: ActivatedRouteSnapshot) {
+  resolve() {
     return this.confederationService.getAll();
   }
 }

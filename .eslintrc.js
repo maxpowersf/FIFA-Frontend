@@ -129,7 +129,20 @@ module.exports = {
         ],
         'id-match': 'error',
         'import/no-deprecated': 'warn',
-        'ordered-imports/ordered-imports': ['error'],
+        'ordered-imports/ordered-imports': [
+          'error',
+          {
+            'specifier-ordering': 'lowercase-last',
+            'group-ordering': [
+              {
+                name: 'local-imports',
+                match: '^\\.|@environment|@management|@ranking|@shared|@stats|@state',
+                order: 20,
+              },
+              { name: 'third-party', match: '.*', order: 10 },
+            ],
+          },
+        ],
         'jsdoc/check-alignment': 'error',
         'jsdoc/check-indentation': 'error',
         'max-classes-per-file': 'off',

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Position } from '../models/position.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Tournament } from '../models/tournament.model';
-import { PositionsGroups, Groups } from '../models/positionsGroups.model';
-import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
-import { Player } from 'src/app/players/models/player.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Match } from 'src/app/matches/models/match.model';
+import { Player } from 'src/app/players/models/player.model';
+
+import { Position } from '../models/position.model';
+import { PositionsGroups } from '../models/positionsGroups.model';
+import { Tournament } from '../models/tournament.model';
 
 @Component({
   selector: 'app-tournaments-detail',

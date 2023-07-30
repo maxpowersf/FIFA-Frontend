@@ -6,8 +6,8 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Confederation } from '../models/confederation.model';
-import { ConfederationService } from '../services/confederation.service';
+import { Confederation } from '../models';
+import { ConfederationService } from '../services';
 
 @Component({
   selector: 'app-confederation-form',

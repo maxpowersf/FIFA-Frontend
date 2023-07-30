@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Confederation } from 'src/app/confederations/models/confederation.model';
+import { Confederation } from 'src/app/confederations/models/confederation.models';
 
 import { TeamStat } from '../models/teamstat.model';
 import { TeamStatWorldCup } from '../models/teamstatworldcup.model';

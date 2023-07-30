@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { FormLayout } from '../../models/form-layout.model';
 
 @Component({
@@ -7,7 +8,7 @@ import { FormLayout } from '../../models/form-layout.model';
   templateUrl: './form-layout.component.html',
   styleUrls: ['./form-layout.component.css'],
 })
-export class FormLayoutComponent implements OnInit {
+export class FormLayoutComponent {
   @Input() info: FormLayout;
   @Output() submitEvent: EventEmitter<any> = new EventEmitter();
 
@@ -17,8 +18,6 @@ export class FormLayoutComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ) {}
-
-  ngOnInit() {}
 
   emitSubmit = () => this.submitEvent.emit();
 

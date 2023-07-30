@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-
 import { ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
 import { TeamService } from 'src/app/teams/services/team.service';
 
 @Injectable({ providedIn: 'root' })

@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { ConfederationsResolver } from './resolvers/confederations.resolver';
-import { ConfederationResolver } from './resolvers/confederation.resolver';
-import { ConfederationListComponent } from './confederation-list/confederation-list.component';
-import { ConfederationFormComponent } from './confederation-form/confederation-form.component';
-import { ConfederationRankingComponent } from './confederation-ranking/confederation-ranking.component';
-import { ConfederationRankingResolver } from './resolvers/confederation-ranking.resolver';
+import { RouterModule, Routes } from '@angular/router';
+
+import { ConfederationFormComponent } from './confederation-form';
+import { ConfederationListComponent } from './confederation-list';
+import { ConfederationRankingComponent } from './confederation-ranking';
+import {
+  ConfederationRankingResolver,
+  ConfederationResolver,
+  ConfederationsResolver,
+} from './resolvers';
 
 const routes: Routes = [
   {

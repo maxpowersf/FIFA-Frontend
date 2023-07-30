@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Confederation } from 'src/app/confederations/models/confederation.model';
+import { Confederation } from 'src/app/confederations/models/confederation.models';
 import { Team } from 'src/app/teams/models/team.model';
 import { TeamService } from 'src/app/teams/services/team.service';
 
