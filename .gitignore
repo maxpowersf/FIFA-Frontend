@@ -19,6 +19,7 @@ coverage
 
 # Production build files
 dist/
+.angular/
 
 # nyc test coverage
 .nyc_output
