@@ -2378,10 +2378,48 @@
     "@material/theme" "15.0.0-canary.b994146f6.0"
     tslib "^2.1.0"
 
+"@ngrx/effects@^16.1.0":
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-16.1.0.tgz#6d8f46d15d32f13fac518361ab376bffb4138108"
+  integrity sha512-sdLzxjdQcYht3SYiuhchF4uOxxZIy3h9TEoyVp6PZJmiLJqhMAmV9/+s3tPD7yKd4+4o4n+HeiLDOTlMxn3Bxg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/router-store@^16.2.0":
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-16.2.0.tgz#4d850ffa148a51247d02807fa13d464f4d6f9db0"
+  integrity sha512-nVqIKWqJnE7pKpcTg6vUpWZtjIwnh66LhJ3hcNLpWRTAzyhQh6EZuYvZX3XSVmdR9XIUltlBCFGCrmTRkeWrTg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store-devtools@^16.1.0":
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-16.1.0.tgz#7452d6dbf5e14de3626a72d8cebe734aa7279835"
+  integrity sha512-7MKvmdRhAoIClOX9KkIeeQxe6c/uUqe1UcjFTABsquioSac4r/TxfUkmelSjtlQLBXiUAKTc9icqhZzfyMI0gw==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store@^16.1.0":
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-16.1.0.tgz#7eeb6a4299a7627ddd1c8e3c1148623e644be3b9"
+  integrity sha512-cGwI5wy+irIudQubfrbaKrDbJxCvu+lZYlBmsOlpzevQLCa+ZjNLrN05J025P3KvUmfzX4StEpAc8Ord089Kig==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@16.1.5":
   version "16.1.5"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-16.1.5.tgz#aa6faab5c11b807a5438a5ecc22d6d53070250b6"
   integrity sha512-XQkanGAtB9S2EE14xa/04hPNYSkAzJOeaHJkirfqk/p40p8nA2pNsfLYCMd2N7K4kzqcET8UYAZ+wIpQxp12HA==
+
+"@ngx-translate/core@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-15.0.0.tgz#0fe55b9bd47e75b03d1123658f15fb7b5a534f3c"
+  integrity sha512-Am5uiuR0bOOxyoercDnAA3rJVizo4RRqJHo8N3RqJ+XfzVP/I845yEnMADykOHvM6HkVm4SZSnJBOiz0Anx5BA==
+
+"@ngx-translate/http-loader@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-8.0.0.tgz#e02c25dbe33c6b1edee73e3654ab8a161572cdfb"
+  integrity sha512-SFMsdUcmHF5OdZkL1CHEoSAwbP5EbAOPTLLboOCRRoOg21P4GJx+51jxGdJeGve6LSKLf4Pay7BkTwmE6vxYlg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

@@ -1,3 +1,6 @@
 <!-- <block-ui> -->
-  <app-nav [loading]="isLoading"></app-nav>
+<app-nav
+  [isLoading]="isLoading$ | async"
+  [menuSections]="menuSections$ | async"
+></app-nav>
 <!-- </block-ui> -->

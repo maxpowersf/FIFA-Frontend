@@ -16,6 +16,14 @@ body {
   margin: 0;
   height: 100%;
 }
+.card {
+  padding: 8px 12px;
+}
+.form-card {
+  width: 50%;
+  margin: auto;
+  padding: 8px 12px;
+}
 .mat-tab-label {
   cursor: pointer;
 }

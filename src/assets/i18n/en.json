@@ -1,0 +1,29 @@
+{
+  "core": {
+    "actions": {
+      "actions": "Actions",
+      "add": "Add",
+      "back": "Back",
+      "edit": "Edit",
+      "delete": "Delete",
+      "ranking": "Ranking",
+      "save": "Save",
+      "update": "Update"
+    }
+  },
+  "confederations": {
+    "listTitle": "Confederations",
+    "listSubtitle": "List of Confederations",
+    "formTitle": "Confederation",
+    "formSubtitle": "confederation",
+    "fields": {
+      "position": "No.",
+      "name": "Name",
+      "name.placeholder": "Input the confederation's name",
+      "color": "Color",
+      "color.placeholder": "Choose a color",
+      "weight": "Weight",
+      "weight.placeholder": "Input the confederation's weight"
+    }
+  }
+}

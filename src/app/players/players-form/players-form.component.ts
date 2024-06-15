@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  UntypedFormGroup,
   UntypedFormBuilder,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Player } from '../models/player.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Team } from 'src/app/teams/models/team.model';
-import { Router, ActivatedRoute } from '@angular/router';
+
+import { PlayerPositionMapping } from '@shared/enums/playerposition.enum';
+import { Player } from '../models/player.model';
 import { PlayerService } from '../services/player.service';
-import { PlayerPositionMapping } from 'src/app/shared/models/playerposition';
 
 @Component({
   selector: 'app-players-form',

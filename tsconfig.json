@@ -13,7 +13,15 @@
     "target": "ES2022",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "paths": {
+      "@environment/*": ["src/environments/*"],
+      "@management/*": ["src/app/management/*"],
+      "@ranking/*": ["src/app/ranking/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@stats/*": ["src/app/stats/*"],
+      "@state/*": ["src/app/state/*"]
+    }
   },
   "angularCompilerOptions": {
     "strictTemplates": false

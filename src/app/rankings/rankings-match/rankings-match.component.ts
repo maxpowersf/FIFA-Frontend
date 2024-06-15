@@ -1,21 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
-  UntypedFormGroup,
   UntypedFormBuilder,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Confederation } from 'src/app/confederations/models/confederation.models';
 import { Team } from 'src/app/teams/models/team.model';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
-import { Match } from '../../matches/models/match.model';
-import { RankingService } from '../services/ranking.service';
-import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.model';
+import { TeamService } from 'src/app/teams/services/team.service';
 import { Tournament } from 'src/app/tournaments/models/tournament.model';
 import { TournamentService } from 'src/app/tournaments/services/tournament.service';
-import { Confederation } from 'src/app/confederations/models/confederation.model';
-import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
-import { MatchRoundMapping } from 'src/app/shared/models/matchround';
-import { TeamService } from 'src/app/teams/services/team.service';
+import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.model';
+
+import { MatchRoundMapping, TournamentFormatEnum } from '@shared/enums';
+import { Match } from '../../matches/models/match.model';
+import { RankingService } from '../services/ranking.service';
 
 @Component({
   selector: 'app-rankings-match',
@@ -115,8 +115,8 @@ export class RankingsMatchComponent implements OnInit {
     this.tournaments = [];
     this.selectedTournamentType = val;
 
-    let tournamenttype = this.tournamenttypes.find((x) => x.id == val);
-    if (tournamenttype.format != TournamentFormat.Qualification) {
+    const tournamenttype = this.tournamenttypes.find((x) => x.id === val);
+    if (tournamenttype.format !== TournamentFormatEnum.Qualification) {
       this.tournamentService
         .getAllByTournamentTypeAndConfederation(val, 0)
         .subscribe((res) => {
@@ -136,13 +136,14 @@ export class RankingsMatchComponent implements OnInit {
   };
 
   fillTeamsByTournament = (val) => {
-    let tournament = this.tournaments.find((x) => x.id == val);
+    const tournament = this.tournaments.find((x) => x.id === val);
     if (
       tournament.confederationID != null &&
-      tournament.confederationID != 5 &&
-      (tournament.confederationID != 4 ||
-        (tournament.confederationID == 4 &&
-          tournament.tournamentType.format == TournamentFormat.Qualification))
+      tournament.confederationID !== 5 &&
+      (tournament.confederationID !== 4 ||
+        (tournament.confederationID === 4 &&
+          tournament.tournamentType.format ===
+            TournamentFormatEnum.Qualification))
     ) {
       this.teamService
         .getAllByConfederation(tournament.confederationID)
@@ -151,9 +152,9 @@ export class RankingsMatchComponent implements OnInit {
         });
     } else {
       this.teamService.getAll().subscribe((res) => {
-        if (tournament.host == 'America' || tournament.confederationID == 4) {
+        if (tournament.host === 'America' || tournament.confederationID === 4) {
           this.teams = res.filter(
-            (s) => s.confederationID == 3 || s.confederationID == 4,
+            (s) => s.confederationID === 3 || s.confederationID === 4,
           );
         } else {
           this.teams = res;
@@ -163,12 +164,12 @@ export class RankingsMatchComponent implements OnInit {
   };
 
   changeTeam1 = (val) => {
-    let t1 = this.teams.find((x) => x.id == val);
+    const t1 = this.teams.find((x) => x.id === val);
     this.selectedTeam1 = t1;
   };
 
   changeTeam2 = (val) => {
-    let t2 = this.teams.find((x) => x.id == val);
+    const t2 = this.teams.find((x) => x.id === val);
     this.selectedTeam2 = t2;
   };
 

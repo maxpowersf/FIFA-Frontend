@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Team } from '../models/team.model';
-import { Tournament } from 'src/app/tournaments/models/tournament.model';
-import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Player } from 'src/app/players/models/player.model';
+import { Tournament } from 'src/app/tournaments/models/tournament.model';
+
+import { TournamentFormatEnum } from '@shared/enums';
+import { Team } from '../models/team.model';
 
 @Component({
   selector: 'app-teams-dashboard',
@@ -69,7 +70,7 @@ export class TeamsDashboardComponent implements OnInit {
     this.tournaments = this.route.snapshot.data.tournaments;
     this.goalscorers = this.route.snapshot.data.players;
 
-    let sum = (el) =>
+    const sum = (el) =>
       el.worldCupGoals +
       el.confederationsGoals +
       el.confederationTournamentGoals +
@@ -78,7 +79,8 @@ export class TeamsDashboardComponent implements OnInit {
 
     const confTournaments: Tournament[] = this.tournaments.filter(
       (a) =>
-        a.tournamentType.format == TournamentFormat.ConfederationTournament,
+        a.tournamentType.format ===
+        TournamentFormatEnum.ConfederationTournament,
     );
     if (confTournaments.length > 0) {
       this.hasConfederationTournament = true;
@@ -93,11 +95,11 @@ export class TeamsDashboardComponent implements OnInit {
   processPositions = () => {
     this.tournaments.forEach((element) => {
       switch (element.tournamentType.format) {
-        case TournamentFormat.WorldCup:
+        case TournamentFormatEnum.WorldCup:
           const qualification: Tournament[] = this.tournaments.filter(
             (a) =>
-              a.tournamentType.format == TournamentFormat.Qualification &&
-              a.year == element.year,
+              a.tournamentType.format === TournamentFormatEnum.Qualification &&
+              a.year === element.year,
           );
           if (qualification.length > 0) {
             element.qualifications = [];
@@ -105,10 +107,10 @@ export class TeamsDashboardComponent implements OnInit {
           }
           this.worldCups.push(element);
           break;
-        case TournamentFormat.ConfederationsCup:
+        case TournamentFormatEnum.ConfederationsCup:
           this.confederationsCups.push(element);
           break;
-        case TournamentFormat.ConfederationTournament:
+        case TournamentFormatEnum.ConfederationTournament:
           this.confederationTournaments.push(element);
           break;
       }

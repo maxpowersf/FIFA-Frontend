@@ -1,0 +1,50 @@
+<mat-card class="form-card">
+  <mat-card-title>
+    <div class="header">
+      <div class="title">{{ 'confederations.formTitle' | translate }}</div>
+    </div>
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{ (isEditing ? 'core.actions.update' : 'core.actions.add') | translate }}
+    {{ 'confederations.formSubtitle' | translate }}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field class="full-width">
+        <mat-label>{{
+          'confederations.fields.name.placeholder' | translate
+        }}</mat-label>
+        <input formControlName="name" matInput />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>{{
+          'confederations.fields.color.placeholder' | translate
+        }}</mat-label>
+        <input formControlName="color" matInput autocomplete="off" />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>{{
+          'confederations.fields.weight.placeholder' | translate
+        }}</mat-label>
+        <input
+          formControlName="weight"
+          matInput
+          type="number"
+          min="0"
+          max="1"
+          step="0.01"
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="actions">
+      <button mat-flat-button (click)="goToList()">Back</button>
+      <button mat-raised-button color="primary" (click)="submit()">
+        {{
+          (isEditing ? 'core.actions.update' : 'core.actions.save') | translate
+        }}
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

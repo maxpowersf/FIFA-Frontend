@@ -4,13 +4,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Confederation } from 'src/app/confederations/models/confederation.model';
-import { MatchRoundMapping } from 'src/app/shared/models/matchround';
+import { Confederation } from 'src/app/confederations/models/confederation.models';
 import { Team } from 'src/app/teams/models/team.model';
 import { Tournament } from 'src/app/tournaments/models/tournament.model';
 import { TournamentService } from 'src/app/tournaments/services/tournament.service';
 import { TournamentType } from 'src/app/tournamenttype/models/tournamenttype.model';
 
+import { MatchRoundMapping } from '@shared/enums/matchround.enum';
 import { Match } from '../models/match.model';
 import { MatchesCollectionRequest } from '../models/matchescollectionrequest.model';
 import { MatchService } from '../services/match.service';

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { TournamentFormat } from 'src/app/shared/models/tournamentformat';
-
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
+import { TournamentFormatEnum } from '@shared/enums';
 import { Tournament } from '../models/tournament.model';
 import { TournamentService } from '../services/tournament.service';
 
@@ -56,13 +56,13 @@ export class TournamentsListComponent implements OnInit {
 
   mapTournamentsList = (list) => {
     this.worldCups = list.filter(
-      (x) => x.tournamentType.format === TournamentFormat.WorldCup,
+      (x) => x.tournamentType.format === TournamentFormatEnum.WorldCup,
     );
     this.dataSourceWorldCup = new MatTableDataSource(this.worldCups);
     this.dataSourceWorldCup.paginator = this.paginatorWorldCup;
 
     this.confederationCups = list.filter(
-      (x) => x.tournamentType.format === TournamentFormat.ConfederationsCup,
+      (x) => x.tournamentType.format === TournamentFormatEnum.ConfederationsCup,
     );
     this.dataSourceConfederationCup = new MatTableDataSource(
       this.confederationCups,
@@ -71,7 +71,8 @@ export class TournamentsListComponent implements OnInit {
 
     this.confederationTournaments = list.filter(
       (x) =>
-        x.tournamentType.format === TournamentFormat.ConfederationTournament,
+        x.tournamentType.format ===
+        TournamentFormatEnum.ConfederationTournament,
     );
     this.dataSourceConfederationTournament = new MatTableDataSource(
       this.confederationTournaments,
@@ -80,7 +81,7 @@ export class TournamentsListComponent implements OnInit {
       this.paginatorConfederationTournament;
 
     this.qualifications = list.filter(
-      (x) => x.tournamentType.format === TournamentFormat.Qualification,
+      (x) => x.tournamentType.format === TournamentFormatEnum.Qualification,
     );
     this.dataSourceQualification = new MatTableDataSource(this.qualifications);
     this.dataSourceQualification.paginator = this.paginatorQualification;

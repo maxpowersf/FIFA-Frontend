@@ -7,8 +7,9 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatchRoundMapping } from 'src/app/shared/models/matchround';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { MatchRoundMapping } from '@shared/enums/matchround.enum';
 import { Report, ReportsList } from '../../models/report.model';
 import { StreaksCollectionResponse } from '../../models/streakscollectionresponse.model';
 
@@ -61,7 +62,7 @@ export class ReportStreaksComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ) {
-    let reportTypeId = this.route.snapshot.params.type;
+    const reportTypeId = this.route.snapshot.params.type;
     this.report = ReportsList.find((x) => x.id == reportTypeId);
 
     this.streaks = this.route.snapshot.data.streaks;

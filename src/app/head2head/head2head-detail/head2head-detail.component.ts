@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Match } from '../../matches/models/match.model';
 import { MatchService } from '../../matches/services/match.service';
-import { MatchRoundMapping } from '../../shared/models/matchround';
+import { MatchRoundMapping } from '../../shared/enums/matchround.enum';
 import { Team } from '../../teams/models/team.model';
 import { H2H } from '../models/h2h.model';
 import { Head2headService } from '../services/head2head.service';

@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+
+import { initialMenuSections } from '@shared/enums';
+import { MenuSection } from '@shared/models';
 import {
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
-  Router,
-} from '@angular/router';
+  AppActions,
+  FIFAState,
+  getIsMenuLoading,
+  getMenuSections,
+} from '@shared/state';
+
+export const DEFAULT_LANGUAGE = 'en';
 
 @Component({
   selector: 'app-root',
@@ -14,23 +21,24 @@ import {
 })
 export class AppComponent implements OnInit {
   title = 'Ranking de Equipos';
-  isLoading = false;
 
-  constructor(private router: Router) {}
+  public isLoading$: Observable<boolean> = this.store$.pipe(
+    select(getIsMenuLoading),
+  );
+  public menuSections$: Observable<MenuSection[]> = this.store$.pipe(
+    select(getMenuSections),
+  );
+
+  constructor(
+    private store$: Store<FIFAState>,
+    private translate: TranslateService,
+  ) {
+    translate.setDefaultLang(DEFAULT_LANGUAGE);
+  }
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.isLoading = true;
-      }
-
-      if (
-        event instanceof NavigationError ||
-        event instanceof NavigationEnd ||
-        event instanceof NavigationCancel
-      ) {
-        this.isLoading = false;
-      }
-    });
+    this.store$.dispatch(
+      AppActions.fetchMenuItems({ payload: initialMenuSections }),
+    );
   }
 }

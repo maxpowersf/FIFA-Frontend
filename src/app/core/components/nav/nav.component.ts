@@ -1,7 +1,9 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+
+import { MenuSection } from '@shared/models';
 
 @Component({
   selector: 'app-nav',
@@ -9,11 +11,12 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent {
-  @Input() loading: boolean;
+  @Input() isLoading: boolean;
+  @Input() menuSections: MenuSection[];
 
-  isHandset$: Observable<boolean> = this.breakpointObserver
+  isHandset$: Observable<boolean> = this.breakpointObserver$
     .observe(Breakpoints.Handset)
     .pipe(map((result) => result.matches));
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver$: BreakpointObserver) {}
 }

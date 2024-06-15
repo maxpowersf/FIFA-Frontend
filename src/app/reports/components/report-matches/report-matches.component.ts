@@ -3,8 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Match } from 'src/app/matches/models/match.model';
-import { MatchRoundMapping } from 'src/app/shared/models/matchround';
 
+import { MatchRoundMapping } from '@shared/enums/matchround.enum';
 import { Report, ReportsList } from '../../models/report.model';
 
 @Component({

@@ -6,17 +6,15 @@
       mat-mini-fab
       (click)="drawer.toggle()"
     >
-      <mat-icon aria-label="Example icon-button with a heart icon"
-        >more_vert</mat-icon
-      >
+      <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-icon class="title">home</mat-icon>
+    <mat-icon class="title" fontIcon="home"></mat-icon>
     <span [routerLink]="['']">
       <h2 class="title">Teams Ranking</h2>
     </span>
   </mat-toolbar-row>
   <mat-progress-bar
-    *ngIf="loading"
+    *ngIf="isLoading"
     class="progress-bar"
     mode="indeterminate"
     color="accent"
@@ -33,51 +31,20 @@
   >
     <div color="primary" class="profile-section"></div>
     <mat-nav-list>
-      <h2 matSubheader>Statistics</h2>
-      <a mat-list-item [routerLink]="['rankings']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">table_chart</mat-icon> Ranking
-      </a>
-      <a mat-list-item [routerLink]="['teamstats']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">format_list_numbered</mat-icon> All Time
-        Standings
-      </a>
-      <a mat-list-item [routerLink]="['head2head']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">sports_hockey</mat-icon> Head to Head
-      </a>
-      <a mat-list-item [routerLink]="['matches']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">sports_soccer</mat-icon> Matches
-      </a>
-      <a mat-list-item [routerLink]="['tournaments']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">emoji_events</mat-icon> Tournaments
-      </a>
-      <a
-        mat-list-item
-        [routerLink]="['tournamenttypes']"
-        (click)="drawer.toggle()"
-      >
-        <mat-icon class="icon_menu">category</mat-icon> Tournament Types
-      </a>
-      <a mat-list-item [routerLink]="['reports']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">query_stats</mat-icon> Stats
-      </a>
-
-      <h2 matSubheader>Management</h2>
-      <a mat-list-item [routerLink]="['teams']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">groups</mat-icon> Teams
-      </a>
-      <a mat-list-item [routerLink]="['players']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">people</mat-icon> Players
-      </a>
-      <a
-        mat-list-item
-        [routerLink]="['confederations']"
-        (click)="drawer.toggle()"
-      >
-        <mat-icon class="icon_menu">public</mat-icon> Confederations
-      </a>
-      <a mat-list-item [routerLink]="['matchtypes']" (click)="drawer.toggle()">
-        <mat-icon class="icon_menu">build</mat-icon> Match Types
-      </a>
+      <div *ngFor="let section of menuSections">
+        <h2 matSubheader>
+          {{ section.title }}
+        </h2>
+        <a
+          *ngFor="let item of section.menuItems"
+          mat-list-item
+          [routerLink]="[item.url]"
+          (click)="drawer.toggle()"
+        >
+          <mat-icon class="icon_menu">{{ item.icon }}</mat-icon>
+          {{ item.title }}
+        </a>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './core/components/home/home.component';
 
 const routes: Routes = [
@@ -7,6 +8,11 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'management',
+    loadChildren: () =>
+      import('./management/management.module').then((m) => m.ManagementModule),
   },
   {
     path: 'matchtypes',

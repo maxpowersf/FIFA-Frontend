@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Match } from 'src/app/matches/models/match.model';
-import { MatchRoundMapping } from 'src/app/shared/models/matchround';
+
+import { MatchRoundMapping } from '@shared/enums/matchround.enum';
 
 @Component({
   selector: 'app-results-tab',
@@ -24,8 +25,6 @@ export class ResultsTabComponent implements OnInit {
   dataSource;
 
   matchrounds = MatchRoundMapping;
-
-  constructor() {}
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);

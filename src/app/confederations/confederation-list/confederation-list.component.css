@@ -1,6 +1,3 @@
-table {
-  width: 100%;
-}
 .header {
   display: flex;
   align-items: center;
@@ -8,8 +5,4 @@ table {
 }
 .mat-icon-button {
   margin-top: 5px;
-}
-.clickable:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  cursor: pointer;
 }

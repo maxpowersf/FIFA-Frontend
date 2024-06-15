@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
-  UntypedFormBuilder,
 } from '@angular/forms';
-import { FormLayout } from 'src/app/shared/models/form-layout.model';
-import { TournamentType } from '../models/tournamenttype.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { TournamenttypeService } from '../services/tournamenttype.service';
-import { Confederation } from 'src/app/confederations/models/confederation.model';
-import { TournamentFormatMapping } from 'src/app/shared/models/tournamentformat';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Confederation } from 'src/app/confederations/models/confederation.models';
 import { MatchType } from 'src/app/matchtype/models/matchtype.model';
+import { FormLayout } from 'src/app/shared/models/form-layout.model';
+
+import { TournamentFormatMapping } from '@shared/enums/tournamentformat.enum';
+import { TournamentType } from '../models/tournamenttype.model';
+import { TournamenttypeService } from '../services/tournamenttype.service';
 
 @Component({
   selector: 'app-tournamenttype-form',
